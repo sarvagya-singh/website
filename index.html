@@ -1,759 +1,975 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SaraTimes</title>
-    <style>
-        /* --- FONTS --- */
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Courier+Prime:ital,wght@0,400;1,400&family=Dancing+Script:wght@700&family=Space+Mono:wght@400;700&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Study: The Organizational Intelligence Revolution</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
-        /* --- VARIABLES --- */
-        :root {
-            --bg-pink: #fa96b6;
-            --nav-border: #e06c8f;
-            --text-red: #da0a0a;
-            --window-border: #000000;
-            --window-bg: #ffe4e1; /* Misty Rose */
-            --paper-cream: #fdfbf7;
-        }
+  :root {
+    --ink: #0D0F14;
+    --paper: #F7F6F2;
+    --muted: #6B7280;
+    --wire: #E2E0D8;
+    --signal: #1A56DB;
+    --signal-dim: #E8EEFB;
+    --pulse: #059669;
+    --pulse-dim: #D1FAE5;
+    --amber: #D97706;
+    --amber-dim: #FEF3C7;
+    --red: #DC2626;
+    --red-dim: #FEE2E2;
+    --violet: #7C3AED;
+    --violet-dim: #EDE9FE;
+  }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
-            background-color: var(--bg-pink);
-            font-family: 'Times New Roman', serif;
-            width: 100%;
-            min-height: 100vh;
-            overflow-x: hidden;
-            overflow-y: auto;
-            position: relative;
-        }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+  }
 
-        /* --- UTILITIES --- */
-        .hidden {
-            display: none !important;
-        }
+  /* HEADER */
+  .cover {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 60px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,86,219,0.25) 0%, transparent 70%);
+  }
+  .cover-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 24px;
+  }
+  .cover h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 800;
+    line-height: 1.05;
+    max-width: 720px;
+    margin-bottom: 24px;
+  }
+  .cover h1 em {
+    font-style: normal;
+    color: #60A5FA;
+  }
+  .cover-sub {
+    font-size: 17px;
+    color: #9CA3AF;
+    max-width: 560px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  .cover-meta {
+    display: flex; gap: 40px; flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #6B7280;
+  }
+  .cover-meta-item strong {
+    display: block;
+    color: var(--paper);
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
 
-        /* --- LANDING SCREEN (The Question) --- */
-        #landing-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--bg-pink);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 5000; /* Highest priority */
-            text-align: center;
-            padding: 20px;
-        }
+  /* NAV / TOC */
+  .toc {
+    background: white;
+    border-bottom: 1px solid var(--wire);
+    padding: 20px 60px;
+    display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+  }
+  .toc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-right: 8px;
+  }
+  .toc a {
+    font-size: 12px;
+    color: var(--signal);
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid #C7D7F8;
+    border-radius: 20px;
+    transition: all 0.2s;
+  }
+  .toc a:hover { background: var(--signal); color: white; }
 
-        .landing-question {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem;
-            color: var(--text-red);
-            margin-bottom: 50px;
-            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
-            max-width: 800px;
-            line-height: 1.2;
-        }
+  /* BODY */
+  .body { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
 
-        .landing-buttons {
-            position: relative;
-            /* width: 300px;  Removed fixed width to let buttons sit naturally */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-        }
+  /* SECTIONS */
+  .section { margin-bottom: 72px; }
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 12px;
+  }
+  .section h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .section p { color: #374151; margin-bottom: 16px; }
 
-        .landing-btn {
-            padding: 15px 40px;
-            font-family: 'Courier Prime', monospace;
-            font-size: 1.5rem;
-            border: 3px solid var(--text-red);
-            border-radius: 50px;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
-            text-transform: lowercase;
-            font-weight: bold;
-        }
+  /* COMPANY CARDS */
+  .company-card {
+    border: 1px solid var(--wire);
+    border-radius: 12px;
+    margin-bottom: 32px;
+    overflow: hidden;
+    background: white;
+  }
+  .card-header {
+    padding: 24px 28px 20px;
+    border-bottom: 1px solid var(--wire);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .card-title-block {}
+  .card-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    display: inline-block;
+  }
+  .badge-leader { background: var(--signal-dim); color: var(--signal); }
+  .badge-vc { background: var(--violet-dim); color: var(--violet); }
+  .badge-enterprise { background: var(--amber-dim); color: var(--amber); }
+  .badge-people { background: var(--pulse-dim); color: var(--pulse); }
+  .badge-convo { background: var(--red-dim); color: var(--red); }
+  .badge-search { background: #F3E8FF; color: #6D28D9; }
 
-        #yes-btn {
-            background-color: var(--text-red);
-            color: white;
-            box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
-            z-index: 2;
-        }
+  .card-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .card-tagline {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .card-stats {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .stat {
+    text-align: right;
+  }
+  .stat-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    display: block;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+  }
 
-        #yes-btn:hover {
-            transform: scale(1.1);
-            background-color: #b30000;
-        }
+  .card-body { padding: 24px 28px; }
 
-        #no-btn {
-            background-color: transparent;
-            color: var(--text-red);
-            /* FIXED: Removed 'position: absolute' so it sits normally in the flexbox initially */
-            position: relative; 
-            transition: top 0.2s ease, left 0.2s ease; /* Smooth glide */
-        }
+  .origin-block {
+    background: #F9FAFB;
+    border-left: 3px solid var(--signal);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 18px;
+  }
+  .origin-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .origin-text {
+    font-size: 13.5px;
+    color: #374151;
+    line-height: 1.6;
+  }
 
-        /* --- MAIN SITE WRAPPER --- */
-        #main-site {
-            opacity: 0; /* Start hidden for fade-in effect */
-            transition: opacity 1.5s ease-in-out;
-        }
+  .card-section-title {
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 18px 0 10px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .card-body p { font-size: 14px; color: #374151; margin-bottom: 12px; }
 
-        /* --- HEADER & NAV --- */
-        header {
-            width: 100%;
-            padding: 10px 20px 0 20px;
-            border-bottom: 1px solid var(--nav-border);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: var(--bg-pink);
-        }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .pill {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: var(--paper);
+    border: 1px solid var(--wire);
+    color: #374151;
+  }
 
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 10px;
-        }
+  /* MARKET MAP */
+  .market-map {
+    background: white;
+    border: 1px solid var(--wire);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 32px;
+  }
+  .map-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .map-cell {
+    border: 1px solid var(--wire);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .map-cell-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .map-cell-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .map-cell p { font-size: 13px; color: #374151; }
+  .map-cell.highlight { background: var(--signal-dim); border-color: #BFDBFE; }
+  .map-cell.highlight .map-cell-title { color: var(--signal); }
 
-        .letter-trigger {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            color: var(--text-red);
-            font-style: italic;
-            font-size: 0.9rem;
-            transition: transform 0.2s;
-        }
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 12px;
+    padding: 32px;
+    margin: 32px 0;
+  }
+  .highlight-box h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #60A5FA;
+  }
+  .highlight-box p { color: #D1D5DB; font-size: 14px; margin-bottom: 10px; }
+  .highlight-box ul { padding-left: 20px; }
+  .highlight-box ul li { color: #D1D5DB; font-size: 14px; margin-bottom: 8px; }
 
-        .letter-trigger:hover {
-            transform: scale(1.1);
-        }
+  /* TIMELINE */
+  .timeline { margin: 24px 0; }
+  .tl-item {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+  .tl-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--signal);
+    font-weight: 500;
+    min-width: 40px;
+    padding-top: 2px;
+  }
+  .tl-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--signal);
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+  .tl-content { font-size: 13.5px; color: #374151; }
+  .tl-content strong { color: var(--ink); }
 
-        .envelope-icon {
-            font-size: 2rem;
-            margin-right: 5px;
-        }
+  /* DIVIDER */
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--wire);
+    margin: 48px 0;
+  }
 
-        .logo {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
-            color: var(--text-red);
-            text-decoration: underline;
-            text-decoration-thickness: 2px;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 5px;
-        }
+  /* COMPARISON TABLE */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 20px 0;
+  }
+  .compare-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-align: left;
+    padding: 10px 16px;
+    background: #F9FAFB;
+    border-bottom: 2px solid var(--wire);
+  }
+  .compare-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--wire);
+    color: #374151;
+    vertical-align: top;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:hover td { background: #FAFAFA; }
+  .company-col { font-weight: 600; color: var(--ink); }
 
-        .nav-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px 0;
-            border-top: 1px solid var(--nav-border);
-            font-family: Arial, sans-serif;
-            font-size: 0.85rem;
-            margin-top: 10px;
-            background: var(--bg-pink);
-        }
+  /* OPPORTUNITY SECTION */
+  .opp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .opp-card {
+    border: 1px solid var(--wire);
+    border-radius: 10px;
+    padding: 20px;
+    background: white;
+  }
+  .opp-icon { font-size: 24px; margin-bottom: 10px; }
+  .opp-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .opp-desc { font-size: 13px; color: #6B7280; line-height: 1.55; }
 
-        .nav-item {
-            text-decoration: none;
-            color: #d12e2e;
-            padding: 2px 10px;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .nav-item:hover {
-            color: #000;
-            text-decoration: underline;
-        }
-
-        .circled {
-            border: 1px solid #d12e2e;
-            border-radius: 50%;
-            padding: 2px 15px;
-        }
-
-        /* --- BACKGROUND PHRASES --- */
-        #bg-phrases-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .bg-phrase {
-            position: absolute;
-            color: rgba(218, 10, 10, 0.10);
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            white-space: nowrap;
-            user-select: none;
-        }
-
-        /* --- MAIN GALLERY (MASONRY) --- */
-        #gallery-section {
-            position: relative;
-            z-index: 10;
-            padding: 50px 20px 100px 20px;
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 40px;
-            align-items: start;
-        }
-
-        .window-frame {
-            border: 3px solid var(--window-border);
-            background: white;
-            box-shadow: 10px 10px 0px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .window-frame:hover {
-            transform: scale(1.05) !important;
-            box-shadow: 15px 15px 0px rgba(0,0,0,0.3);
-            z-index: 50;
-            position: relative;
-        }
-
-        .window-header {
-            background: var(--window-bg);
-            border-bottom: 3px solid var(--window-border);
-            padding: 5px 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #000;
-        }
-
-        .window-controls span {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border: 1px solid black;
-            border-radius: 50%;
-            margin-left: 3px;
-        }
-
-        .window-content { padding: 0; line-height: 0; }
-        .window-content img { width: 100%; height: auto; display: block; }
-
-
-        /* --- MODAL SCREENS (Postcard & Letter) --- */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-            color: #555;
-            z-index: 10;
-        }
-
-        /* Postcard Style */
-        .postcard {
-            width: 600px;
-            max-width: 90%;
-            height: 400px;
-            background: var(--paper-cream);
-            border: 10px solid transparent;
-            border-image: repeating-linear-gradient(
-                45deg,
-                #da0a0a 0,
-                #da0a0a 20px,
-                #fdfbf7 20px,
-                #fdfbf7 40px,
-                #2d4059 40px,
-                #2d4059 60px,
-                #fdfbf7 60px,
-                #fdfbf7 80px
-            ) 10;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            display: flex;
-            position: relative;
-            transform: rotate(-2deg);
-        }
-
-        .postcard-left {
-            flex: 1;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-right: 1px dashed #ccc;
-        }
-
-        .postcard-right {
-            flex: 1;
-            padding: 30px;
-            position: relative;
-        }
-
-        .stamp-box {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 60px;
-            height: 70px;
-            border: 2px dotted #da0a0a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #da0a0a;
-            font-size: 0.8rem;
-            transform: rotate(5deg);
-        }
-
-        .postcard-lines {
-            margin-top: 80px;
-        }
-        .line {
-            height: 1px;
-            background: #ccc;
-            margin-bottom: 30px;
-            width: 100%;
-        }
-
-        .read-btn {
-            background: var(--text-red);
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            font-family: 'Courier Prime', monospace;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 5px;
-            box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
-            transition: all 0.2s;
-            text-transform: uppercase;
-        }
-
-        .read-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 5px 5px 0px rgba(0,0,0,0.4);
-        }
-        
-        .postcard-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--text-red);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        /* Letter Style */
-        .paper-letter {
-            width: 80%;
-            max-width: 600px;
-            height: 80vh;
-            background: var(--paper-cream);
-            padding: 40px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            position: relative;
-            overflow-y: auto;
-            background-image: repeating-linear-gradient(transparent, transparent 31px, #94acd4 31px, #94acd4 32px);
-            line-height: 32px;
-        }
-
-        .handwritten-text {
-            font-family: 'Courier Prime', monospace;
-            font-size: 1.2rem;
-            color: #333;
-            margin-top: 20px;
-        }
-
-        /* --- AUDIO PLAYER (Bottom Right) --- */
-        #audio-player {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--window-bg);
-            border: 2px solid var(--text-red);
-            color: var(--text-red);
-            padding: 10px 20px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            z-index: 1500;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            opacity: 1;
-        }
-
-        .player-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-red);
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: transform 0.2s;
-        }
-        
-        .player-btn:hover {
-            transform: scale(1.2);
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 600px) {
-            .postcard { flex-direction: column; height: auto; }
-            .postcard-left, .postcard-right { border: none; padding: 15px; }
-            .stamp-box { display: none; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            .landing-question { font-size: 2.5rem; }
-        }
-    </style>
+  @media (max-width: 640px) {
+    .cover { padding: 40px 24px; }
+    .body { padding: 40px 20px; }
+    .toc { padding: 16px 20px; }
+    .card-header { flex-direction: column; }
+    .card-stats { flex-direction: row; }
+    .stat { text-align: left; }
+    .map-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 
-    <div id="landing-screen">
-        <h1 class="landing-question">
-            do you fw me? <br>will you be my valentine?<br>can you even read...
-        </h1>
-        <div class="landing-buttons">
-            <button id="yes-btn" class="landing-btn" onclick="enterSite()">yes</button>
-            <button id="no-btn" class="landing-btn">no</button>
-        </div>
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">Market Intelligence Report · June 2026</div>
+  <h1>The <em>Untapped Knowledge</em><br>Intelligence Revolution</h1>
+  <p class="cover-sub">A comprehensive study of platforms turning an organization's hidden relationship capital — buried in emails, calendars, conversations, and directories — into its most powerful competitive asset.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><strong>6 Companies Profiled</strong>Market Leaders</div>
+    <div class="cover-meta-item"><strong>$2.3B → $11.3B</strong>Graph Analytics Market CAGR</div>
+    <div class="cover-meta-item"><strong>~$2B+</strong>Total Funding in Space</div>
+    <div class="cover-meta-item"><strong>2012 – 2026</strong>Category Timeline</div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <span class="toc-label">Sections</span>
+  <a href="#context">The Problem</a>
+  <a href="#introhive">Introhive</a>
+  <a href="#affinity">Affinity</a>
+  <a href="#gong">Gong</a>
+  <a href="#glean">Glean</a>
+  <a href="#people-ai">People.ai</a>
+  <a href="#ona">ONA Platforms</a>
+  <a href="#landscape">Landscape Map</a>
+  <a href="#opportunities">White Space</a>
+</div>
+
+<div class="body">
+
+<!-- THE PROBLEM -->
+<div class="section" id="context">
+  <div class="section-eyebrow">The Core Problem</div>
+  <h2>Every large organization is sitting on a gold mine of knowledge it cannot see</h2>
+  <p>When a partner at KPMG wants to land a new client, the most valuable asset isn't a pitch deck or a credentials document — it's knowing that a colleague had lunch with the CFO last month. That intelligence exists. It's in someone's sent folder. But no one could find it until Introhive came along.</p>
+  <p>This is the fundamental insight powering an entire category of enterprise software: organizations generate enormous quantities of relationship data, conversation data, and collaboration data every single day — and almost none of it gets captured, organized, or made accessible to the people who need it most.</p>
+
+  <div class="market-map">
+    <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px;">Where the Knowledge Hides</div>
+    <p style="font-size:13px;color:#6B7280;margin-bottom:0;">The "dark data" of enterprise organizations — interaction intelligence that exists but is never surfaced.</p>
+    <div class="map-grid">
+      <div class="map-cell highlight">
+        <div class="map-cell-label">Relationship Signals</div>
+        <div class="map-cell-title">Emails & Calendars</div>
+        <p>Who knows whom, how recently they've spoken, relationship strength, warm introductions — all locked in individual inboxes.</p>
+      </div>
+      <div class="map-cell">
+        <div class="map-cell-label">Conversation Intelligence</div>
+        <div class="map-cell-title">Calls & Meetings</div>
+        <p>What customers are actually saying, objections, buying signals, champion identification — vaporized the moment a meeting ends.</p>
+      </div>
+      <div class="map-cell">
+        <div class="map-cell-label">Organizational Knowledge</div>
+        <div class="map-cell-title">Documents & Wikis</div>
+        <p>Institutional knowledge, past work, playbooks, and expertise scattered across Slack, Drive, Notion, Confluence, and email.</p>
+      </div>
+      <div class="map-cell">
+        <div class="map-cell-label">People Intelligence</div>
+        <div class="map-cell-title">Network & Alumni</div>
+        <p>Who your people know externally, who's changed jobs, which customers are champions — unmapped and invisible to BD teams.</p>
+      </div>
     </div>
+  </div>
 
+  <p>The companies profiled in this study have each staked out a piece of this territory. Some focus on <strong>external relationship graphs</strong> (who knows who outside the firm), others on <strong>internal collaboration networks</strong> (how knowledge moves within teams), and the newest entrants are building <strong>unified knowledge graphs</strong> that connect all of the above. This is the most interesting and contested space in enterprise software today.</p>
+</div>
 
-    <div id="main-site" class="hidden">
+<hr class="divider">
 
-        <header>
-            <div class="top-bar">
-                <div class="letter-trigger" onclick="openPostcard()">
-                    <span class="envelope-icon">✉️</span>
-                    <span style="font-family: 'Dancing Script', cursive; transform: rotate(-10deg); margin-top: -5px;">Pssst...</span>
-                </div>
+<!-- INTROHIVE -->
+<div class="section" id="introhive">
+  <div class="section-eyebrow">Company Profile 01</div>
+  <h2>The Category Creator</h2>
 
-                <div class="logo">SaraTimes</div>
-            </div>
-
-            <nav class="nav-bar">
-                <a href="https://en.wikipedia.org/wiki/Lobotomy" target="_blank" class="nav-item circled">About</a>
-                <a href="https://www.16personalities.com/entp-personality" target="_blank" class="nav-item">Features</a>
-                <a href="https://youtu.be/5J211yVWIzg" target="_blank" class="nav-item">Culture</a>
-                <a href="https://www.reddit.com/r/nri/comments/1lpuaei/indians_living_working_in_hong_konghows_life_and/" target="_blank" class="nav-item">Attachment</a>
-                <a href="https://youtu.be/yccGxvIydKg" target="_blank" class="nav-item">Slut Activities</a>
-                <a href="https://pin.it/6Unzl4zY9" target="_blank" class="nav-item">Heating Up</a>
-                <a href="https://pin.it/3TWxpZrcy" target="_blank" class="nav-item">Reflection</a>
-                <a href="https://chapranagarnigam.net/bmc/public" target="_blank" class="nav-item">New York</a>
-                <a href="https://pin.it/6DUfdTD2I" target="_blank" class="nav-item circled">Archive</a>
-            </nav>
-        </header>
-
-        <div id="bg-phrases-container"></div>
-
-        <main id="gallery-section">
-            <div class="gallery-grid" id="window-grid">
-                </div>
-        </main>
-
-        <div id="audio-player">
-            <button class="player-btn" onclick="prevSong()">⏮</button>
-            <button class="player-btn" id="playPauseBtn" onclick="togglePlay()">⏯</button>
-            <button class="player-btn" onclick="nextSong()">⏭</button>
+  <div class="company-card">
+    <div class="card-header">
+      <div class="card-title-block">
+        <div class="card-badge badge-leader">Relationship Intelligence · Category Leader</div>
+        <div class="card-name">Introhive</div>
+        <div class="card-tagline">Fredericton, Canada → Global · Founded 2012</div>
+      </div>
+      <div class="card-stats">
+        <div class="stat">
+          <span class="stat-value">$135M+</span>
+          <span class="stat-label">Total Raised</span>
         </div>
-
-    </div>
-
-
-    <div id="postcard-screen" class="modal-overlay">
-        <div class="postcard">
-            <button class="close-btn" onclick="closeAllModals()">✕</button>
-            <div class="postcard-left">
-                <h2 class="postcard-title">Special Delivery<br>For You</h2>
-                <p style="font-family:'Courier Prime'; font-size: 0.8rem; color:#da0a0a;">VIA AIR MAIL</p>
-                <div style="margin-top: 30px;">
-                    <button class="read-btn" onclick="openActualLetter()">
-                        Letter to Sara<br>
-                        <span style="font-size:0.7rem">27th Dec, 2025 - READ</span>
-                    </button>
-                </div>
-            </div>
-            <div class="postcard-right">
-                <div class="stamp-box">
-                    <span style="font-size:2rem">♥</span>
-                </div>
-                <div class="postcard-lines">
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
-                </div>
-                <p style="font-family: 'Dancing Script'; font-size: 1.5rem; color: #555; position:absolute; bottom: 40px; right: 30px;">
-                    To: bombaybaddie29
-                </p>
-            </div>
+        <div class="stat">
+          <span class="stat-value">PwC, KPMG</span>
+          <span class="stat-label">Marquee Clients</span>
         </div>
-    </div>
-
-    <div id="letter-screen" class="modal-overlay">
-        <div class="paper-letter">
-            <button class="close-btn" onclick="closeAllModals()">✕</button>
-            <div class="handwritten-text">
-                <h2>Dearest Joya,</h2>
-                <p style="text-align: right; font-size: 0.9rem;">27th Dec, 2025</p>
-                <br>
-                <p>Today was a very long day for me, I gained an altitude of about 600 meters and trekked almost 20 kilometres, I sit at an altitude of about 4400 meters now in a village called Dingboche nestled in the upper himalayas, there are barely any people here, I am the only guest in the teahouse that I’m staying in. I spend almost all the time on the trail being with myself and in that time I find myself thinking a lot about the events that took place in the last month of college, well to be honest, I think about the time I spent with you, I consider myself a very selfish person and yet somehow I had no issues sharing my space, my time, my thoughts and myself with you, which amazes me and scares me at the same time. I think that you’re a very bright girl and you will always change people’s (who choose share themselves with you) lives for the better. </p>
-                <br>
-                <p>Today I was out in negative 22 degree celsius to look at the night sky, having surpassed the 4000meter mark it was my duty to do so. Joya I have seen the milky way with my naked eyes on multiple occasions but I don’t think i will ever get enough of a sky full of stars, it makes me feel very hopeful for what’s to come and makes me and my problems feel insignificant, I feel similarly when I’m in your company. I realise so many things about myself when I’m with you, some because of the things you say and most because of the things you don’t.
-                </p>
-                <br>
-                <p> When I was outside under the night sky today, I saw a mountain goat twice the size of me, standing absolutely still as if it was also trying to take in the universe that was spread out in front of us, I tried getting closer to it but it somehow got scared, I don’t think it’s used to seeing curly haired sluts in these areas.</p>
-                <br>
-                <p>Lobotomy(always),</p>
-                <p>Sarvagya.</p>
-                <br>
-                <p>27th December, 2025 </p>
-            </p>Dingboche, Nepal - 14400ft</p>
-            </div>
+        <div class="stat">
+          <span class="stat-value">~400</span>
+          <span class="stat-label">Employees</span>
         </div>
+      </div>
     </div>
+    <div class="card-body">
+      <div class="origin-block">
+        <div class="origin-label">Founding Story</div>
+        <div class="origin-text">Jody Glidden and Stewart Walchli founded Introhive in 2012 in Fredericton, New Brunswick — an unlikely startup hub — with a deceptively simple insight: the most valuable knowledge inside a professional services firm is who its people know, and that knowledge is completely invisible. The two believed that if you could make the "relationship graph" of an entire organization visible and searchable, business development would be transformed. They were right. It took nearly a decade of grinding, but the thesis proved out spectacularly.</div>
+      </div>
 
-    <audio id="bg-music"></audio>
+      <div class="card-section-title">What It Does</div>
+      <p>Introhive connects to the email and calendar infrastructure of an entire organization and quietly maps every touchpoint — every email sent, every meeting attended — across the firm. The result is a continuously updated graph that shows who knows whom, how strong each relationship is, and when the last meaningful contact occurred. When a partner at KPMG wants to reach a target client, they search the person in Introhive and immediately see which of their 30,000 colleagues already has a strong relationship with them — and can request a warm introduction.</p>
 
+      <div class="card-section-title">Growth Timeline</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-year">2012</span><div class="tl-dot"></div>
+          <div class="tl-content"><strong>Founded in Fredericton, NB.</strong> Glidden and Walchli begin building on the premise that relationship data is an untapped organizational asset.</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-year">2016–18</span><div class="tl-dot"></div>
+          <div class="tl-content"><strong>First major professional services wins.</strong> The legal and Big Four accounting sectors prove to be perfect early markets — high-value relationships, large organizations, relationship-driven BD.</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-year">2019</span><div class="tl-dot"></div>
+          <div class="tl-content"><strong>PwC goes global.</strong> PwC deploys Introhive across 90 countries, giving over 100,000 users access to the platform — a massive validation moment for the category.</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-year">2021</span><div class="tl-dot"></div>
+          <div class="tl-content"><strong>$100M Series C</strong> led by PSG. By this point Introhive has captured over 60 million contacts and relationships — the data flywheel is spinning.</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-year">2024</span><div class="tl-dot"></div>
+          <div class="tl-content"><strong>KPMG partnership announced.</strong> KPMG firms globally adopt Introhive alongside Salesforce, making it the backbone of their front-office intelligence strategy.</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-year">2026</span><div class="tl-dot"></div>
+          <div class="tl-content"><strong>MCP Server for AI agents.</strong> Introhive launches a Model Context Protocol server, allowing AI assistants like Microsoft Copilot to query relationship intelligence in natural language — turning from a reporting tool into AI infrastructure.</div>
+        </div>
+      </div>
 
-    <script>
-        // --- 1. LANDING PAGE LOGIC ---
-        function enterSite() {
-            const landing = document.getElementById('landing-screen');
-            landing.style.transition = "opacity 1s ease";
-            landing.style.opacity = 0;
-            
-            setTimeout(() => {
-                landing.classList.add('hidden');
-                
-                const main = document.getElementById('main-site');
-                main.classList.remove('hidden');
-                void main.offsetWidth; // Trigger reflow
-                main.style.opacity = 1;
+      <div class="card-section-title">What Makes It Distinctive</div>
+      <p>Introhive's core innovation is the <strong>automatic, passive capture</strong> of relationship data. Unlike traditional CRMs that require salespeople to manually log interactions (a task that almost never gets done thoroughly), Introhive works silently in the background. No behavior change required from the firm's professionals. The data just accumulates.</p>
+      <p>It also introduced the concept of <strong>relationship strength scoring</strong> — not just "this person knows that person" but a quantified measure of how strong the connection is, based on recency, frequency, and reciprocity of communications.</p>
 
-                // Start Music
-                togglePlay();
-                
-            }, 1000);
-        }
+      <div class="card-section-title">Target Market</div>
+      <div class="pill-row">
+        <span class="pill">Big 4 Accounting</span>
+        <span class="pill">Law Firms (AmLaw 200)</span>
+        <span class="pill">Management Consulting</span>
+        <span class="pill">Financial Services</span>
+        <span class="pill">Commercial Real Estate</span>
+        <span class="pill">Engineering & Construction</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-        // Runaway "No" Button Logic
-        const noBtn = document.getElementById('no-btn');
-        
-        noBtn.addEventListener('mouseover', () => {
-            // Force fixed positioning so it can escape the flex container
-            noBtn.style.position = 'fixed';
-            
-            // Get window dimensions
-            const maxX = window.innerWidth - noBtn.offsetWidth;
-            const maxY = window.innerHeight - noBtn.offsetHeight;
-            
-            // Generate random coordinates
-            const randomX = Math.random() * maxX;
-            const randomY = Math.random() * maxY;
-            
-            // Apply coordinates
-            noBtn.style.left = randomX + 'px';
-            noBtn.style.top = randomY + 'px';
-        });
+<hr class="divider">
 
+<!-- AFFINITY -->
+<div class="section" id="affinity">
+  <div class="section-eyebrow">Company Profile 02</div>
+  <h2>Relationship Intelligence for Deal-Makers</h2>
 
-// --- 2. WINDOW GENERATION (MASONRY) ---
-        
-        // 1. ADD YOUR IMAGE PATHS HERE
-        const myImages = [
-            "IMG_3247.jpeg",
-            "IMG_3267 2.PNG",
-            "IMG_3253 2.PNG",
-            "IMG_3254 2.PNG",
-            "IMG_3256 2.PNG",
-            "20463995-D419-4502-845E-31DD6733980B.JPG",
-            "EBBCA069-28A2-4345-AB0E-93ACAC4F5392.JPG",
-            "IMG_3258 2.PNG",
-            "IMG_3255 2.PNG",
-            "IMG_3265 2.PNG",
-            "IMG_3261 2.PNG",
-            "IMG_3269.PNG",
-            "IMG_3260 2.PNG",
-            "IMG_3259 2.PNG",
-            "IMG_3266 2.PNG",
-            "IMG_2092.jpg",
-            "IMG_3264 2.PNG",
-            "IMG_ECE12BCBF5E2-1.jpeg",
-            "IMG_3274.jpg",
-            "FA25030F-F555-40C1-AE39-9302EA7F82A2.jpeg",
-            // ... add as many paths as you have. 
-            // If you have fewer than 20, they will repeat automatically!
-        ];
+  <div class="company-card">
+    <div class="card-header">
+      <div class="card-title-block">
+        <div class="card-badge badge-vc">VC & Private Capital Focus</div>
+        <div class="card-name">Affinity</div>
+        <div class="card-tagline">San Francisco, CA · Founded 2014</div>
+      </div>
+      <div class="card-stats">
+        <div class="stat">
+          <span class="stat-value">$120M</span>
+          <span class="stat-label">Total Raised</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">$600M</span>
+          <span class="stat-label">Valuation (2021)</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">1,700+</span>
+          <span class="stat-label">Institutions</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="origin-block">
+        <div class="origin-label">Founding Story</div>
+        <div class="origin-text">Stanford graduates Ray Zhou and Shubham Goel founded Affinity in 2014 after recognizing a gap that Introhive had also identified — but from a different angle. While scrolling through LinkedIn and CRMs, they noticed that deal-making in private capital was entirely relationship-driven, yet the tools available were either generic (Salesforce) or manual (spreadsheets). They believed the exhaust from emails and calendars — 18 trillion of them processed by the time of their Series C — held the key to a new kind of intelligence platform purpose-built for the deal economy.</div>
+      </div>
 
-        const windowTitles = [
-            "autism", "singhi", "kuhu djungelskog", "drama company", 
-            "tissue paper mithai", "jelly nails", "azaad ki mammi", "ladybird",
-            "ranchi girl", "krn kshr", "derry girls", "vandi & kashmiri pandits",
-            "red velvet cake", "bridgerton", "dhanbad", "hello kitty themed maruti800",
-            "s****i loves you", "hita give her beer", "darshini nikita", "slut era"
-        ];
-        
-        const galleryGrid = document.getElementById('window-grid');
-        const totalWindows = 20; // This determines how many windows appear
+      <div class="card-section-title">What It Does</div>
+      <p>Affinity automatically ingests email and calendar data from an investment team and builds a live, enriched map of all relationships. When a VC wants to evaluate whether to invest in a startup, they can instantly see which of their colleagues has the strongest relationship with the founder, who on their portfolio team has met them, and what the recent interaction history looks like. It also enriches company profiles automatically — pulling funding data, headcount, and growth signals without anyone entering a single line into a CRM.</p>
+      <p>The platform's "relationship scores" and automatic "deal flow" management have made it the dominant tool inside private equity and venture capital firms, where the traditional CRM was never designed for the long, winding, multi-decade relationship journeys of deal-making.</p>
 
-        for (let i = 0; i < totalWindows; i++) {
-            const frame = document.createElement('div');
-            frame.classList.add('window-frame');
-            
-            // Random rotation for the messy desk look
-            const randomRot = (Math.random() * 6) - 3; 
-            const randomOffset = (Math.random() * 20); 
-            frame.style.transform = `rotate(${randomRot}deg) translateY(${randomOffset}px)`;
+      <div class="card-section-title">How It Differs from Introhive</div>
+      <p>Introhive is built for large, staffed professional services firms (1,000+ person organizations). Affinity targets <strong>smaller, deal-intensive teams</strong> — a 15-person VC fund or a 40-person M&A team. It also places a heavier emphasis on <strong>company intelligence</strong> (funding rounds, hiring trends, growth signals) layered on top of the relationship graph, making it a deal sourcing tool as much as a relationship one.</p>
 
-            // Create Header
-            const header = document.createElement('div');
-            header.classList.add('window-header');
-            header.innerHTML = `
-                <span>${windowTitles[i % windowTitles.length]}</span>
-                <div class="window-controls">
-                    <span style="background:#ff5f56; border:none;"></span>
-                    <span style="background:#ffbd2e; border:none;"></span>
-                    <span style="background:#27c93f; border:none;"></span>
-                </div>
-            `;
+      <div class="card-section-title">Target Market</div>
+      <div class="pill-row">
+        <span class="pill">Venture Capital</span>
+        <span class="pill">Private Equity</span>
+        <span class="pill">Investment Banking</span>
+        <span class="pill">Consulting</span>
+        <span class="pill">Commercial Real Estate</span>
+        <span class="pill">Fortune 500 Corp Dev</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-            // Create Content
-            const content = document.createElement('div');
-            content.classList.add('window-content');
-            
-            const img = document.createElement('img');
-            
-            // --- UPDATED PART: USE YOUR IMAGE ARRAY ---
-            // The % symbol makes it loop back to the start if you have fewer images than windows
-            img.src = myImages[i % myImages.length]; 
-            
-            content.appendChild(img);
-            frame.appendChild(header);
-            frame.appendChild(content);
-            galleryGrid.appendChild(frame);
-        }
+<hr class="divider">
 
-        // --- 3. RANDOM BACKGROUND PHRASES ---
-        const phrases = ["Omi Bhaiya", "KrnKshr", "Lobotomy","Slut Activities","pray4sara"];
-        const bgContainer = document.getElementById('bg-phrases-container');
-        for (let i = 0; i < 20; i++) {
-            const el = document.createElement('div');
-            el.classList.add('bg-phrase');
-            el.innerText = phrases[Math.floor(Math.random() * phrases.length)];
-            el.style.top = Math.random() * 100 + '%';
-            el.style.left = Math.random() * 100 + '%';
-            el.style.fontSize = (Math.random() * 2 + 1) + 'rem'; 
-            el.style.transform = `rotate(${Math.random() * 90 - 45}deg)`;
-            bgContainer.appendChild(el);
-        }
+<!-- GONG -->
+<div class="section" id="gong">
+  <div class="section-eyebrow">Company Profile 03</div>
+  <h2>Making Sales Conversations Visible</h2>
 
-        // --- 4. NAVIGATION (MODALS) ---
-        const postcardScreen = document.getElementById('postcard-screen');
-        const letterScreen = document.getElementById('letter-screen');
+  <div class="company-card">
+    <div class="card-header">
+      <div class="card-title-block">
+        <div class="card-badge badge-convo">Conversation Intelligence</div>
+        <div class="card-name">Gong</div>
+        <div class="card-tagline">San Francisco, CA · Founded 2015</div>
+      </div>
+      <div class="card-stats">
+        <div class="stat">
+          <span class="stat-value">$584M</span>
+          <span class="stat-label">Total Raised</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">$7.25B</span>
+          <span class="stat-label">Valuation</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">$332M</span>
+          <span class="stat-label">ARR (2024)</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="origin-block">
+        <div class="origin-label">Founding Story</div>
+        <div class="origin-text">Amit Bendov had a crisis. As CEO of business intelligence company Sisense, his company hit its worst quarter ever — and he had no idea why. He looked at the CRM, the pipeline data, the conversion rates. Nothing explained it. When he asked his sales team, every single person gave a different explanation. The data available to him was useless. He called his friend Eilon Reshef, a serial entrepreneur and data scientist he'd known since Tel Aviv University, and they asked: what if you could analyze every single customer conversation — every call, every email — using AI? In 2015, with natural language processing finally reaching an inflection point, they founded Gong to answer that question.</div>
+      </div>
 
-        function openPostcard() {
-            postcardScreen.style.display = 'flex';
-        }
+      <div class="card-section-title">What It Does</div>
+      <p>Gong records and transcribes every customer-facing interaction — calls, video meetings, emails — and then applies AI to extract signal from the noise. Which deals are actually progressing vs. just looking healthy? Which reps have the best talk-to-listen ratio? Where are objections clustering? It turns the <strong>dark matter of sales conversations</strong> into structured, searchable, analyzable data.</p>
+      <p>By 2026 Gong has expanded into full revenue intelligence — deal forecasting, AI-powered next-step recommendations, automated CRM data entry from call recordings, and "Gong Agents" that work autonomously across the revenue cycle. It holds approximately 45% market share in conversation intelligence for enterprise sales.</p>
 
-        function openActualLetter() {
-            postcardScreen.style.display = 'none'; // Hide postcard
-            letterScreen.style.display = 'flex';   // Show letter
-        }
+      <div class="card-section-title">The Untapped Knowledge Angle</div>
+      <p>Before Gong, the knowledge in a sales call was ephemeral — it existed for the duration of the call and then vanished (or lived as a rough note in someone's head). Gong makes every sales conversation a permanent, searchable, institutional asset. A new sales rep can listen to a hundred calls with a target account before their first meeting. A manager can spot exactly when a deal started going sideways. A product team can mine 10,000 calls for feature requests.</p>
 
-        function closeAllModals() {
-            postcardScreen.style.display = 'none';
-            letterScreen.style.display = 'none';
-        }
+      <div class="card-section-title">Target Market</div>
+      <div class="pill-row">
+        <span class="pill">Enterprise B2B Sales</span>
+        <span class="pill">Revenue Operations</span>
+        <span class="pill">Sales Enablement</span>
+        <span class="pill">Customer Success</span>
+        <span class="pill">Mid-Market & Enterprise SaaS</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-        // --- 5. AUDIO LOGIC ---
-        const playlist = [
-             "Ariana Grande - intro (end of the world) (extended) (lyric visualizer).mp3",
-             "Ariana Grande, The Weeknd - Love Me Harder (Official Lyric Video).mp3",
-             "PinkPantheress_-_Girl_Like_Me_(SkySound.cc).mp3",
-             "PinkPantheress_-_Just_a_Waste_(SkySound.cc).mp3",
-             "Ravyn_Lenae_-_Love_Me_Not_(mp3.pm).mp3"
-        ];
-        let currentSong = 0;
-        const audio = document.getElementById('bg-music');
-        const playBtn = document.getElementById('playPauseBtn');
+<hr class="divider">
 
-        function loadSong(index) {
-            audio.src = playlist[index];
-            audio.load();
-        }
-        function togglePlay() {
-            if (!audio.src) loadSong(currentSong);
-            if (audio.paused) {
-                audio.play().catch(e => console.log("Audio waiting for user interaction"));
-                playBtn.innerText = "⏸";
-            } else {
-                audio.pause();
-                playBtn.innerText = "⏯";
-            }
-        }
-        function nextSong() {
-            currentSong = (currentSong + 1) % playlist.length;
-            loadSong(currentSong);
-            audio.play();
-            playBtn.innerText = "⏸";
-        }
-        function prevSong() {
-            currentSong = (currentSong - 1 + playlist.length) % playlist.length;
-            loadSong(currentSong);
-            audio.play();
-            playBtn.innerText = "⏸";
-        }
-        audio.addEventListener('ended', nextSong);
+<!-- GLEAN -->
+<div class="section" id="glean">
+  <div class="section-eyebrow">Company Profile 04</div>
+  <h2>The Enterprise Brain</h2>
 
-    </script>
+  <div class="company-card">
+    <div class="card-header">
+      <div class="card-title-block">
+        <div class="card-badge badge-search">Enterprise Knowledge Search</div>
+        <div class="card-name">Glean</div>
+        <div class="card-tagline">Palo Alto, CA · Founded 2019</div>
+      </div>
+      <div class="card-stats">
+        <div class="stat">
+          <span class="stat-value">$765M</span>
+          <span class="stat-label">Total Raised</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">$7.2B</span>
+          <span class="stat-label">Valuation</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">$100M+</span>
+          <span class="stat-label">ARR (2025)</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="origin-block">
+        <div class="origin-label">Founding Story</div>
+        <div class="origin-text">Arvind Jain spent over a decade building Google Search — one of the most sophisticated information retrieval systems ever created. Then he joined enterprise software and was stunned: internal knowledge tools were operating at a level a decade behind consumer search. Employees would ask colleagues for documents because finding them through internal tools was futile. Jain co-founded Glean in 2019 with teammates from Google, Meta, and Dropbox to solve this definitively. The founding team brought Google-grade search architecture to enterprise knowledge — not just better search, but a fundamentally different model using knowledge graphs to understand context, permissions, and personalization.</div>
+      </div>
+
+      <div class="card-section-title">What It Does</div>
+      <p>Glean connects to over 100 enterprise applications — Slack, Google Drive, Salesforce, Jira, Confluence, GitHub, email — and builds a personalized, permissions-aware knowledge graph for each organization. When an employee asks Glean a question ("What's our policy on X?" or "Find the last proposal we sent to Company Y"), it searches across all connected systems simultaneously and returns a synthesized, cited answer.</p>
+      <p>More recently, Glean has pushed into AI agents — autonomous workflows that can pull from this knowledge graph to complete tasks. It reached $100M ARR in under three years from commercial launch, which CNBC named it the #1 Most Innovative Company in Applied AI for 2025.</p>
+
+      <div class="card-section-title">The Untapped Knowledge Angle</div>
+      <p>Glean addresses the broadest version of the problem: the totality of an organization's documented knowledge, scattered across every tool everyone uses, is invisible to most employees. The average knowledge worker reportedly spends 20% of their week searching for information or tracking down colleagues to answer questions. Glean's bet is that if you index everything and put AI on top, that 20% largely disappears — and with it comes an enormous productivity dividend.</p>
+
+      <div class="card-section-title">Target Market</div>
+      <div class="pill-row">
+        <span class="pill">Enterprise Tech</span>
+        <span class="pill">Finance</span>
+        <span class="pill">Retail</span>
+        <span class="pill">Manufacturing</span>
+        <span class="pill">Any knowledge-intensive org 500+ employees</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- PEOPLE.AI -->
+<div class="section" id="people-ai">
+  <div class="section-eyebrow">Company Profile 05</div>
+  <h2>The Revenue Activity Intelligence Platform</h2>
+
+  <div class="company-card">
+    <div class="card-header">
+      <div class="card-title-block">
+        <div class="card-badge badge-enterprise">Revenue Intelligence</div>
+        <div class="card-name">People.ai</div>
+        <div class="card-tagline">San Francisco, CA · Founded 2016</div>
+      </div>
+      <div class="card-stats">
+        <div class="stat">
+          <span class="stat-value">$100M+</span>
+          <span class="stat-label">Total Raised</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">$62.8M</span>
+          <span class="stat-label">ARR (2024)</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">Zoom, IBM</span>
+          <span class="stat-label">Key Clients</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="origin-block">
+        <div class="origin-label">What It Does</div>
+        <div class="origin-text">People.ai was founded in 2016 on a single premise: the data that CRMs contain is massively incomplete because salespeople don't have time to log everything they do. People.ai automatically captures every email, call, calendar event, and digital interaction and maps it to the correct Salesforce account and opportunity — no manual entry. It then analyzes this clean data to surface insights about deal health, engagement levels, and which activities correlate with wins.</div>
+      </div>
+
+      <div class="card-section-title">What Makes It Different</div>
+      <p>Where Gong focuses on the content of conversations (what was said), People.ai focuses on the <strong>activity layer</strong> — quantifying who is engaging with which accounts, how often, at what depth, and whether that level of engagement is consistent with winning patterns. It has processed 350 million sales activities, 40 million contacts, and data from $100 billion in closed deals, building a model of what "healthy" engagement looks like across industries.</p>
+      <p>It also serves a CRM accuracy function: because most Salesforce instances have severely degraded data (outdated contacts, missing activity logs), People.ai effectively auto-populates and maintains the CRM, making the entire downstream stack more reliable.</p>
+
+      <div class="card-section-title">Target Market</div>
+      <div class="pill-row">
+        <span class="pill">Enterprise B2B Sales (500+ seat)</span>
+        <span class="pill">Revenue Operations</span>
+        <span class="pill">Salesforce-heavy organizations</span>
+        <span class="pill">Technology Companies</span>
+        <span class="pill">Telecommunications</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ONA PLATFORMS -->
+<div class="section" id="ona">
+  <div class="section-eyebrow">Company Profiles 06 & Adjacent</div>
+  <h2>Organizational Network Analysis: The Internal Intelligence Layer</h2>
+
+  <div class="company-card">
+    <div class="card-header">
+      <div class="card-title-block">
+        <div class="card-badge badge-people">People Analytics · ONA</div>
+        <div class="card-name">TrustSphere & Microsoft Viva Insights</div>
+        <div class="card-tagline">The organizational network analysis category</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>While Introhive, Affinity, and Gong focus primarily on external relationships (clients, prospects, deals), a parallel industry has emerged around <strong>internal organizational intelligence</strong> — using the same email and calendar data to understand how knowledge flows within an organization.</p>
+
+      <div class="origin-block">
+        <div class="origin-label">TrustSphere</div>
+        <div class="origin-text">TrustSphere pioneered Relationship Analytics and Organizational Network Analysis (ONA) using enterprise communication data. By analyzing email metadata, it builds a firm's internal relationship graph — identifying hidden influencers, measuring collaboration health, spotting team isolation, and tracking diversity & inclusion dynamics. It measures "relationship capital" at the individual, team, and firm level. Use cases include identifying high-potential talent who are heavily networked but under-recognized, spotting onboarding bottlenecks, and understanding which leaders are actually connected to their teams vs. structurally isolated.</div>
+      </div>
+
+      <div class="origin-block" style="border-left-color: #059669;">
+        <div class="origin-label">Microsoft Viva Insights</div>
+        <div class="origin-text">Microsoft entered the ONA space by acquiring Workplace Analytics (originally LinkedIn's people analytics team) and folding it into Microsoft Viva. Because Microsoft owns the underlying email and calendar infrastructure (Microsoft 365), it has an inherent data advantage. Viva Insights can show managers: which teams are over-meeting, who is working outside hours, where collaboration is breaking down between departments, and how network centrality of employees relates to retention and performance. Priced at $48/user/year, it's the most accessible ONA tool available — but limited to the Microsoft ecosystem.</div>
+      </div>
+
+      <div class="card-section-title">Other ONA Players Worth Watching</div>
+      <div class="pill-row">
+        <span class="pill">Innovisor (hidden influencer mapping)</span>
+        <span class="pill">Polinode (custom network surveys)</span>
+        <span class="pill">HOW4 (European market)</span>
+        <span class="pill">Worklytics (400+ collaboration metrics)</span>
+      </div>
+
+      <div class="card-section-title">What ONA Surfaces That Nothing Else Does</div>
+      <p>ONA reveals the informal organization — the actual network of influence, communication, and knowledge-sharing that is completely invisible in the org chart. In a 50,000-person firm, there are typically a handful of "super-connectors" who bridge otherwise siloed departments. Identifying and retaining them is enormously valuable. ONA platforms find them using math (network centrality measures), not intuition.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- LANDSCAPE MAP / COMPARISON TABLE -->
+<div class="section" id="landscape">
+  <div class="section-eyebrow">Landscape Overview</div>
+  <h2>How the Players Stack Up</h2>
+  <p>Each platform occupies a different position in the "untapped knowledge" spectrum. The key dimensions are: what data source they tap, what question they answer, and who buys them.</p>
+
+  <div style="overflow-x:auto;">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Data Source</th>
+          <th>Core Question Answered</th>
+          <th>Primary Buyer</th>
+          <th>Best For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="company-col">Introhive</td>
+          <td>Email + Calendar metadata</td>
+          <td>"Who inside our firm knows this external contact — and how well?"</td>
+          <td>CMO / BD Leader</td>
+          <td>Large professional services firms (law, consulting, accounting)</td>
+        </tr>
+        <tr>
+          <td class="company-col">Affinity</td>
+          <td>Email + Calendar + public co. data</td>
+          <td>"Who on our team has the best path to this deal or founder?"</td>
+          <td>Managing Partner / Deal Team</td>
+          <td>Smaller deal-intensive teams: VC, PE, IB, corp dev</td>
+        </tr>
+        <tr>
+          <td class="company-col">Gong</td>
+          <td>Call recordings + email transcripts</td>
+          <td>"What are customers actually telling us, and which deals are at risk?"</td>
+          <td>VP Sales / RevOps</td>
+          <td>Enterprise B2B sales organizations</td>
+        </tr>
+        <tr>
+          <td class="company-col">People.ai</td>
+          <td>Email + Calendar + CRM activity</td>
+          <td>"What activities are our reps actually doing, and are they correlated with wins?"</td>
+          <td>CRO / RevOps</td>
+          <td>Large Salesforce-centric revenue teams</td>
+        </tr>
+        <tr>
+          <td class="company-col">Glean</td>
+          <td>All enterprise apps (100+ connectors)</td>
+          <td>"Where is the answer to my question, anywhere in our entire organization?"</td>
+          <td>CIO / CHRO</td>
+          <td>Any large enterprise with fragmented knowledge tools</td>
+        </tr>
+        <tr>
+          <td class="company-col">TrustSphere / Viva</td>
+          <td>Email + Calendar metadata</td>
+          <td>"How does knowledge actually flow internally, and who are our hidden influencers?"</td>
+          <td>CHRO / People Analytics</td>
+          <td>HR-driven transformation and change management programs</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="highlight-box" style="margin-top:32px;">
+    <h3>The Common Thread: The Data Was Always There</h3>
+    <p>Every company in this landscape is monetizing data that organizations already possess but couldn't use. None of them ask organizations to change what they do — they observe what already happens.</p>
+    <ul>
+      <li>Introhive doesn't ask partners to update a CRM. It reads their sent folder.</li>
+      <li>Gong doesn't ask reps to take better notes. It records the call.</li>
+      <li>Glean doesn't ask employees to build a knowledge base. It indexes what they already create.</li>
+      <li>People.ai doesn't ask reps to log activities. It captures them automatically.</li>
+    </ul>
+    <p style="margin-top:12px;">This "zero behavior change" architecture is the key design principle of the entire category. The value is unlocked by removing the human as the data entry point.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- WHITE SPACE / OPPORTUNITIES -->
+<div class="section" id="opportunities">
+  <div class="section-eyebrow">White Space Analysis</div>
+  <h2>Where the Next Wave of Opportunity Lies</h2>
+  <p>The category is maturing in some areas (professional services relationship intelligence is well-served) but wide open in others. Here is where the frontier sits in 2026:</p>
+
+  <div class="opp-grid">
+    <div class="opp-card">
+      <div class="opp-icon">🏭</div>
+      <div class="opp-title">Non-Professional Services Verticals</div>
+      <div class="opp-desc">Introhive owns law and accounting. But healthcare systems, government agencies, large manufacturing conglomerates, and universities all have the same "who knows whom" problem — and almost no one has built for them specifically.</div>
+    </div>
+    <div class="opp-card">
+      <div class="opp-icon">🔗</div>
+      <div class="opp-title">Cross-Organizational Relationship Graphs</div>
+      <div class="opp-desc">Today's platforms map relationships within a firm. The next frontier is mapping relationships across partner ecosystems — knowing that your firm's network overlaps with a channel partner's network in a specific region or vertical.</div>
+    </div>
+    <div class="opp-card">
+      <div class="opp-icon">🧠</div>
+      <div class="opp-title">Expertise Location at Scale</div>
+      <div class="opp-desc">"Who inside our 80,000-person firm has deep expertise in ESG regulation in Southeast Asia?" This question is currently unanswerable in most organizations. Expertise graphs — built from document authorship, meeting participation, and past project data — are an enormous unsolved space.</div>
+    </div>
+    <div class="opp-card">
+      <div class="opp-icon">🌐</div>
+      <div class="opp-title">Emerging Market Deployments</div>
+      <div class="opp-desc">All the major players are US/EU-headquartered with US-first go-to-market. Large conglomerates in India, the Middle East, and Southeast Asia have equally complex relationship networks and almost no purpose-built tools serving them.</div>
+    </div>
+    <div class="opp-card">
+      <div class="opp-icon">🤝</div>
+      <div class="opp-title">Alumni & Extended Network Intelligence</div>
+      <div class="opp-desc">Introhive has introduced alumni tracking, but the broader category of "people who used to work here" as a relationship asset is underdeveloped. Former employees often become clients, referral sources, or partners — and their connections are almost never systematically mapped.</div>
+    </div>
+    <div class="opp-card">
+      <div class="opp-icon">⚡</div>
+      <div class="opp-title">Agentic Intelligence — Proactive, not Reactive</div>
+      <div class="opp-desc">The current generation of tools are search interfaces — you have to know to look something up. The next wave is AI agents that proactively surface the insight you need, at the moment you need it, without being asked. "You have a meeting with Company X tomorrow — your colleague Sarah spoke to their CFO 3 weeks ago. Do you want me to book a 15-min brief?"</div>
+    </div>
+  </div>
+
+  <div class="market-map" style="margin-top:32px;">
+    <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px;">Market Size Context</div>
+    <p style="font-size:13px;color:#6B7280;margin-bottom:16px;">The macro market numbers behind the opportunity.</p>
+    <div class="map-grid">
+      <div class="map-cell highlight">
+        <div class="map-cell-label">Graph Analytics</div>
+        <div class="map-cell-title">$2.3B → $11.3B by 2030</div>
+        <p>30.4% CAGR. The underlying infrastructure that powers relationship and knowledge graphs is growing explosively as AI makes graph-based reasoning tractable.</p>
+      </div>
+      <div class="map-cell">
+        <div class="map-cell-label">Network Analytics</div>
+        <div class="map-cell-title">$1.1B in 2025</div>
+        <p>15.7% CAGR through 2033. Network analytics as a sub-category, covering both ONA and external relationship mapping tools.</p>
+      </div>
+      <div class="map-cell">
+        <div class="map-cell-label">Revenue Intelligence</div>
+        <div class="map-cell-title">$3.4B projected by 2024</div>
+        <p>The broader sales intelligence and revenue intelligence category, which Gong and People.ai sit within, has been one of the fastest-growing software categories of the past decade.</p>
+      </div>
+      <div class="map-cell">
+        <div class="map-cell-label">Enterprise Search / Knowledge</div>
+        <div class="map-cell-title">Glean at $7.2B valuation</div>
+        <p>The broader enterprise knowledge management market is massive — and AI has dramatically expanded what's possible, pulling significant investment into this previously stagnant category.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- CLOSING -->
+<div class="section">
+  <div class="section-eyebrow">Synthesis</div>
+  <h2>What This All Means</h2>
+  <p>The companies in this study collectively represent a fundamental shift in how large organizations think about knowledge. For most of corporate history, institutional knowledge walked out the door when people left, sat dormant in inboxes, or simply never got captured at all. The insight these companies share is that the data to change that has always existed — it just needed to be observed, organized, and surfaced intelligently.</p>
+  <p>Introhive proved this in professional services. Gong proved it in sales. Glean is proving it in enterprise-wide knowledge access. The category is real, it's growing fast, and — most interestingly — it remains fragmented by vertical and use case. A platform that unifies relationship intelligence, conversation intelligence, expertise location, and organizational network analysis into a single, industry-specific product for a market that today's players haven't prioritized could be genuinely differentiated.</p>
+  <p>The "untapped knowledge" problem is not solved. It has barely been started.</p>
+</div>
+
+</div><!-- end body -->
+
+<div style="background:var(--ink);color:#6B7280;padding:32px 60px;font-family:'JetBrains Mono',monospace;font-size:11px;text-align:center;">
+  Market Intelligence Report · Compiled June 2026 · Sources: Company filings, Crunchbase, TechCrunch, CNBC, Startupintros, Contrary Research, official company sites
+</div>
+
 </body>
 </html>
-

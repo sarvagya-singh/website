@@ -397,6 +397,208 @@
     .stat { text-align: left; }
     .map-grid { grid-template-columns: 1fr; }
   }
+
+  /* =========================================
+     SOLUTION CLUSTERS — full-page section
+     ========================================= */
+
+  .solutions-cover {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 60px 60px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 0;
+  }
+  .solutions-cover::before {
+    content: '';
+    position: absolute;
+    bottom: -120px; left: -80px;
+    width: 480px; height: 480px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(5,150,105,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .solutions-cover::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: 60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .solutions-cover-inner { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
+  .solutions-cover-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: #34D399;
+    margin-bottom: 20px;
+  }
+  .solutions-cover h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4.5vw, 50px);
+    font-weight: 800; line-height: 1.06;
+    margin-bottom: 20px;
+  }
+  .solutions-cover h2 em { font-style: normal; color: #A78BFA; }
+  .solutions-cover-sub {
+    font-size: 16px; color: #9CA3AF; max-width: 580px;
+    line-height: 1.65; margin-bottom: 40px;
+  }
+  .solutions-cluster-nav {
+    display: flex; gap: 10px; flex-wrap: wrap;
+  }
+  .scn-pill {
+    font-size: 12px; padding: 6px 16px;
+    border-radius: 20px; cursor: pointer; border: none;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.04em;
+    background: rgba(255,255,255,0.08);
+    color: #9CA3AF;
+    transition: all 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+  .scn-pill:hover { background: rgba(255,255,255,0.15); color: var(--paper); }
+
+  /* Cluster page blocks */
+  .cluster-page {
+    background: var(--paper);
+    padding: 0;
+  }
+  .cluster-page-header {
+    padding: 56px 60px 0;
+    max-width: 960px; margin: 0 auto;
+    display: flex; gap: 40px; align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .cluster-page-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 80px; font-weight: 800;
+    line-height: 1; color: var(--wire);
+    flex-shrink: 0; user-select: none;
+  }
+  .cluster-page-meta { flex: 1; min-width: 260px; }
+  .cluster-page-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .cluster-page-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 700; line-height: 1.2;
+    margin-bottom: 14px; color: var(--ink);
+  }
+  .cluster-page-desc {
+    font-size: 14px; color: #4B5563; line-height: 1.7;
+    max-width: 560px;
+  }
+  .cluster-friction-note {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 16px; padding: 6px 14px;
+    border-radius: 20px; font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .friction-zero { background: #D1FAE5; color: #065F46; }
+  .friction-low  { background: #FEF3C7; color: #78350F; }
+
+  /* Ideas grid inside cluster pages */
+  .cluster-ideas {
+    padding: 36px 60px 56px;
+    max-width: 960px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .idea-block {
+    background: white;
+    border: 1px solid var(--wire);
+    border-radius: 14px;
+    padding: 28px;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  .idea-block::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .idea-block-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--muted);
+    letter-spacing: 0.12em; margin-bottom: 14px;
+  }
+  .idea-block-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px; font-weight: 700;
+    line-height: 1.25; margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .idea-block-hook {
+    font-size: 13px; color: var(--muted);
+    font-style: italic; margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .idea-block-detail {
+    font-size: 13.5px; color: #374151;
+    line-height: 1.7; flex: 1; margin-bottom: 20px;
+  }
+  .idea-block-footer {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: auto;
+  }
+  .idea-tag {
+    font-size: 11px; padding: 3px 10px;
+    border-radius: 20px; background: var(--paper);
+    border: 1px solid var(--wire); color: #4B5563;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .idea-tag.source-tag {
+    font-weight: 500;
+  }
+
+  /* Cluster color accents */
+  .c-relationship .idea-block::before { background: var(--signal); }
+  .c-relationship .cluster-page-eyebrow { color: var(--signal); }
+  .c-relationship .cluster-page-number { color: #DBEAFE; }
+
+  .c-expertise .idea-block::before { background: var(--violet); }
+  .c-expertise .cluster-page-eyebrow { color: var(--violet); }
+  .c-expertise .cluster-page-number { color: #EDE9FE; }
+
+  .c-ona .idea-block::before { background: var(--pulse); }
+  .c-ona .cluster-page-eyebrow { color: var(--pulse); }
+  .c-ona .cluster-page-number { color: #D1FAE5; }
+
+  .c-conversation .idea-block::before { background: var(--amber); }
+  .c-conversation .cluster-page-eyebrow { color: var(--amber); }
+  .c-conversation .cluster-page-number { color: #FEF3C7; }
+
+  .c-crosssell .idea-block::before { background: var(--red); }
+  .c-crosssell .cluster-page-eyebrow { color: var(--red); }
+  .c-crosssell .cluster-page-number { color: #FEE2E2; }
+
+  .c-data .idea-block::before { background: #0891B2; }
+  .c-data .cluster-page-eyebrow { color: #0891B2; }
+  .c-data .cluster-page-number { color: #CFFAFE; }
+
+  .c-vertical .idea-block::before { background: #D97706; }
+  .c-vertical .cluster-page-eyebrow { color: #B45309; }
+  .c-vertical .cluster-page-number { color: #FEF3C7; }
+
+  /* Cluster divider strip */
+  .cluster-strip {
+    height: 1px; background: var(--wire); margin: 0 60px;
+  }
+
+  @media (max-width: 760px) {
+    .solutions-cover { padding: 48px 24px 40px; }
+    .cluster-page-header { padding: 40px 24px 0; flex-direction: column; gap: 16px; }
+    .cluster-page-number { font-size: 52px; }
+    .cluster-ideas { padding: 28px 24px 40px; grid-template-columns: 1fr; }
+    .cluster-strip { margin: 0 24px; }
+  }
 </style>
 </head>
 <body>
@@ -426,6 +628,7 @@
   <a href="#ona">ONA Platforms</a>
   <a href="#landscape">Landscape Map</a>
   <a href="#opportunities">White Space</a>
+  <a href="#solutions" style="background:var(--signal);color:white;border-color:var(--signal);">→ Solution Clusters</a>
 </div>
 
 <div class="body">
@@ -966,6 +1169,509 @@
 </div>
 
 </div><!-- end body -->
+
+<!-- =====================================================
+     SOLUTION CLUSTERS — Part II of the report
+     ===================================================== -->
+
+<div id="solutions">
+
+  <!-- Solutions Cover -->
+  <div class="solutions-cover">
+    <div class="solutions-cover-inner">
+      <div class="solutions-cover-label">Part II · Product Brainstorm · 28 Ideas Across 7 Clusters</div>
+      <h2>Building in the<br><em>Untapped Knowledge</em> Space</h2>
+      <p class="solutions-cover-sub">Every idea below follows one non-negotiable constraint: zero additional friction for employees. No uploading, no tagging, no data entry. The intelligence is captured passively from systems that already exist.</p>
+      <div class="solutions-cluster-nav">
+        <a href="#sc-relationship" class="scn-pill">01 · Relationship Intelligence</a>
+        <a href="#sc-expertise" class="scn-pill">02 · Expertise Location</a>
+        <a href="#sc-ona" class="scn-pill">03 · Org Network Analysis</a>
+        <a href="#sc-conversation" class="scn-pill">04 · Conversation Intelligence</a>
+        <a href="#sc-crosssell" class="scn-pill">05 · Cross-Sell Intelligence</a>
+        <a href="#sc-data" class="scn-pill">06 · Data Quality & CRM</a>
+        <a href="#sc-vertical" class="scn-pill">07 · Vertical-Specific Plays</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CLUSTER 01: RELATIONSHIP INTELLIGENCE ── -->
+  <div class="cluster-page c-relationship" id="sc-relationship">
+    <div class="cluster-page-header">
+      <div class="cluster-page-number">01</div>
+      <div class="cluster-page-meta">
+        <div class="cluster-page-eyebrow">Solution Cluster 01 of 07</div>
+        <div class="cluster-page-title">Relationship Intelligence — Who knows whom, made visible</div>
+        <p class="cluster-page-desc">Mine email and calendar metadata to build a live relationship graph across the entire organization. The data already exists in email servers — it just needs to be observed, not created.</p>
+        <span class="cluster-friction-note friction-zero">● Zero employee friction · Data source: Email &amp; Calendar metadata</span>
+      </div>
+    </div>
+    <div class="cluster-ideas">
+      <div class="idea-block">
+        <div class="idea-block-num">01 / A</div>
+        <div class="idea-block-name">Warm Path Finder</div>
+        <div class="idea-block-hook">"Who in our 10,000-person firm already knows this prospect?"</div>
+        <div class="idea-block-detail">Connect to email and calendar metadata via Microsoft Graph or Google Workspace APIs. Build a continuously updated relationship strength graph for every external contact — scored by recency, frequency, and reciprocity. When a partner wants to reach a target, they type a name and instantly see the strongest warm path through colleagues. No CRM update required. No manual tagging. The sent folder does the work.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Microsoft Graph API</span>
+          <span class="idea-tag source-tag">Google Workspace API</span>
+          <span class="idea-tag">Graph database</span>
+          <span class="idea-tag">CRM overlay</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">01 / B</div>
+        <div class="idea-block-name">Relationship Health Dashboard</div>
+        <div class="idea-block-hook">"Which client relationships are going cold — right now, before it's too late?"</div>
+        <div class="idea-block-detail">Track the recency, frequency, and reciprocity of communications with every external contact continuously. Flag accounts where interaction has declined relative to baseline — surfacing churn risk weeks before it becomes visible in any CRM report. Entirely built from passive observation. No rep interaction needed. Integrated directly into account management workflows as a live health score per client.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email metadata</span>
+          <span class="idea-tag source-tag">Calendar metadata</span>
+          <span class="idea-tag">Proactive alerts</span>
+          <span class="idea-tag">Account health scoring</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">01 / C</div>
+        <div class="idea-block-name">Meeting Intelligence Layer</div>
+        <div class="idea-block-hook">"Which of our people attended an event with this contact — and when?"</div>
+        <div class="idea-block-detail">Beyond emails, index calendar invites to map physical and virtual meeting history across the firm. Captures what email logs miss: conference attendance, roundtable participation, client dinners. Particularly valuable for professional services where "someone met them at a sector conference" is significant relationship signal that currently evaporates. Calendar metadata only — no content read, no privacy concern.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Calendar metadata only</span>
+          <span class="idea-tag">Conference tracking</span>
+          <span class="idea-tag">BD intelligence</span>
+          <span class="idea-tag">Zero content access</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">01 / D</div>
+        <div class="idea-block-name">Alumni Network Tracker</div>
+        <div class="idea-block-hook">"Your ex-employees are now clients, partners, or your best referrers."</div>
+        <div class="idea-block-detail">When employees leave the organization, enrich their departure records using LinkedIn data APIs to track where they land over time. Build a live alumni intelligence layer: which former colleagues are now decision-makers at target accounts? Which have become ecosystem partners? Trigger warm outreach recommendations when an alumnus reaches a relevant seniority milestone. This network grows with every person who ever worked at the firm.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">LinkedIn enrichment</span>
+          <span class="idea-tag source-tag">HR offboarding data</span>
+          <span class="idea-tag">Job change signals</span>
+          <span class="idea-tag">Referral networks</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cluster-strip"></div>
+
+  <!-- ── CLUSTER 02: EXPERTISE LOCATION ── -->
+  <div class="cluster-page c-expertise" id="sc-expertise">
+    <div class="cluster-page-header">
+      <div class="cluster-page-number">02</div>
+      <div class="cluster-page-meta">
+        <div class="cluster-page-eyebrow">Solution Cluster 02 of 07</div>
+        <div class="cluster-page-title">Expertise Location — Find who knows what, not just who knows whom</div>
+        <p class="cluster-page-desc">Email subjects, meeting titles, document authorship, and project participation signal expertise far more accurately than any self-reported skills profile. The organization already knows who its experts are — it just can't see it.</p>
+        <span class="cluster-friction-note friction-zero">● Zero employee friction · Data source: Email metadata, Documents, Calendar titles</span>
+      </div>
+    </div>
+    <div class="cluster-ideas">
+      <div class="idea-block">
+        <div class="idea-block-num">02 / A</div>
+        <div class="idea-block-name">Internal Expertise Graph</div>
+        <div class="idea-block-hook">"Who in our 50,000-person firm has deep expertise in Vietnamese tax law?"</div>
+        <div class="idea-block-detail">Analyze email subject lines, calendar meeting titles, document co-authorship via SharePoint and Google Drive APIs, and project tags from tools like Jira or Asana. Build a continuously updated expertise map without any employee needing to fill out a profile. Topic modeling (LDA, BERTopic) clusters signals into subject areas. The system surfaces hidden experts across the firm — people who are deeply knowledgeable but whose expertise is invisible to leadership and BD teams.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email subjects</span>
+          <span class="idea-tag source-tag">SharePoint / Drive metadata</span>
+          <span class="idea-tag">Topic modeling · NLP</span>
+          <span class="idea-tag">Zero profile setup</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">02 / B</div>
+        <div class="idea-block-name">Proposal & Pitch Reuse Engine</div>
+        <div class="idea-block-hook">"Stop writing proposals that already exist somewhere in the firm."</div>
+        <div class="idea-block-detail">Index documents stored in shared drives (SharePoint, Google Drive, network drives) by industry, topic, and client type using semantic vector embeddings. When a team starts building a new proposal, surface highly relevant past proposals authored by colleagues — with contact details for the author. No uploading required. No tagging required. The document library already exists; it just isn't searchable in any meaningful way today.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">SharePoint API</span>
+          <span class="idea-tag source-tag">Google Drive API</span>
+          <span class="idea-tag">Vector search · Embeddings</span>
+          <span class="idea-tag">Knowledge reuse</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">02 / C</div>
+        <div class="idea-block-name">Meeting Knowledge Extraction</div>
+        <div class="idea-block-hook">"Every team meeting generates institutional knowledge. Almost none gets captured."</div>
+        <div class="idea-block-detail">With team-level consent and a simple one-time opt-in per meeting series, transcribe recurring internal meetings — sector calls, practice group syncs, client debriefs. Extract structured knowledge: decisions made, client mentions, market insights, names of relevant experts. Store as searchable, attributed intelligence rather than raw recordings. New hires can search six months of sector team calls and get up to speed in hours instead of months.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Teams / Zoom transcripts</span>
+          <span class="idea-tag">One-time team opt-in</span>
+          <span class="idea-tag">Knowledge graph</span>
+          <span class="idea-tag">NLP extraction</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">02 / D</div>
+        <div class="idea-block-name">Dynamic Skill Directory</div>
+        <div class="idea-block-hook">"Replace the stale org chart bio with a live picture of what people actually work on."</div>
+        <div class="idea-block-detail">Infer skills, industries, and topic expertise continuously from emails sent, meetings attended, documents authored, and project assignments — without anyone filling in a profile field. As work patterns evolve, the directory updates automatically. Unlike traditional "yellow pages" directories that require annual manual updates and are immediately out of date, this one is always current because it's derived from actual work activity rather than self-reported data.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email + calendar + project tools</span>
+          <span class="idea-tag">Jira / Asana API</span>
+          <span class="idea-tag">Skills inference</span>
+          <span class="idea-tag">People search</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cluster-strip"></div>
+
+  <!-- ── CLUSTER 03: ONA ── -->
+  <div class="cluster-page c-ona" id="sc-ona">
+    <div class="cluster-page-header">
+      <div class="cluster-page-number">03</div>
+      <div class="cluster-page-meta">
+        <div class="cluster-page-eyebrow">Solution Cluster 03 of 07</div>
+        <div class="cluster-page-title">Organizational Network Analysis — The invisible organization, made visible</div>
+        <p class="cluster-page-desc">The org chart is a legal fiction. The actual organization is a communication network — and that network reveals silos, burnout risk, hidden influencers, and knowledge bottlenecks that no management dashboard can see.</p>
+        <span class="cluster-friction-note friction-zero">● Zero employee friction · Data source: Email &amp; Calendar metadata (no content read)</span>
+      </div>
+    </div>
+    <div class="cluster-ideas">
+      <div class="idea-block">
+        <div class="idea-block-num">03 / A</div>
+        <div class="idea-block-name">Collaboration Health Monitor</div>
+        <div class="idea-block-hook">"Which teams are completely siloed? Which are burning out from over-connection?"</div>
+        <div class="idea-block-detail">Map intra-organizational communication patterns from email and calendar metadata alone — no content access required. Identify teams that never communicate with adjacent departments (dangerous silos), teams whose meeting load has expanded beyond sustainable levels (burnout precursors), and individuals whose communication centrality is far above their grade level (flight risk or promotion candidate). Surface as a live collaboration health score for each department and cross-functional pair.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email metadata</span>
+          <span class="idea-tag source-tag">Calendar metadata</span>
+          <span class="idea-tag">Silo detection</span>
+          <span class="idea-tag">Burnout signals</span>
+          <span class="idea-tag">HR analytics</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">03 / B</div>
+        <div class="idea-block-name">Hidden Influencer Mapper</div>
+        <div class="idea-block-hook">"The most influential person in the organization is rarely the most senior one."</div>
+        <div class="idea-block-detail">Apply network centrality measures — betweenness centrality, eigenvector centrality, and bridge scores — to the email communication graph. Identify employees who are critical connectors between otherwise separate groups: the person in Legal who everyone in Sales calls before a deal closes, or the analyst in Finance who bridges the strategy team to operations. These "super-connectors" disproportionately affect retention, change adoption, and organizational agility. Losing them is catastrophic. Finding them first is the goal.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email metadata</span>
+          <span class="idea-tag">Network centrality · Graph math</span>
+          <span class="idea-tag">Change management</span>
+          <span class="idea-tag">Retention intelligence</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">03 / C</div>
+        <div class="idea-block-name">Onboarding Network Accelerator</div>
+        <div class="idea-block-hook">"A new hire's first-year performance correlates directly with how fast they build their internal network."</div>
+        <div class="idea-block-detail">Track the velocity at which new hires are building cross-functional connections in their first 30, 60, and 90 days. Compare against the network growth trajectory of high-performing cohorts from previous years. Identify new hires who are network-isolated at day 45 — before the isolation calcifies — and trigger automated nudges to managers with specific colleague introduction recommendations. The new hire does nothing differently; the system observes and alerts.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email + calendar metadata</span>
+          <span class="idea-tag">90-day cohort benchmarking</span>
+          <span class="idea-tag">Manager nudges</span>
+          <span class="idea-tag">Onboarding analytics</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">03 / D</div>
+        <div class="idea-block-name">M&A Integration Intelligence</div>
+        <div class="idea-block-hook">"Are the two organizations actually merging — or just sharing a logo and a building?"</div>
+        <div class="idea-block-detail">After an acquisition, the most important question is whether the organizations are truly integrating at the human level — and it almost never gets answered with data. By tracking cross-organization communication patterns over time (which requires only email metadata access from both entities), build a real-time integration health score. Are acquired-company employees emailing acquirer colleagues? Are joint meetings being scheduled? Or are the two organizations operating as parallel silos 18 months post-close? Give the integration management office a live dashboard instead of quarterly surveys.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email metadata (both orgs)</span>
+          <span class="idea-tag source-tag">Calendar metadata</span>
+          <span class="idea-tag">Integration health score</span>
+          <span class="idea-tag">M&amp;A leadership reporting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cluster-strip"></div>
+
+  <!-- ── CLUSTER 04: CONVERSATION INTELLIGENCE ── -->
+  <div class="cluster-page c-conversation" id="sc-conversation">
+    <div class="cluster-page-header">
+      <div class="cluster-page-number">04</div>
+      <div class="cluster-page-meta">
+        <div class="cluster-page-eyebrow">Solution Cluster 04 of 07</div>
+        <div class="cluster-page-title">Conversation Intelligence — Capture what's said in client interactions</div>
+        <p class="cluster-page-desc">Client calls and meetings generate enormous intelligence. With consent-based capture, that intelligence becomes institutional and searchable — rather than evaporating the moment the call ends.</p>
+        <span class="cluster-friction-note friction-low">◐ Low friction · One-time consent required · Data source: Call recordings, email signals</span>
+      </div>
+    </div>
+    <div class="cluster-ideas">
+      <div class="idea-block">
+        <div class="idea-block-num">04 / A</div>
+        <div class="idea-block-name">Client Conversation Memory</div>
+        <div class="idea-block-hook">"What exactly did we discuss with this client across the last six months?"</div>
+        <div class="idea-block-detail">With explicit consent from both parties and a consent flow built into the meeting invitation, transcribe client calls and extract structured records: topics discussed, commitments made, concerns raised, next steps agreed. Store as searchable, attributed records linked to the client account — not as raw audio, not as verbatim transcripts. When a new team member is assigned to an account, they can read six months of client conversation summaries in 20 minutes rather than scheduling six separate briefing calls.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Recorded calls (consent-required)</span>
+          <span class="idea-tag">NLP extraction</span>
+          <span class="idea-tag">CRM integration</span>
+          <span class="idea-tag">Account memory</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">04 / B</div>
+        <div class="idea-block-name">Commitment Tracker</div>
+        <div class="idea-block-hook">"How many client commitments fall through the cracks every week because no one tracked them?"</div>
+        <div class="idea-block-detail">Extract "commitment language" automatically from call transcripts and email threads: "we'll send you X by Friday", "I'll follow up on the proposal by end of month", "let's schedule a follow-up call within two weeks." Convert these into tracked action items without anyone manually logging them. Approach deadline without a completion signal? Trigger an alert to the responsible party. This is especially high-value in professional services where commitments made in partner-level conversations often bypass standard project management workflows entirely.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email signals</span>
+          <span class="idea-tag source-tag">Call transcripts</span>
+          <span class="idea-tag">NLP · Commitment extraction</span>
+          <span class="idea-tag">Action item tracking</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">04 / C</div>
+        <div class="idea-block-name">Client Sentiment Tracker</div>
+        <div class="idea-block-hook">"Are your clients actually happy — or just not complaining yet?"</div>
+        <div class="idea-block-detail">Analyze patterns in email threads with key clients over time — response lag, message length, tone indicators, frequency of initiated contact. Detect early signals of relationship degradation: declining response rates, shorter replies, reduced inbound reach-outs. Surface these as client health signals weeks before a formal concern is raised. Critically, this can be built from email metadata and basic linguistic signals without reading full email content — keeping privacy intact while still generating meaningful sentiment trend data.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email metadata + basic signals</span>
+          <span class="idea-tag">Sentiment trend analysis</span>
+          <span class="idea-tag">Churn prediction</span>
+          <span class="idea-tag">Client health scoring</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">04 / D</div>
+        <div class="idea-block-name">Pre-Meeting Intelligence Brief</div>
+        <div class="idea-block-hook">"Walk into every client meeting fully prepared — automatically, without asking."</div>
+        <div class="idea-block-detail">15 minutes before any calendar event involving an external participant, auto-generate and push a briefing document to each attendee: last contact date across the firm, which colleagues know this person and how well, past commitments still open, recent news about the client's company, and any relevant context from past meetings. Delivered to their calendar or inbox without anyone requesting it. Zero friction — the calendar event already exists, the system simply enriches the moment before it happens.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Calendar metadata</span>
+          <span class="idea-tag source-tag">Email metadata</span>
+          <span class="idea-tag">News APIs</span>
+          <span class="idea-tag">Fully automated push</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cluster-strip"></div>
+
+  <!-- ── CLUSTER 05: CROSS-SELL INTELLIGENCE ── -->
+  <div class="cluster-page c-crosssell" id="sc-crosssell">
+    <div class="cluster-page-header">
+      <div class="cluster-page-number">05</div>
+      <div class="cluster-page-meta">
+        <div class="cluster-page-eyebrow">Solution Cluster 05 of 07</div>
+        <div class="cluster-page-title">Cross-Sell Intelligence — Find growth hiding inside existing client relationships</div>
+        <p class="cluster-page-desc">In large professional services firms, the largest untapped revenue opportunity is almost always cross-selling to existing clients — but no one knows what the rest of the firm is already doing with them.</p>
+        <span class="cluster-friction-note friction-zero">● Zero employee friction · Data source: Email metadata, CRM, service line data</span>
+      </div>
+    </div>
+    <div class="cluster-ideas">
+      <div class="idea-block">
+        <div class="idea-block-num">05 / A</div>
+        <div class="idea-block-name">Account White-Space Mapper</div>
+        <div class="idea-block-hook">"Which services are we not selling to our top 100 clients — and why not?"</div>
+        <div class="idea-block-detail">Combine service line billing data, email communication patterns between firm professionals and client contacts, and CRM data to build a comprehensive map of every client relationship across the whole firm. For each major account, render which practices are actively engaged, which have had recent contact but no billing relationship, and which have zero touchpoint history. The white-space — areas of clear relevance where the firm has no relationship at all — becomes a prioritized revenue opportunity list requiring no manual analysis.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email metadata</span>
+          <span class="idea-tag source-tag">Billing / CRM data</span>
+          <span class="idea-tag">White-space analysis</span>
+          <span class="idea-tag">Revenue growth</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">05 / B</div>
+        <div class="idea-block-name">Internal Referral Network</div>
+        <div class="idea-block-hook">"Partners are sitting on cross-sell opportunities they don't even know they have."</div>
+        <div class="idea-block-detail">When Partner A in Tax is regularly communicating with a client company, and that same company is also a prospect for Partner B's Strategy practice — neither partner necessarily knows the other's activity. Surface these overlaps automatically. Enable warm, verified internal introductions between practice areas using actual communication data rather than guesswork. Measure and report cross-practice referral activity as a firm-health metric, creating accountability and recognition for partners who actively facilitate introductions.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email metadata</span>
+          <span class="idea-tag source-tag">CRM + org data</span>
+          <span class="idea-tag">Cross-sell triggers</span>
+          <span class="idea-tag">Partner recognition</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">05 / C</div>
+        <div class="idea-block-name">Industry Relationship Capital Report</div>
+        <div class="idea-block-hook">"How deep is our firm's real network in the infrastructure sector — measured in actual relationships, not names on a list?"</div>
+        <div class="idea-block-detail">For any industry vertical, geography, or target segment, produce a comprehensive report showing the firm's aggregate relationship strength: total active contacts, seniority distribution, recency of last engagement, which offices are most connected, and relationship density vs. competitors (inferred from public data enrichment). Give business development leaders a data-driven picture of where they genuinely have relationship depth vs. where they need to invest — without anyone manually auditing their Rolodex.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email metadata</span>
+          <span class="idea-tag source-tag">Contact enrichment APIs</span>
+          <span class="idea-tag">BD strategy</span>
+          <span class="idea-tag">Market coverage mapping</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">05 / D</div>
+        <div class="idea-block-name">Deal Timing Signal Engine</div>
+        <div class="idea-block-hook">"When is the optimal moment to reach out to a lapsed client or new prospect?"</div>
+        <div class="idea-block-detail">Combine communication history analysis with real-time external signals — leadership changes at target companies, funding rounds, regulatory shifts, earnings announcements, M&amp;A news — to trigger outreach recommendations precisely when a client is most likely to be receptive. Example: "Your contact at Company X was just appointed CFO. Your colleague Sarah has a strong relationship with them. This is the highest-value outreach opportunity this month." Push to the relevant partner in the morning briefing. No searching required.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email metadata</span>
+          <span class="idea-tag source-tag">News &amp; LinkedIn APIs</span>
+          <span class="idea-tag">Timing signal engine</span>
+          <span class="idea-tag">Job change alerts</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cluster-strip"></div>
+
+  <!-- ── CLUSTER 06: DATA QUALITY & CRM ── -->
+  <div class="cluster-page c-data" id="sc-data">
+    <div class="cluster-page-header">
+      <div class="cluster-page-number">06</div>
+      <div class="cluster-page-meta">
+        <div class="cluster-page-eyebrow">Solution Cluster 06 of 07</div>
+        <div class="cluster-page-title">Data Quality & CRM — Make the system of record reflect reality, automatically</div>
+        <p class="cluster-page-desc">CRM data is almost universally degraded — stale contacts, missing interactions, misattributed deals. This is entirely solvable through passive observation, without asking a single rep to change their behavior.</p>
+        <span class="cluster-friction-note friction-zero">● Zero employee friction · Data source: Email metadata, Calendar, enrichment APIs</span>
+      </div>
+    </div>
+    <div class="cluster-ideas">
+      <div class="idea-block">
+        <div class="idea-block-num">06 / A</div>
+        <div class="idea-block-name">Passive CRM Enrichment Engine</div>
+        <div class="idea-block-hook">"Your CRM has 200,000 contacts. Half are wrong. None of it is your team's fault."</div>
+        <div class="idea-block-detail">Continuously cross-reference CRM contact records against actual email communication patterns to identify discrepancies: contacts who've changed email addresses (bounced), moved to new companies (stale), been promoted to new roles (under-flagged), or left the industry entirely. Enrich with current title, company, and contact data from LinkedIn enrichment APIs and news sources. Push verified updates automatically to Salesforce, HubSpot, or Dynamics via native API — no human review required for high-confidence updates, flagged for review otherwise.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email metadata</span>
+          <span class="idea-tag source-tag">Enrichment APIs</span>
+          <span class="idea-tag">Salesforce / HubSpot API</span>
+          <span class="idea-tag">CRM hygiene</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">06 / B</div>
+        <div class="idea-block-name">Auto Activity Logging</div>
+        <div class="idea-block-hook">"Reps spend 20% of their week on CRM data entry. Eliminate it entirely."</div>
+        <div class="idea-block-detail">Every email sent to an external contact, every call conducted, every meeting attended — automatically logged against the correct CRM opportunity or account with zero rep involvement. No "log a call" button. No activity entry screen. The communication data flows from email and calendar APIs directly into the CRM record in real time. For professional services firms where billable-time pressure makes admin especially costly, this is an immediate, measurable ROI: hours of weekly time returned to every client-facing professional in the firm.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email + calendar metadata</span>
+          <span class="idea-tag">Auto-attribution</span>
+          <span class="idea-tag">CRM integration</span>
+          <span class="idea-tag">Zero manual logging</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">06 / C</div>
+        <div class="idea-block-name">Relationship Attribution Engine</div>
+        <div class="idea-block-hook">"When a deal closes, who actually built that relationship — not just who's listed in the CRM?"</div>
+        <div class="idea-block-detail">Rather than crediting whoever happens to be listed as the account owner in the CRM, use actual communication data to attribute relationship value to the colleagues who genuinely drove it — measured by frequency, recency, seniority of contact, and depth of engagement over time. This has significant implications for partner compensation in law and consulting firms, where revenue attribution is a deeply contested issue. Replace subjective claims with objective network data. Fair attribution drives better BD behavior firm-wide.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email + calendar metadata</span>
+          <span class="idea-tag">Revenue attribution</span>
+          <span class="idea-tag">Partner compensation</span>
+          <span class="idea-tag">BD analytics</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">06 / D</div>
+        <div class="idea-block-name">Single-Thread Risk Detector</div>
+        <div class="idea-block-hook">"If your one contact at the client leaves tomorrow, is the entire relationship gone?"</div>
+        <div class="idea-block-detail">Automatically identify client accounts where the firm's entire relationship is concentrated in a single contact — a critical and extremely common vulnerability in professional services. Map relationship breadth: how many senior people at the client know how many senior people at your firm, and at what recency? Flag single-threaded accounts to account managers before the key contact changes jobs. Track relationship breadth as a portfolio risk metric reported quarterly to firm leadership. The data already exists in email logs — it just needs to be measured.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email metadata</span>
+          <span class="idea-tag">Key person risk</span>
+          <span class="idea-tag">Relationship breadth scoring</span>
+          <span class="idea-tag">Account health</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cluster-strip"></div>
+
+  <!-- ── CLUSTER 07: VERTICAL-SPECIFIC ── -->
+  <div class="cluster-page c-vertical" id="sc-vertical">
+    <div class="cluster-page-header">
+      <div class="cluster-page-number">07</div>
+      <div class="cluster-page-meta">
+        <div class="cluster-page-eyebrow">Solution Cluster 07 of 07</div>
+        <div class="cluster-page-title">Vertical-Specific Plays — The same intelligence, built for under-served sectors</div>
+        <p class="cluster-page-desc">Introhive owns Big Four accounting and law. Affinity owns venture capital. Every other large-organization vertical with equally complex relationship networks has no purpose-built solution — and many of the most attractive ones are in markets the major players have never focused on.</p>
+        <span class="cluster-friction-note friction-zero">● Zero employee friction · Data source: Varies by vertical (see each idea)</span>
+      </div>
+    </div>
+    <div class="cluster-ideas">
+      <div class="idea-block">
+        <div class="idea-block-num">07 / A</div>
+        <div class="idea-block-name">Healthcare System Relationship Intelligence</div>
+        <div class="idea-block-hook">"Hospital systems have thousands of referring physician relationships. Almost none are mapped."</div>
+        <div class="idea-block-detail">Build the Introhive equivalent for hospital systems, health networks, and pharmaceutical companies. Map referring physician relationships (which GPs refer to which specialists), pharmaceutical rep coverage and relationship strength with prescribers, and collaboration patterns between hospital departments. Integrate with EMR-adjacent communication data — physician communication systems, referral platforms — rather than standard email APIs. Navigate HIPAA-compliant data flows. Healthcare is one of the largest enterprise verticals globally and has essentially zero purpose-built relationship intelligence tooling.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email metadata</span>
+          <span class="idea-tag source-tag">EMR referral data (de-identified)</span>
+          <span class="idea-tag">HIPAA compliance</span>
+          <span class="idea-tag">Hospital systems · Pharma</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">07 / B</div>
+        <div class="idea-block-name">Government & Public Sector Knowledge Graph</div>
+        <div class="idea-block-hook">"Which of our agency's people have genuine working relationships with this ministry's decision-makers?"</div>
+        <div class="idea-block-detail">Government agencies manage enormously complex stakeholder networks — inter-agency relationships, external stakeholder connections, ministerial engagement, international counterparts — with almost no dedicated tooling. Build specifically for this context: on-premise or sovereign cloud deployment options, integration with government email infrastructure (Microsoft 365 GCC, Google Government), and purpose-built security and compliance standards. A product that helps a government agency understand its own relationship capital across ministries has no real competitor today.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Government email infrastructure</span>
+          <span class="idea-tag">Sovereign cloud / on-prem</span>
+          <span class="idea-tag">GovTech</span>
+          <span class="idea-tag">Stakeholder mapping</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">07 / C</div>
+        <div class="idea-block-name">University & Research Network Intelligence</div>
+        <div class="idea-block-hook">"Which of our faculty have existing working relationships with this company's R&D leadership?"</div>
+        <div class="idea-block-detail">Universities are deeply relationship-intensive institutions — industry partnerships, research collaborations, alumni donor networks, accreditation body relationships, policy engagement — and their relationship intelligence tooling is essentially nonexistent. Faculty profiles are static. Industry partnership tracking is manual. Build a passive relationship intelligence layer for research universities: mapping faculty-to-industry connections, surfacing co-authorship networks, identifying which alumni relationships are warm vs. dormant, and flagging cross-faculty collaboration opportunities that are visible in email patterns but invisible to any administrator.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">University email metadata</span>
+          <span class="idea-tag source-tag">Alumni data</span>
+          <span class="idea-tag source-tag">Grant databases (public)</span>
+          <span class="idea-tag">Research partnership intelligence</span>
+        </div>
+      </div>
+      <div class="idea-block">
+        <div class="idea-block-num">07 / D</div>
+        <div class="idea-block-name">Emerging Market Conglomerate Intelligence</div>
+        <div class="idea-block-hook">"Large Indian, Gulf, and Southeast Asian conglomerates have no purpose-built relationship tool — and they desperately need one."</div>
+        <div class="idea-block-detail">Every major player in this market — Introhive, Affinity, Gong, Glean — is US or EU-headquartered with an almost entirely Western go-to-market motion. Large conglomerates in India, the Gulf Cooperation Council, Indonesia, and Brazil have relationship networks of equal or greater complexity (multiple business lines, family ownership structures, government relationships, international JV partnerships) and are actively underserved. A product built for this context — local data residency, local language support, relationship norms that differ from Western B2B, and a local go-to-market motion — could own this segment with limited direct competition.</div>
+        <div class="idea-block-footer">
+          <span class="idea-tag source-tag">Email + calendar metadata</span>
+          <span class="idea-tag">India · GCC · Southeast Asia</span>
+          <span class="idea-tag">Local data residency</span>
+          <span class="idea-tag">Conglomerate structures</span>
+          <span class="idea-tag">Greenfield market</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Solutions closing strip -->
+  <div style="background:var(--ink);color:#6B7280;padding:40px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--paper);margin-bottom:6px;">28 ideas. One constraint.</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6B7280;">Zero additional friction for employees. All intelligence captured passively.</div>
+    </div>
+    <div style="display:flex;gap:32px;flex-wrap:wrap;">
+      <div style="text-align:right;">
+        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:#60A5FA;">7</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B7280;text-transform:uppercase;letter-spacing:0.1em;">Solution Clusters</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:#34D399;">3</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B7280;text-transform:uppercase;letter-spacing:0.1em;">Core Data Sources</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:#A78BFA;">0</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B7280;text-transform:uppercase;letter-spacing:0.1em;">Behavior Changes Required</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end #solutions -->
 
 <div style="background:var(--ink);color:#6B7280;padding:32px 60px;font-family:'JetBrains Mono',monospace;font-size:11px;text-align:center;">
   Market Intelligence Report · Compiled June 2026 · Sources: Company filings, Crunchbase, TechCrunch, CNBC, Startupintros, Contrary Research, official company sites

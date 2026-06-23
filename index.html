@@ -1,1681 +1,1205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Market Study: The Organizational Intelligence Revolution</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Earnings Intelligence · Market Research 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink:        #0D1117;
+      --ink-soft:   #3A3F4A;
+      --paper:      #F7F6F2;
+      --paper-warm: #EDEAE1;
+      --rule:       #D4CFC4;
+      --gold:       #B8963E;
+      --gold-pale:  #F2E8D0;
+      --teal:       #1A6B70;
+      --teal-pale:  #D4ECEE;
+      --red:        #C0392B;
+      --red-pale:   #FAE8E6;
+      --violet:     #4B3B8C;
+      --violet-pale:#E8E5F5;
+      --green:      #1E6B45;
+      --green-pale: #D5EDDF;
+      --blue:       #1A4A8C;
+      --blue-pale:  #D5E3F5;
+      --orange:     #B85C1A;
+      --orange-pale:#F5E4D5;
+    }
 
-  :root {
-    --ink: #0D0F14;
-    --paper: #F7F6F2;
-    --muted: #6B7280;
-    --wire: #E2E0D8;
-    --signal: #1A56DB;
-    --signal-dim: #E8EEFB;
-    --pulse: #059669;
-    --pulse-dim: #D1FAE5;
-    --amber: #D97706;
-    --amber-dim: #FEF3C7;
-    --red: #DC2626;
-    --red-dim: #FEE2E2;
-    --violet: #7C3AED;
-    --violet-dim: #EDE9FE;
-  }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--paper);
-    color: var(--ink);
-    font-size: 15px;
-    line-height: 1.7;
-  }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  /* HEADER */
-  .cover {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 80px 60px 60px;
-    position: relative;
-    overflow: hidden;
-  }
-  .cover::before {
-    content: '';
-    position: absolute;
-    top: -100px; right: -100px;
-    width: 500px; height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(26,86,219,0.25) 0%, transparent 70%);
-  }
-  .cover-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--signal);
-    margin-bottom: 24px;
-  }
-  .cover h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(32px, 5vw, 56px);
-    font-weight: 800;
-    line-height: 1.05;
-    max-width: 720px;
-    margin-bottom: 24px;
-  }
-  .cover h1 em {
-    font-style: normal;
-    color: #60A5FA;
-  }
-  .cover-sub {
-    font-size: 17px;
-    color: #9CA3AF;
-    max-width: 560px;
-    line-height: 1.6;
-    margin-bottom: 40px;
-  }
-  .cover-meta {
-    display: flex; gap: 40px; flex-wrap: wrap;
-  }
-  .cover-meta-item {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: #6B7280;
-  }
-  .cover-meta-item strong {
-    display: block;
-    color: var(--paper);
-    font-size: 14px;
-    margin-bottom: 2px;
-  }
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(247,246,242,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-brand {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 500;
+    }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
 
-  /* NAV / TOC */
-  .toc {
-    background: white;
-    border-bottom: 1px solid var(--wire);
-    padding: 20px 60px;
-    display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
-  }
-  .toc-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-right: 8px;
-  }
-  .toc a {
-    font-size: 12px;
-    color: var(--signal);
-    text-decoration: none;
-    padding: 4px 12px;
-    border: 1px solid #C7D7F8;
-    border-radius: 20px;
-    transition: all 0.2s;
-  }
-  .toc a:hover { background: var(--signal); color: white; }
+    /* ── HERO ── */
+    .hero {
+      padding: 5rem 2rem 4rem;
+      max-width: 1080px; margin: 0 auto;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      line-height: 1.08;
+      color: var(--ink);
+      max-width: 820px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--teal);
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 620px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+    .hero-meta {
+      display: flex; gap: 2rem; flex-wrap: wrap;
+    }
+    .meta-pill {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--ink-soft);
+    }
+    .meta-pill span.dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      display: inline-block;
+    }
 
-  /* BODY */
-  .body { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
+    /* ── SUMMARY GRID ── */
+    .summary-section {
+      max-width: 1080px; margin: 0 auto;
+      padding: 3rem 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .summary-section h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 1rem;
+    }
+    .summary-section p {
+      color: var(--ink-soft);
+      max-width: 700px;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
 
-  /* SECTIONS */
-  .section { margin-bottom: 72px; }
-  .section-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--signal);
-    margin-bottom: 12px;
-  }
-  .section h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: 30px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 20px;
-  }
-  .section p { color: #374151; margin-bottom: 16px; }
+    .landscape-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+    .landscape-stat {
+      background: var(--paper);
+      padding: 1.6rem 1.4rem;
+    }
+    .landscape-stat .num {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 2.4rem;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .landscape-stat .label {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      line-height: 1.4;
+    }
 
-  /* COMPANY CARDS */
-  .company-card {
-    border: 1px solid var(--wire);
-    border-radius: 12px;
-    margin-bottom: 32px;
-    overflow: hidden;
-    background: white;
-  }
-  .card-header {
-    padding: 24px 28px 20px;
-    border-bottom: 1px solid var(--wire);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .card-title-block {}
-  .card-badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    padding: 3px 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
-    display: inline-block;
-  }
-  .badge-leader { background: var(--signal-dim); color: var(--signal); }
-  .badge-vc { background: var(--violet-dim); color: var(--violet); }
-  .badge-enterprise { background: var(--amber-dim); color: var(--amber); }
-  .badge-people { background: var(--pulse-dim); color: var(--pulse); }
-  .badge-convo { background: var(--red-dim); color: var(--red); }
-  .badge-search { background: #F3E8FF; color: #6D28D9; }
+    /* ── SEGMENT OVERVIEW ── */
+    .segment-section {
+      max-width: 1080px; margin: 0 auto;
+      padding: 3rem 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .segment-row {
+      display: grid;
+      grid-template-columns: 1fr 2.5fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .segment-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .segment-tag {
+      display: inline-flex; align-items: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 2px;
+      margin-bottom: 0.8rem;
+      width: fit-content;
+    }
+    .segment-title {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+    }
+    .segment-sub {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+    .segment-body { }
+    .segment-body p {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.75;
+    }
+    .seg-gold { background: var(--gold-pale); color: var(--gold); }
+    .seg-teal { background: var(--teal-pale); color: var(--teal); }
+    .seg-violet { background: var(--violet-pale); color: var(--violet); }
+    .seg-green { background: var(--green-pale); color: var(--green); }
 
-  .card-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .card-tagline {
-    font-size: 13px;
-    color: var(--muted);
-  }
-  .card-stats {
-    display: flex; gap: 16px; flex-wrap: wrap;
-  }
-  .stat {
-    text-align: right;
-  }
-  .stat-value {
-    font-family: 'Syne', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--ink);
-    display: block;
-  }
-  .stat-label {
-    font-size: 11px;
-    color: var(--muted);
-    font-family: 'JetBrains Mono', monospace;
-    text-transform: uppercase;
-  }
+    /* ── COMPANY PROFILES ── */
+    .profiles-section {
+      max-width: 1080px; margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    .profiles-section h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 0.5rem;
+    }
+    .profiles-section > p {
+      color: var(--ink-soft);
+      margin-bottom: 2.5rem;
+    }
 
-  .card-body { padding: 24px 28px; }
+    /* Filter bar */
+    .filter-bar {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .filter-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid var(--rule);
+      background: transparent;
+      color: var(--ink-soft);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.18s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
 
-  .origin-block {
-    background: #F9FAFB;
-    border-left: 3px solid var(--signal);
-    padding: 14px 18px;
-    border-radius: 0 8px 8px 0;
-    margin-bottom: 18px;
-  }
-  .origin-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-    margin-bottom: 6px;
-  }
-  .origin-text {
-    font-size: 13.5px;
-    color: #374151;
-    line-height: 1.6;
-  }
+    .company-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
 
-  .card-section-title {
-    font-weight: 600;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    margin: 18px 0 10px;
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .card-body p { font-size: 14px; color: #374151; margin-bottom: 12px; }
+    /* ── COMPANY CARD ── */
+    .card {
+      border: 1px solid var(--rule);
+      background: white;
+      border-radius: 2px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
 
-  .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-  .pill {
-    font-size: 12px;
-    padding: 4px 12px;
-    border-radius: 20px;
-    background: var(--paper);
-    border: 1px solid var(--wire);
-    color: #374151;
-  }
+    .card-header {
+      padding: 1.4rem 1.4rem 1rem;
+      border-bottom: 1px solid var(--rule);
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+    }
+    .card-name-wrap { flex: 1; }
+    .card-name {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+    }
+    .card-tagline {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      line-height: 1.4;
+    }
+    .card-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
 
-  /* MARKET MAP */
-  .market-map {
-    background: white;
-    border: 1px solid var(--wire);
-    border-radius: 12px;
-    padding: 32px;
-    margin-bottom: 32px;
-  }
-  .map-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 20px;
-  }
-  .map-cell {
-    border: 1px solid var(--wire);
-    border-radius: 8px;
-    padding: 16px;
-  }
-  .map-cell-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    margin-bottom: 10px;
-  }
-  .map-cell-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .map-cell p { font-size: 13px; color: #374151; }
-  .map-cell.highlight { background: var(--signal-dim); border-color: #BFDBFE; }
-  .map-cell.highlight .map-cell-title { color: var(--signal); }
+    .card-body { padding: 1.2rem 1.4rem; flex: 1; }
 
-  /* HIGHLIGHT BOX */
-  .highlight-box {
-    background: var(--ink);
-    color: var(--paper);
-    border-radius: 12px;
-    padding: 32px;
-    margin: 32px 0;
-  }
-  .highlight-box h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: #60A5FA;
-  }
-  .highlight-box p { color: #D1D5DB; font-size: 14px; margin-bottom: 10px; }
-  .highlight-box ul { padding-left: 20px; }
-  .highlight-box ul li { color: #D1D5DB; font-size: 14px; margin-bottom: 8px; }
+    .card-section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+    }
+    .card-section-label:first-child { margin-top: 0; }
 
-  /* TIMELINE */
-  .timeline { margin: 24px 0; }
-  .tl-item {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-    align-items: flex-start;
-  }
-  .tl-year {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--signal);
-    font-weight: 500;
-    min-width: 40px;
-    padding-top: 2px;
-  }
-  .tl-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--signal);
-    margin-top: 6px;
-    flex-shrink: 0;
-  }
-  .tl-content { font-size: 13.5px; color: #374151; }
-  .tl-content strong { color: var(--ink); }
+    .card p {
+      font-size: 0.84rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+      margin-bottom: 0;
+    }
 
-  /* DIVIDER */
-  hr.divider {
-    border: none;
-    border-top: 1px solid var(--wire);
-    margin: 48px 0;
-  }
+    .feature-list {
+      list-style: none;
+      display: flex; flex-wrap: wrap; gap: 0.35rem;
+      margin-top: 0;
+    }
+    .feature-list li {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      color: var(--ink-soft);
+      background: var(--paper);
+    }
 
-  /* COMPARISON TABLE */
-  .compare-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    margin: 20px 0;
-  }
-  .compare-table th {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    text-align: left;
-    padding: 10px 16px;
-    background: #F9FAFB;
-    border-bottom: 2px solid var(--wire);
-  }
-  .compare-table td {
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--wire);
-    color: #374151;
-    vertical-align: top;
-  }
-  .compare-table tr:last-child td { border-bottom: none; }
-  .compare-table tr:hover td { background: #FAFAFA; }
-  .company-col { font-weight: 600; color: var(--ink); }
+    .card-footer {
+      padding: 1rem 1.4rem;
+      border-top: 1px solid var(--rule);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 0.6rem;
+    }
+    .pricing-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--ink);
+    }
+    .pricing-note {
+      font-size: 0.72rem;
+      color: var(--ink-soft);
+    }
+    .audience-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+    }
 
-  /* OPPORTUNITY SECTION */
-  .opp-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px;
-    margin-top: 20px;
-  }
-  .opp-card {
-    border: 1px solid var(--wire);
-    border-radius: 10px;
-    padding: 20px;
-    background: white;
-  }
-  .opp-icon { font-size: 24px; margin-bottom: 10px; }
-  .opp-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .opp-desc { font-size: 13px; color: #6B7280; line-height: 1.55; }
+    /* ── COVERAGE COMPARISON TABLE ── */
+    .table-section {
+      max-width: 1080px; margin: 0 auto;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--rule);
+    }
+    .table-section h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 0.5rem;
+    }
+    .table-section > p {
+      color: var(--ink-soft);
+      margin-bottom: 2rem;
+    }
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%; border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+    thead th {
+      text-align: left;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      padding: 0.7rem 0.9rem;
+      border-bottom: 2px solid var(--ink);
+      background: var(--paper-warm);
+      white-space: nowrap;
+    }
+    tbody td {
+      padding: 0.75rem 0.9rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink-soft);
+      vertical-align: top;
+    }
+    tbody tr:hover td { background: var(--paper-warm); }
+    tbody td:first-child {
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .check { color: var(--green); font-size: 1rem; }
+    .cross { color: var(--rule); font-size: 1rem; }
+    .partial { color: var(--gold); font-size: 0.75rem; font-family: 'DM Mono', monospace; }
 
-  @media (max-width: 640px) {
-    .cover { padding: 40px 24px; }
-    .body { padding: 40px 20px; }
-    .toc { padding: 16px 20px; }
-    .card-header { flex-direction: column; }
-    .card-stats { flex-direction: row; }
-    .stat { text-align: left; }
-    .map-grid { grid-template-columns: 1fr; }
-  }
+    /* ── GAP ANALYSIS ── */
+    .gap-section {
+      max-width: 1080px; margin: 0 auto;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--rule);
+    }
+    .gap-section h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 0.5rem;
+    }
+    .gap-section > p {
+      color: var(--ink-soft);
+      margin-bottom: 2rem;
+    }
+    .gap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .gap-card {
+      padding: 1.4rem;
+      border: 1px solid var(--rule);
+      background: white;
+      border-radius: 2px;
+    }
+    .gap-icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+    .gap-card h3 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+    .gap-card p {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+    }
+    .gap-highlight {
+      border-left: 3px solid var(--teal);
+      background: var(--teal-pale);
+    }
 
-  /* =========================================
-     SOLUTION CLUSTERS — full-page section
-     ========================================= */
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2.5rem 2rem;
+      max-width: 1080px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      flex-wrap: wrap; gap: 1.5rem;
+    }
+    .footer-brand {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+    .footer-note {
+      font-size: 0.76rem;
+      color: var(--ink-soft);
+      max-width: 420px;
+      line-height: 1.6;
+    }
+    .footer-right {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--ink-soft);
+      text-align: right;
+      line-height: 1.8;
+    }
 
-  .solutions-cover {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 80px 60px 60px;
-    position: relative;
-    overflow: hidden;
-    margin-top: 0;
-  }
-  .solutions-cover::before {
-    content: '';
-    position: absolute;
-    bottom: -120px; left: -80px;
-    width: 480px; height: 480px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(5,150,105,0.2) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .solutions-cover::after {
-    content: '';
-    position: absolute;
-    top: -60px; right: 60px;
-    width: 320px; height: 320px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .solutions-cover-inner { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
-  .solutions-cover-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; letter-spacing: 0.15em;
-    text-transform: uppercase; color: #34D399;
-    margin-bottom: 20px;
-  }
-  .solutions-cover h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(28px, 4.5vw, 50px);
-    font-weight: 800; line-height: 1.06;
-    margin-bottom: 20px;
-  }
-  .solutions-cover h2 em { font-style: normal; color: #A78BFA; }
-  .solutions-cover-sub {
-    font-size: 16px; color: #9CA3AF; max-width: 580px;
-    line-height: 1.65; margin-bottom: 40px;
-  }
-  .solutions-cluster-nav {
-    display: flex; gap: 10px; flex-wrap: wrap;
-  }
-  .scn-pill {
-    font-size: 12px; padding: 6px 16px;
-    border-radius: 20px; cursor: pointer; border: none;
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 0.04em;
-    background: rgba(255,255,255,0.08);
-    color: #9CA3AF;
-    transition: all 0.2s;
-    text-decoration: none; display: inline-block;
-  }
-  .scn-pill:hover { background: rgba(255,255,255,0.15); color: var(--paper); }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      .hero, .summary-section, .segment-section, .profiles-section,
+      .table-section, .gap-section { padding: 2rem 1rem; }
+      .segment-row { grid-template-columns: 1fr; }
+      .company-grid { grid-template-columns: 1fr; }
+      footer { padding: 2rem 1rem; }
+    }
 
-  /* Cluster page blocks */
-  .cluster-page {
-    background: var(--paper);
-    padding: 0;
-  }
-  .cluster-page-header {
-    padding: 56px 60px 0;
-    max-width: 960px; margin: 0 auto;
-    display: flex; gap: 40px; align-items: flex-start;
-    flex-wrap: wrap;
-  }
-  .cluster-page-number {
-    font-family: 'Syne', sans-serif;
-    font-size: 80px; font-weight: 800;
-    line-height: 1; color: var(--wire);
-    flex-shrink: 0; user-select: none;
-  }
-  .cluster-page-meta { flex: 1; min-width: 260px; }
-  .cluster-page-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; letter-spacing: 0.15em;
-    text-transform: uppercase; margin-bottom: 10px;
-  }
-  .cluster-page-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(22px, 3vw, 32px);
-    font-weight: 700; line-height: 1.2;
-    margin-bottom: 14px; color: var(--ink);
-  }
-  .cluster-page-desc {
-    font-size: 14px; color: #4B5563; line-height: 1.7;
-    max-width: 560px;
-  }
-  .cluster-friction-note {
-    display: inline-flex; align-items: center; gap: 6px;
-    margin-top: 16px; padding: 6px 14px;
-    border-radius: 20px; font-size: 12px;
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .friction-zero { background: #D1FAE5; color: #065F46; }
-  .friction-low  { background: #FEF3C7; color: #78350F; }
-
-  /* Ideas grid inside cluster pages */
-  .cluster-ideas {
-    padding: 36px 60px 56px;
-    max-width: 960px; margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  .idea-block {
-    background: white;
-    border: 1px solid var(--wire);
-    border-radius: 14px;
-    padding: 28px;
-    display: flex; flex-direction: column;
-    position: relative; overflow: hidden;
-  }
-  .idea-block::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 3px;
-  }
-  .idea-block-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; color: var(--muted);
-    letter-spacing: 0.12em; margin-bottom: 14px;
-  }
-  .idea-block-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 18px; font-weight: 700;
-    line-height: 1.25; margin-bottom: 8px;
-    color: var(--ink);
-  }
-  .idea-block-hook {
-    font-size: 13px; color: var(--muted);
-    font-style: italic; margin-bottom: 16px;
-    line-height: 1.5;
-  }
-  .idea-block-detail {
-    font-size: 13.5px; color: #374151;
-    line-height: 1.7; flex: 1; margin-bottom: 20px;
-  }
-  .idea-block-footer {
-    display: flex; flex-wrap: wrap; gap: 8px;
-    margin-top: auto;
-  }
-  .idea-tag {
-    font-size: 11px; padding: 3px 10px;
-    border-radius: 20px; background: var(--paper);
-    border: 1px solid var(--wire); color: #4B5563;
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .idea-tag.source-tag {
-    font-weight: 500;
-  }
-
-  /* Cluster color accents */
-  .c-relationship .idea-block::before { background: var(--signal); }
-  .c-relationship .cluster-page-eyebrow { color: var(--signal); }
-  .c-relationship .cluster-page-number { color: #DBEAFE; }
-
-  .c-expertise .idea-block::before { background: var(--violet); }
-  .c-expertise .cluster-page-eyebrow { color: var(--violet); }
-  .c-expertise .cluster-page-number { color: #EDE9FE; }
-
-  .c-ona .idea-block::before { background: var(--pulse); }
-  .c-ona .cluster-page-eyebrow { color: var(--pulse); }
-  .c-ona .cluster-page-number { color: #D1FAE5; }
-
-  .c-conversation .idea-block::before { background: var(--amber); }
-  .c-conversation .cluster-page-eyebrow { color: var(--amber); }
-  .c-conversation .cluster-page-number { color: #FEF3C7; }
-
-  .c-crosssell .idea-block::before { background: var(--red); }
-  .c-crosssell .cluster-page-eyebrow { color: var(--red); }
-  .c-crosssell .cluster-page-number { color: #FEE2E2; }
-
-  .c-data .idea-block::before { background: #0891B2; }
-  .c-data .cluster-page-eyebrow { color: #0891B2; }
-  .c-data .cluster-page-number { color: #CFFAFE; }
-
-  .c-vertical .idea-block::before { background: #D97706; }
-  .c-vertical .cluster-page-eyebrow { color: #B45309; }
-  .c-vertical .cluster-page-number { color: #FEF3C7; }
-
-  /* Cluster divider strip */
-  .cluster-strip {
-    height: 1px; background: var(--wire); margin: 0 60px;
-  }
-
-  @media (max-width: 760px) {
-    .solutions-cover { padding: 48px 24px 40px; }
-    .cluster-page-header { padding: 40px 24px 0; flex-direction: column; gap: 16px; }
-    .cluster-page-number { font-size: 52px; }
-    .cluster-ideas { padding: 28px 24px 40px; grid-template-columns: 1fr; }
-    .cluster-strip { margin: 0 24px; }
-  }
-</style>
+    /* scroll reveal */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
 </head>
 <body>
 
-<!-- COVER -->
-<div class="cover">
-  <div class="cover-label">Market Intelligence Report · June 2026</div>
-  <h1>The <em>Untapped Knowledge</em><br>Intelligence Revolution</h1>
-  <p class="cover-sub">A comprehensive study of platforms turning an organization's hidden relationship capital — buried in emails, calendars, conversations, and directories — into its most powerful competitive asset.</p>
-  <div class="cover-meta">
-    <div class="cover-meta-item"><strong>6 Companies Profiled</strong>Market Leaders</div>
-    <div class="cover-meta-item"><strong>$2.3B → $11.3B</strong>Graph Analytics Market CAGR</div>
-    <div class="cover-meta-item"><strong>~$2B+</strong>Total Funding in Space</div>
-    <div class="cover-meta-item"><strong>2012 – 2026</strong>Category Timeline</div>
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">Earnings Intelligence · Market Research 2026</span>
+  <ul class="nav-links">
+    <li><a href="#landscape">Landscape</a></li>
+    <li><a href="#segments">Segments</a></li>
+    <li><a href="#profiles">Profiles</a></li>
+    <li><a href="#comparison">Compare</a></li>
+    <li><a href="#gaps">Gaps</a></li>
+    <li><a href="untapped-knowledge.html" style="color:var(--gold);">Untapped Knowledge Study</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero reveal">
+  <p class="hero-eyebrow">Competitive Landscape Report · June 2026</p>
+  <h1>Who is already building<br /><em>AI for the earnings room?</em></h1>
+  <p class="hero-desc">
+    A comprehensive mapping of every platform that touches AI-assisted earnings call preparation — who they serve, what they do, and where the white space still lives.
+  </p>
+  <div class="hero-meta">
+    <span class="meta-pill"><span class="dot"></span>8 Companies Profiled</span>
+    <span class="meta-pill"><span class="dot"></span>4 Market Segments</span>
+    <span class="meta-pill"><span class="dot"></span>25+ Capability Axes</span>
+    <span class="meta-pill"><span class="dot"></span>Sources: G2, Sacra, Gartner, Vendor Sites</span>
   </div>
-</div>
+</header>
 
-<!-- TOC -->
-<div class="toc">
-  <span class="toc-label">Sections</span>
-  <a href="#context">The Problem</a>
-  <a href="#introhive">Introhive</a>
-  <a href="#affinity">Affinity</a>
-  <a href="#gong">Gong</a>
-  <a href="#glean">Glean</a>
-  <a href="#people-ai">People.ai</a>
-  <a href="#ona">ONA Platforms</a>
-  <a href="#landscape">Landscape Map</a>
-  <a href="#opportunities">White Space</a>
-  <a href="#solutions" style="background:var(--signal);color:white;border-color:var(--signal);">→ Solution Clusters</a>
-</div>
-
-<div class="body">
-
-<!-- THE PROBLEM -->
-<div class="section" id="context">
-  <div class="section-eyebrow">The Core Problem</div>
-  <h2>Every large organization is sitting on a gold mine of knowledge it cannot see</h2>
-  <p>When a partner at KPMG wants to land a new client, the most valuable asset isn't a pitch deck or a credentials document — it's knowing that a colleague had lunch with the CFO last month. That intelligence exists. It's in someone's sent folder. But no one could find it until Introhive came along.</p>
-  <p>This is the fundamental insight powering an entire category of enterprise software: organizations generate enormous quantities of relationship data, conversation data, and collaboration data every single day — and almost none of it gets captured, organized, or made accessible to the people who need it most.</p>
-
-  <div class="market-map">
-    <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px;">Where the Knowledge Hides</div>
-    <p style="font-size:13px;color:#6B7280;margin-bottom:0;">The "dark data" of enterprise organizations — interaction intelligence that exists but is never surfaced.</p>
-    <div class="map-grid">
-      <div class="map-cell highlight">
-        <div class="map-cell-label">Relationship Signals</div>
-        <div class="map-cell-title">Emails & Calendars</div>
-        <p>Who knows whom, how recently they've spoken, relationship strength, warm introductions — all locked in individual inboxes.</p>
-      </div>
-      <div class="map-cell">
-        <div class="map-cell-label">Conversation Intelligence</div>
-        <div class="map-cell-title">Calls & Meetings</div>
-        <p>What customers are actually saying, objections, buying signals, champion identification — vaporized the moment a meeting ends.</p>
-      </div>
-      <div class="map-cell">
-        <div class="map-cell-label">Organizational Knowledge</div>
-        <div class="map-cell-title">Documents & Wikis</div>
-        <p>Institutional knowledge, past work, playbooks, and expertise scattered across Slack, Drive, Notion, Confluence, and email.</p>
-      </div>
-      <div class="map-cell">
-        <div class="map-cell-label">People Intelligence</div>
-        <div class="map-cell-title">Network & Alumni</div>
-        <p>Who your people know externally, who's changed jobs, which customers are champions — unmapped and invisible to BD teams.</p>
-      </div>
+<!-- LANDSCAPE SUMMARY -->
+<section class="summary-section reveal" id="landscape">
+  <p class="section-label">Executive Summary</p>
+  <h2>The market is real — but fractured</h2>
+  <p>
+    Every quarter, IR officers, CFOs, and investor relations teams at listed companies spend weeks preparing for earnings calls — scripting, anticipating analyst questions, benchmarking peers, and digging for competitive signals. A cluster of AI platforms now addresses slices of this workflow. But the picture is fragmented: investor-side intelligence tools (built to help fund managers analyze companies) have evolved away from the buy-side toward corporate IR teams, while purpose-built IR ops platforms have bolted AI onto event infrastructure. No single player yet owns the full pre-call preparation stack from the company's perspective.
+  </p>
+  <p>
+    The opportunity space — a platform built <em>for</em> the company's own IR and investor-relations team, hypercontextualised with sector data, competitive transcript mining, and the company's own historical promises — remains largely unaddressed.
+  </p>
+  <div class="landscape-grid">
+    <div class="landscape-stat">
+      <div class="num">$7.5B</div>
+      <div class="label">AlphaSense valuation, June 2026 funding round led by Vitruvian &amp; Accenture Ventures</div>
     </div>
-  </div>
-
-  <p>The companies profiled in this study have each staked out a piece of this territory. Some focus on <strong>external relationship graphs</strong> (who knows who outside the firm), others on <strong>internal collaboration networks</strong> (how knowledge moves within teams), and the newest entrants are building <strong>unified knowledge graphs</strong> that connect all of the above. This is the most interesting and contested space in enterprise software today.</p>
-</div>
-
-<hr class="divider">
-
-<!-- INTROHIVE -->
-<div class="section" id="introhive">
-  <div class="section-eyebrow">Company Profile 01</div>
-  <h2>The Category Creator</h2>
-
-  <div class="company-card">
-    <div class="card-header">
-      <div class="card-title-block">
-        <div class="card-badge badge-leader">Relationship Intelligence · Category Leader</div>
-        <div class="card-name">Introhive</div>
-        <div class="card-tagline">Fredericton, Canada → Global · Founded 2012</div>
-      </div>
-      <div class="card-stats">
-        <div class="stat">
-          <span class="stat-value">$135M+</span>
-          <span class="stat-label">Total Raised</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value">PwC, KPMG</span>
-          <span class="stat-label">Marquee Clients</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value">~400</span>
-          <span class="stat-label">Employees</span>
-        </div>
-      </div>
+    <div class="landscape-stat">
+      <div class="num">64%</div>
+      <div class="label">IR professionals who haven't embedded AI yet, but are actively interested (FactSet / Irwin State of IR)</div>
     </div>
-    <div class="card-body">
-      <div class="origin-block">
-        <div class="origin-label">Founding Story</div>
-        <div class="origin-text">Jody Glidden and Stewart Walchli founded Introhive in 2012 in Fredericton, New Brunswick — an unlikely startup hub — with a deceptively simple insight: the most valuable knowledge inside a professional services firm is who its people know, and that knowledge is completely invisible. The two believed that if you could make the "relationship graph" of an entire organization visible and searchable, business development would be transformed. They were right. It took nearly a decade of grinding, but the thesis proved out spectacularly.</div>
-      </div>
-
-      <div class="card-section-title">What It Does</div>
-      <p>Introhive connects to the email and calendar infrastructure of an entire organization and quietly maps every touchpoint — every email sent, every meeting attended — across the firm. The result is a continuously updated graph that shows who knows whom, how strong each relationship is, and when the last meaningful contact occurred. When a partner at KPMG wants to reach a target client, they search the person in Introhive and immediately see which of their 30,000 colleagues already has a strong relationship with them — and can request a warm introduction.</p>
-
-      <div class="card-section-title">Growth Timeline</div>
-      <div class="timeline">
-        <div class="tl-item">
-          <span class="tl-year">2012</span><div class="tl-dot"></div>
-          <div class="tl-content"><strong>Founded in Fredericton, NB.</strong> Glidden and Walchli begin building on the premise that relationship data is an untapped organizational asset.</div>
-        </div>
-        <div class="tl-item">
-          <span class="tl-year">2016–18</span><div class="tl-dot"></div>
-          <div class="tl-content"><strong>First major professional services wins.</strong> The legal and Big Four accounting sectors prove to be perfect early markets — high-value relationships, large organizations, relationship-driven BD.</div>
-        </div>
-        <div class="tl-item">
-          <span class="tl-year">2019</span><div class="tl-dot"></div>
-          <div class="tl-content"><strong>PwC goes global.</strong> PwC deploys Introhive across 90 countries, giving over 100,000 users access to the platform — a massive validation moment for the category.</div>
-        </div>
-        <div class="tl-item">
-          <span class="tl-year">2021</span><div class="tl-dot"></div>
-          <div class="tl-content"><strong>$100M Series C</strong> led by PSG. By this point Introhive has captured over 60 million contacts and relationships — the data flywheel is spinning.</div>
-        </div>
-        <div class="tl-item">
-          <span class="tl-year">2024</span><div class="tl-dot"></div>
-          <div class="tl-content"><strong>KPMG partnership announced.</strong> KPMG firms globally adopt Introhive alongside Salesforce, making it the backbone of their front-office intelligence strategy.</div>
-        </div>
-        <div class="tl-item">
-          <span class="tl-year">2026</span><div class="tl-dot"></div>
-          <div class="tl-content"><strong>MCP Server for AI agents.</strong> Introhive launches a Model Context Protocol server, allowing AI assistants like Microsoft Copilot to query relationship intelligence in natural language — turning from a reporting tool into AI infrastructure.</div>
-        </div>
-      </div>
-
-      <div class="card-section-title">What Makes It Distinctive</div>
-      <p>Introhive's core innovation is the <strong>automatic, passive capture</strong> of relationship data. Unlike traditional CRMs that require salespeople to manually log interactions (a task that almost never gets done thoroughly), Introhive works silently in the background. No behavior change required from the firm's professionals. The data just accumulates.</p>
-      <p>It also introduced the concept of <strong>relationship strength scoring</strong> — not just "this person knows that person" but a quantified measure of how strong the connection is, based on recency, frequency, and reciprocity of communications.</p>
-
-      <div class="card-section-title">Target Market</div>
-      <div class="pill-row">
-        <span class="pill">Big 4 Accounting</span>
-        <span class="pill">Law Firms (AmLaw 200)</span>
-        <span class="pill">Management Consulting</span>
-        <span class="pill">Financial Services</span>
-        <span class="pill">Commercial Real Estate</span>
-        <span class="pill">Engineering & Construction</span>
-      </div>
+    <div class="landscape-stat">
+      <div class="num">$4.5B</div>
+      <div class="label">Projected AI Agents in Financial Services market by 2030 (from $490M in 2024)</div>
+    </div>
+    <div class="landscape-stat">
+      <div class="num">73%</div>
+      <div class="label">IR teams citing integration gaps as their top challenge — tools don't talk to each other (Irwin State of IR 2026)</div>
+    </div>
+    <div class="landscape-stat">
+      <div class="num">500M+</div>
+      <div class="label">Documents indexed by AlphaSense including earnings transcripts, filings, expert calls, broker research</div>
+    </div>
+    <div class="landscape-stat">
+      <div class="num">Weeks</div>
+      <div class="label">Typical IR team prep time per earnings cycle — the core pain point the market is trying to compress</div>
     </div>
   </div>
-</div>
+</section>
 
-<hr class="divider">
+<!-- SEGMENT OVERVIEW -->
+<section class="segment-section reveal" id="segments">
+  <p class="section-label">Market Segmentation</p>
+  <h2>Four distinct player archetypes</h2>
 
-<!-- AFFINITY -->
-<div class="section" id="affinity">
-  <div class="section-eyebrow">Company Profile 02</div>
-  <h2>Relationship Intelligence for Deal-Makers</h2>
-
-  <div class="company-card">
-    <div class="card-header">
-      <div class="card-title-block">
-        <div class="card-badge badge-vc">VC & Private Capital Focus</div>
-        <div class="card-name">Affinity</div>
-        <div class="card-tagline">San Francisco, CA · Founded 2014</div>
-      </div>
-      <div class="card-stats">
-        <div class="stat">
-          <span class="stat-value">$120M</span>
-          <span class="stat-label">Total Raised</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value">$600M</span>
-          <span class="stat-label">Valuation (2021)</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value">1,700+</span>
-          <span class="stat-label">Institutions</span>
-        </div>
-      </div>
+  <div class="segment-row">
+    <div>
+      <span class="segment-tag seg-gold">Segment 01</span>
+      <div class="segment-title">Enterprise Market Intelligence</div>
+      <div class="segment-sub">Originally investor-facing, now expanding toward corporate/IR</div>
     </div>
-    <div class="card-body">
-      <div class="origin-block">
-        <div class="origin-label">Founding Story</div>
-        <div class="origin-text">Stanford graduates Ray Zhou and Shubham Goel founded Affinity in 2014 after recognizing a gap that Introhive had also identified — but from a different angle. While scrolling through LinkedIn and CRMs, they noticed that deal-making in private capital was entirely relationship-driven, yet the tools available were either generic (Salesforce) or manual (spreadsheets). They believed the exhaust from emails and calendars — 18 trillion of them processed by the time of their Series C — held the key to a new kind of intelligence platform purpose-built for the deal economy.</div>
-      </div>
-
-      <div class="card-section-title">What It Does</div>
-      <p>Affinity automatically ingests email and calendar data from an investment team and builds a live, enriched map of all relationships. When a VC wants to evaluate whether to invest in a startup, they can instantly see which of their colleagues has the strongest relationship with the founder, who on their portfolio team has met them, and what the recent interaction history looks like. It also enriches company profiles automatically — pulling funding data, headcount, and growth signals without anyone entering a single line into a CRM.</p>
-      <p>The platform's "relationship scores" and automatic "deal flow" management have made it the dominant tool inside private equity and venture capital firms, where the traditional CRM was never designed for the long, winding, multi-decade relationship journeys of deal-making.</p>
-
-      <div class="card-section-title">How It Differs from Introhive</div>
-      <p>Introhive is built for large, staffed professional services firms (1,000+ person organizations). Affinity targets <strong>smaller, deal-intensive teams</strong> — a 15-person VC fund or a 40-person M&A team. It also places a heavier emphasis on <strong>company intelligence</strong> (funding rounds, hiring trends, growth signals) layered on top of the relationship graph, making it a deal sourcing tool as much as a relationship one.</p>
-
-      <div class="card-section-title">Target Market</div>
-      <div class="pill-row">
-        <span class="pill">Venture Capital</span>
-        <span class="pill">Private Equity</span>
-        <span class="pill">Investment Banking</span>
-        <span class="pill">Consulting</span>
-        <span class="pill">Commercial Real Estate</span>
-        <span class="pill">Fortune 500 Corp Dev</span>
-      </div>
+    <div class="segment-body">
+      <p>
+        These platforms — AlphaSense, FactSet, Bloomberg — were built to help analysts, fund managers, and corporate strategists search across millions of documents. They have vast transcript libraries, generative AI search, and expert call networks. They are increasingly extending to corporate IR and investor relations teams, offering earnings prep workflows and competitive transcript analysis. Their moat is data breadth and trusted content provenance, but their interface complexity and cost structure ($10K–$100K+ per seat per year) limit adoption for mid-market companies. They are also primarily built for the read side, not for the company preparing to speak.
+      </p>
     </div>
   </div>
-</div>
 
-<hr class="divider">
-
-<!-- GONG -->
-<div class="section" id="gong">
-  <div class="section-eyebrow">Company Profile 03</div>
-  <h2>Making Sales Conversations Visible</h2>
-
-  <div class="company-card">
-    <div class="card-header">
-      <div class="card-title-block">
-        <div class="card-badge badge-convo">Conversation Intelligence</div>
-        <div class="card-name">Gong</div>
-        <div class="card-tagline">San Francisco, CA · Founded 2015</div>
-      </div>
-      <div class="card-stats">
-        <div class="stat">
-          <span class="stat-value">$584M</span>
-          <span class="stat-label">Total Raised</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value">$7.25B</span>
-          <span class="stat-label">Valuation</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value">$332M</span>
-          <span class="stat-label">ARR (2024)</span>
-        </div>
-      </div>
+  <div class="segment-row">
+    <div>
+      <span class="segment-tag seg-teal">Segment 02</span>
+      <div class="segment-title">IR Operations Platforms</div>
+      <div class="segment-sub">Infrastructure-first, AI as a recent layer</div>
     </div>
-    <div class="card-body">
-      <div class="origin-block">
-        <div class="origin-label">Founding Story</div>
-        <div class="origin-text">Amit Bendov had a crisis. As CEO of business intelligence company Sisense, his company hit its worst quarter ever — and he had no idea why. He looked at the CRM, the pipeline data, the conversion rates. Nothing explained it. When he asked his sales team, every single person gave a different explanation. The data available to him was useless. He called his friend Eilon Reshef, a serial entrepreneur and data scientist he'd known since Tel Aviv University, and they asked: what if you could analyze every single customer conversation — every call, every email — using AI? In 2015, with natural language processing finally reaching an inflection point, they founded Gong to answer that question.</div>
-      </div>
-
-      <div class="card-section-title">What It Does</div>
-      <p>Gong records and transcribes every customer-facing interaction — calls, video meetings, emails — and then applies AI to extract signal from the noise. Which deals are actually progressing vs. just looking healthy? Which reps have the best talk-to-listen ratio? Where are objections clustering? It turns the <strong>dark matter of sales conversations</strong> into structured, searchable, analyzable data.</p>
-      <p>By 2026 Gong has expanded into full revenue intelligence — deal forecasting, AI-powered next-step recommendations, automated CRM data entry from call recordings, and "Gong Agents" that work autonomously across the revenue cycle. It holds approximately 45% market share in conversation intelligence for enterprise sales.</p>
-
-      <div class="card-section-title">The Untapped Knowledge Angle</div>
-      <p>Before Gong, the knowledge in a sales call was ephemeral — it existed for the duration of the call and then vanished (or lived as a rough note in someone's head). Gong makes every sales conversation a permanent, searchable, institutional asset. A new sales rep can listen to a hundred calls with a target account before their first meeting. A manager can spot exactly when a deal started going sideways. A product team can mine 10,000 calls for feature requests.</p>
-
-      <div class="card-section-title">Target Market</div>
-      <div class="pill-row">
-        <span class="pill">Enterprise B2B Sales</span>
-        <span class="pill">Revenue Operations</span>
-        <span class="pill">Sales Enablement</span>
-        <span class="pill">Customer Success</span>
-        <span class="pill">Mid-Market & Enterprise SaaS</span>
-      </div>
+    <div class="segment-body">
+      <p>
+        Q4 Inc., Notified, and Nasdaq IR Insight operate in this space. They started as event management and IR website platforms — hosting earnings webcasts, managing disclosure filings, running investor targeting CRMs. AI has been layered on top: Q4's Earnings Co-Pilot drafts scripts and summarises peer transcripts; Nasdaq IR Insight's AI Assistant compares up to five peer calls at once and auto-generates broker note summaries. Their differentiator is workflow integration across the full IR cycle, and enterprise compliance (SOC 2, MNPI partitioning). They're used by IR departments at large-cap public companies and the Fortune 100. Pricing is enterprise, typically undisclosed and relationship-driven.
+      </p>
     </div>
   </div>
-</div>
 
-<hr class="divider">
-
-<!-- GLEAN -->
-<div class="section" id="glean">
-  <div class="section-eyebrow">Company Profile 04</div>
-  <h2>The Enterprise Brain</h2>
-
-  <div class="company-card">
-    <div class="card-header">
-      <div class="card-title-block">
-        <div class="card-badge badge-search">Enterprise Knowledge Search</div>
-        <div class="card-name">Glean</div>
-        <div class="card-tagline">Palo Alto, CA · Founded 2019</div>
-      </div>
-      <div class="card-stats">
-        <div class="stat">
-          <span class="stat-value">$765M</span>
-          <span class="stat-label">Total Raised</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value">$7.2B</span>
-          <span class="stat-label">Valuation</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value">$100M+</span>
-          <span class="stat-label">ARR (2025)</span>
-        </div>
-      </div>
+  <div class="segment-row">
+    <div>
+      <span class="segment-tag seg-violet">Segment 03</span>
+      <div class="segment-title">Finance AI / CFO Tooling</div>
+      <div class="segment-sub">FP&amp;A-adjacent platforms adding IR simulation</div>
     </div>
-    <div class="card-body">
-      <div class="origin-block">
-        <div class="origin-label">Founding Story</div>
-        <div class="origin-text">Arvind Jain spent over a decade building Google Search — one of the most sophisticated information retrieval systems ever created. Then he joined enterprise software and was stunned: internal knowledge tools were operating at a level a decade behind consumer search. Employees would ask colleagues for documents because finding them through internal tools was futile. Jain co-founded Glean in 2019 with teammates from Google, Meta, and Dropbox to solve this definitively. The founding team brought Google-grade search architecture to enterprise knowledge — not just better search, but a fundamentally different model using knowledge graphs to understand context, permissions, and personalization.</div>
-      </div>
-
-      <div class="card-section-title">What It Does</div>
-      <p>Glean connects to over 100 enterprise applications — Slack, Google Drive, Salesforce, Jira, Confluence, GitHub, email — and builds a personalized, permissions-aware knowledge graph for each organization. When an employee asks Glean a question ("What's our policy on X?" or "Find the last proposal we sent to Company Y"), it searches across all connected systems simultaneously and returns a synthesized, cited answer.</p>
-      <p>More recently, Glean has pushed into AI agents — autonomous workflows that can pull from this knowledge graph to complete tasks. It reached $100M ARR in under three years from commercial launch, which CNBC named it the #1 Most Innovative Company in Applied AI for 2025.</p>
-
-      <div class="card-section-title">The Untapped Knowledge Angle</div>
-      <p>Glean addresses the broadest version of the problem: the totality of an organization's documented knowledge, scattered across every tool everyone uses, is invisible to most employees. The average knowledge worker reportedly spends 20% of their week searching for information or tracking down colleagues to answer questions. Glean's bet is that if you index everything and put AI on top, that 20% largely disappears — and with it comes an enormous productivity dividend.</p>
-
-      <div class="card-section-title">Target Market</div>
-      <div class="pill-row">
-        <span class="pill">Enterprise Tech</span>
-        <span class="pill">Finance</span>
-        <span class="pill">Retail</span>
-        <span class="pill">Manufacturing</span>
-        <span class="pill">Any knowledge-intensive org 500+ employees</span>
-      </div>
+    <div class="segment-body">
+      <p>
+        ChatFin and similar platforms started as AI assistants for finance operations (AP, AR, close management, FP&amp;A), and have extended into earnings preparation features. ChatFin's IR module offers a Q&amp;A Simulator, script optimisation against peer transcripts, red-team analyst simulation (mimicking the style and obsessions of specific analysts), and real-time in-call data retrieval. This segment bridges the corporate finance team and the IR team, recognising that earnings preparation is as much a finance function as a communications function. Generally subscription-based with enterprise custom pricing.
+      </p>
     </div>
   </div>
-</div>
 
-<hr class="divider">
-
-<!-- PEOPLE.AI -->
-<div class="section" id="people-ai">
-  <div class="section-eyebrow">Company Profile 05</div>
-  <h2>The Revenue Activity Intelligence Platform</h2>
-
-  <div class="company-card">
-    <div class="card-header">
-      <div class="card-title-block">
-        <div class="card-badge badge-enterprise">Revenue Intelligence</div>
-        <div class="card-name">People.ai</div>
-        <div class="card-tagline">San Francisco, CA · Founded 2016</div>
-      </div>
-      <div class="card-stats">
-        <div class="stat">
-          <span class="stat-value">$100M+</span>
-          <span class="stat-label">Total Raised</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value">$62.8M</span>
-          <span class="stat-label">ARR (2024)</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value">Zoom, IBM</span>
-          <span class="stat-label">Key Clients</span>
-        </div>
-      </div>
+  <div class="segment-row">
+    <div>
+      <span class="segment-tag seg-green">Segment 04</span>
+      <div class="segment-title">Transcript & Research Utilities</div>
+      <div class="segment-sub">Access-first, search-first, often freemium</div>
     </div>
-    <div class="card-body">
-      <div class="origin-block">
-        <div class="origin-label">What It Does</div>
-        <div class="origin-text">People.ai was founded in 2016 on a single premise: the data that CRMs contain is massively incomplete because salespeople don't have time to log everything they do. People.ai automatically captures every email, call, calendar event, and digital interaction and maps it to the correct Salesforce account and opportunity — no manual entry. It then analyzes this clean data to surface insights about deal health, engagement levels, and which activities correlate with wins.</div>
-      </div>
-
-      <div class="card-section-title">What Makes It Different</div>
-      <p>Where Gong focuses on the content of conversations (what was said), People.ai focuses on the <strong>activity layer</strong> — quantifying who is engaging with which accounts, how often, at what depth, and whether that level of engagement is consistent with winning patterns. It has processed 350 million sales activities, 40 million contacts, and data from $100 billion in closed deals, building a model of what "healthy" engagement looks like across industries.</p>
-      <p>It also serves a CRM accuracy function: because most Salesforce instances have severely degraded data (outdated contacts, missing activity logs), People.ai effectively auto-populates and maintains the CRM, making the entire downstream stack more reliable.</p>
-
-      <div class="card-section-title">Target Market</div>
-      <div class="pill-row">
-        <span class="pill">Enterprise B2B Sales (500+ seat)</span>
-        <span class="pill">Revenue Operations</span>
-        <span class="pill">Salesforce-heavy organizations</span>
-        <span class="pill">Technology Companies</span>
-        <span class="pill">Telecommunications</span>
-      </div>
+    <div class="segment-body">
+      <p>
+        Quartr, EarningsCall.ai, EarningsCall.biz, and Fiscal.ai (formerly FinChat) sit in this tier. They aggregate transcripts, filings, slides, and live call audio across thousands of public companies, with AI chat layered on top. Quartr covers 13,000+ companies across 27 markets, and its Pro platform is used by hedge funds, asset managers, and equity research desks for qualitative public-market research. EarningsCall.ai targets business strategy and enterprise sales teams for competitive and market intelligence. These are often the starting point for an IR team doing manual competitive research, but they lack preparation simulation, company-private document integration, and the workflow sophistication that comes with Segment 1 and 2 players.
+      </p>
     </div>
   </div>
-</div>
+</section>
 
-<hr class="divider">
+<!-- COMPANY PROFILES -->
+<section class="profiles-section" id="profiles">
+  <p class="section-label">Detailed Company Profiles</p>
+  <h2>Eight platforms, examined</h2>
+  <p>Profiles are drawn from vendor documentation, G2 reviews, Sacra ARR data, Gartner research, and industry reporting as of June 2026.</p>
 
-<!-- ONA PLATFORMS -->
-<div class="section" id="ona">
-  <div class="section-eyebrow">Company Profiles 06 & Adjacent</div>
-  <h2>Organizational Network Analysis: The Internal Intelligence Layer</h2>
-
-  <div class="company-card">
-    <div class="card-header">
-      <div class="card-title-block">
-        <div class="card-badge badge-people">People Analytics · ONA</div>
-        <div class="card-name">TrustSphere & Microsoft Viva Insights</div>
-        <div class="card-tagline">The organizational network analysis category</div>
-      </div>
-    </div>
-    <div class="card-body">
-      <p>While Introhive, Affinity, and Gong focus primarily on external relationships (clients, prospects, deals), a parallel industry has emerged around <strong>internal organizational intelligence</strong> — using the same email and calendar data to understand how knowledge flows within an organization.</p>
-
-      <div class="origin-block">
-        <div class="origin-label">TrustSphere</div>
-        <div class="origin-text">TrustSphere pioneered Relationship Analytics and Organizational Network Analysis (ONA) using enterprise communication data. By analyzing email metadata, it builds a firm's internal relationship graph — identifying hidden influencers, measuring collaboration health, spotting team isolation, and tracking diversity & inclusion dynamics. It measures "relationship capital" at the individual, team, and firm level. Use cases include identifying high-potential talent who are heavily networked but under-recognized, spotting onboarding bottlenecks, and understanding which leaders are actually connected to their teams vs. structurally isolated.</div>
-      </div>
-
-      <div class="origin-block" style="border-left-color: #059669;">
-        <div class="origin-label">Microsoft Viva Insights</div>
-        <div class="origin-text">Microsoft entered the ONA space by acquiring Workplace Analytics (originally LinkedIn's people analytics team) and folding it into Microsoft Viva. Because Microsoft owns the underlying email and calendar infrastructure (Microsoft 365), it has an inherent data advantage. Viva Insights can show managers: which teams are over-meeting, who is working outside hours, where collaboration is breaking down between departments, and how network centrality of employees relates to retention and performance. Priced at $48/user/year, it's the most accessible ONA tool available — but limited to the Microsoft ecosystem.</div>
-      </div>
-
-      <div class="card-section-title">Other ONA Players Worth Watching</div>
-      <div class="pill-row">
-        <span class="pill">Innovisor (hidden influencer mapping)</span>
-        <span class="pill">Polinode (custom network surveys)</span>
-        <span class="pill">HOW4 (European market)</span>
-        <span class="pill">Worklytics (400+ collaboration metrics)</span>
-      </div>
-
-      <div class="card-section-title">What ONA Surfaces That Nothing Else Does</div>
-      <p>ONA reveals the informal organization — the actual network of influence, communication, and knowledge-sharing that is completely invisible in the org chart. In a 50,000-person firm, there are typically a handful of "super-connectors" who bridge otherwise siloed departments. Identifying and retaining them is enormously valuable. ONA platforms find them using math (network centrality measures), not intuition.</p>
-    </div>
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+    <button class="filter-btn" onclick="filterCards('enterprise-intelligence', this)">Enterprise Intelligence</button>
+    <button class="filter-btn" onclick="filterCards('ir-ops', this)">IR Ops</button>
+    <button class="filter-btn" onclick="filterCards('finance-ai', this)">Finance AI</button>
+    <button class="filter-btn" onclick="filterCards('transcript', this)">Transcript & Research</button>
   </div>
-</div>
 
-<hr class="divider">
+  <div class="company-grid" id="companyGrid">
 
-<!-- LANDSCAPE MAP / COMPARISON TABLE -->
-<div class="section" id="landscape">
-  <div class="section-eyebrow">Landscape Overview</div>
-  <h2>How the Players Stack Up</h2>
-  <p>Each platform occupies a different position in the "untapped knowledge" spectrum. The key dimensions are: what data source they tap, what question they answer, and who buys them.</p>
+    <!-- AlphaSense -->
+    <div class="card reveal" data-segment="enterprise-intelligence">
+      <div class="card-header">
+        <div class="card-name-wrap">
+          <div class="card-name">AlphaSense</div>
+          <div class="card-tagline">AI market intelligence, 500M+ documents, $7.5B valuation</div>
+        </div>
+        <span class="card-badge" style="background:var(--gold-pale);color:var(--gold)">Enterprise Intel</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-label">What it is</div>
+        <p>The category leader in AI-powered market intelligence for financial services and corporate teams. Combines external content (earnings transcripts, SEC filings, broker research, expert interviews) with internal document search, all queried through generative AI. Acquired Tegus ($930M, 2024) for 240,000+ expert transcripts and Carousel (2025) for financial modelling. Reached $600M ARR and $7.5B valuation in June 2026.</p>
 
-  <div style="overflow-x:auto;">
-    <table class="compare-table">
+        <div class="card-section-label">Target Audience</div>
+        <p>Hedge funds, asset managers, private equity, investment banking, sell-side equity research, corporate strategy, and increasingly IR/investor relations teams. Used by 88% of the S&P 100 and 70% of the top 50 hedge funds.</p>
+
+        <div class="card-section-label">Earnings-Relevant Features</div>
+        <ul class="feature-list">
+          <li>Smart Summaries (auto-summaries of every earnings call)</li>
+          <li>Chat with Doc (Q&A on individual transcripts)</li>
+          <li>Generative Grid (cross-company earnings analysis)</li>
+          <li>Generative Search / Deep Research</li>
+          <li>Sector-level theme tracking</li>
+          <li>Competitor transcript analysis</li>
+          <li>Expert interview library (240K+ transcripts)</li>
+          <li>Channel Checks (AI-led expert interviews in real-time)</li>
+          <li>Sentiment analysis on filings & calls</li>
+          <li>Live Events (real-time earnings call monitoring)</li>
+        </ul>
+
+        <div class="card-section-label">What it lacks for corp IR prep</div>
+        <p>Built to help investors analyze companies, not companies prepare to speak. No script drafting, no Q&A simulation from the company's perspective, no MNPI-safe company document integration in the standard tier.</p>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="pricing-label">$12K–$100K+/yr per seat</div>
+          <div class="pricing-note">Custom enterprise quotes; median ~$18K/yr</div>
+        </div>
+        <span class="audience-tag" style="background:var(--gold-pale);color:var(--gold)">Buy-side primary</span>
+      </div>
+    </div>
+
+    <!-- Q4 Inc. -->
+    <div class="card reveal" data-segment="ir-ops">
+      <div class="card-header">
+        <div class="card-name-wrap">
+          <div class="card-name">Q4 Inc.</div>
+          <div class="card-tagline">IR operations platform with AI co-pilot for earnings</div>
+        </div>
+        <span class="card-badge" style="background:var(--teal-pale);color:var(--teal)">IR Ops</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-label">What it is</div>
+        <p>Q4 is the leading IR operations platform, unifying IR websites, earnings events, investor CRM, and market intelligence in one system. Its AI layer — branded "Q" (the IRO Agent) — sits across the entire platform and has access to the company's own transcripts, meeting notes, peer earnings, and ownership data simultaneously. Holds the largest institutional data repository in the market among IR platforms.</p>
+
+        <div class="card-section-label">Target Audience</div>
+        <p>IR departments at mid-to-large cap public companies globally. Used by companies that need to manage the full investor relations lifecycle, from earnings events to roadshows to analyst outreach. Strong in North America; expanding globally.</p>
+
+        <div class="card-section-label">Earnings-Relevant Features</div>
+        <ul class="feature-list">
+          <li>Earnings Co-Pilot (script drafting from proprietary data)</li>
+          <li>Peer Transcript Summaries</li>
+          <li>Analyst Q&A theme analysis (historical)</li>
+          <li>Post-earnings sentiment & trading behavior reports</li>
+          <li>Automated briefing books for roadshows</li>
+          <li>Investor behavior tracking (digital body language)</li>
+          <li>Earnings event hosting (99.9% uptime)</li>
+          <li>MNPI-safe data partitioning (SOC 2)</li>
+          <li>AI-ready schema markup for LLMs</li>
+        </ul>
+
+        <div class="card-section-label">Standout differentiator</div>
+        <p>Q4 is the only platform where the AI is trained on the company's own historical transcripts, peer signals, and CRM data simultaneously. IROs say this produces far more relevant answers than generic AI tools — with full MNPI security compliance.</p>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="pricing-label">Enterprise — undisclosed</div>
+          <div class="pricing-note">Annual contracts, relationship-based pricing</div>
+        </div>
+        <span class="audience-tag" style="background:var(--teal-pale);color:var(--teal)">Corporate IR teams</span>
+      </div>
+    </div>
+
+    <!-- Nasdaq IR Insight -->
+    <div class="card reveal" data-segment="ir-ops">
+      <div class="card-header">
+        <div class="card-name-wrap">
+          <div class="card-name">Nasdaq IR Insight</div>
+          <div class="card-tagline">Exchange-native IR intelligence platform with AI Assistant</div>
+        </div>
+        <span class="card-badge" style="background:var(--teal-pale);color:var(--teal)">IR Ops</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-label">What it is</div>
+        <p>Nasdaq's investor intelligence platform, built for public and pre-IPO companies. Differentiator is exchange-native data — Nasdaq feeds ownership and transaction data directly from exchange flows, 24 hours faster than third-party IR platforms that reconstruct from filings. The AI Assistant, launched in 2024, extends this with earnings-specific capabilities across peer transcripts and broker research.</p>
+
+        <div class="card-section-label">Target Audience</div>
+        <p>Growth-to-large-cap public companies, primarily post-IPO companies on Nasdaq or NYSE. IR teams that prioritise institutional shareholder surveillance and fast ownership change alerts.</p>
+
+        <div class="card-section-label">Earnings-Relevant Features</div>
+        <ul class="feature-list">
+          <li>Peer transcript comparison (up to 5 at once, 2yr history)</li>
+          <li>AI-generated broker note summaries (post-earnings)</li>
+          <li>Keyword-based competitor transcript search</li>
+          <li>Event interaction summaries (investor meetings)</li>
+          <li>Post-earnings trading & estimate revision tracking</li>
+          <li>Automated roadshow briefing books</li>
+          <li>Real-time ownership change alerts (exchange-speed)</li>
+          <li>AI Report Builder (upcoming)</li>
+        </ul>
+
+        <div class="card-section-label">What it lacks for corp IR prep</div>
+        <p>Strong post-earnings intelligence and competitive monitoring; weaker on pre-call script drafting, Q&A simulation, and historical promise-tracking from the company's own past calls.</p>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="pricing-label">Enterprise — undisclosed</div>
+          <div class="pricing-note">Typically part of Nasdaq exchange relationship</div>
+        </div>
+        <span class="audience-tag" style="background:var(--teal-pale);color:var(--teal)">Corporate IR teams</span>
+      </div>
+    </div>
+
+    <!-- Notified -->
+    <div class="card reveal" data-segment="ir-ops">
+      <div class="card-header">
+        <div class="card-name-wrap">
+          <div class="card-name">Notified</div>
+          <div class="card-tagline">Fortune 100 earnings event platform with Market Intelligence AI</div>
+        </div>
+        <span class="card-badge" style="background:var(--teal-pale);color:var(--teal)">IR Ops</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-label">What it is</div>
+        <p>Notified (by West Technology Group, which also owns GlobeNewswire) is trusted by 50% of the Fortune 100 for earnings event hosting. It occupies the premium end of earnings infrastructure: live webcasts, operator-assisted calls, regulatory filing orchestration, accessible IR websites. Its IR Hub centralises all of this with an AI-powered IR Assistant for earnings preparation.</p>
+
+        <div class="card-section-label">Target Audience</div>
+        <p>Large-cap public companies (especially Fortune 500) that need enterprise-grade earnings hosting, global multinational compliance, and hands-on service (Customer Experience Managers, 24/7 support, on-site specialists).</p>
+
+        <div class="card-section-label">Earnings-Relevant Features</div>
+        <ul class="feature-list">
+          <li>Market Intelligence (analyst question prep & competitive research)</li>
+          <li>AI-powered IR Assistant (earnings briefing, peer monitoring)</li>
+          <li>Post-earnings sentiment & investor reaction dashboards</li>
+          <li>Earnings webcast hosting (global, enterprise-grade)</li>
+          <li>Regulatory filing orchestration</li>
+          <li>GlobeNewswire press release distribution</li>
+          <li>AI citation monitoring (tracks if releases surface in ChatGPT/Claude)</li>
+          <li>Social media & media monitoring</li>
+        </ul>
+
+        <div class="card-section-label">Standout differentiator</div>
+        <p>Service model differentiates Notified. For companies running high-stakes global earnings, the combination of production team, 24/7 support, and compliance infrastructure is its own moat. The AI layer is newer and growing.</p>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="pricing-label">Enterprise — undisclosed</div>
+          <div class="pricing-note">Service + software bundled; relationship pricing</div>
+        </div>
+        <span class="audience-tag" style="background:var(--teal-pale);color:var(--teal)">Large-cap IR teams</span>
+      </div>
+    </div>
+
+    <!-- Irwin (FactSet) -->
+    <div class="card reveal" data-segment="ir-ops">
+      <div class="card-header">
+        <div class="card-name-wrap">
+          <div class="card-name">Irwin (FactSet)</div>
+          <div class="card-tagline">Mid-market IR CRM + AI summaries, now part of FactSet</div>
+        </div>
+        <span class="card-badge" style="background:var(--teal-pale);color:var(--teal)">IR Ops</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-label">What it is</div>
+        <p>Irwin was founded in 2017 in Toronto to address the mid-market gap between spreadsheet-based IR and expensive enterprise systems. Acquired by FactSet, it combines a shareholder CRM with AI-assisted investor targeting and, more recently, AI Summaries for meeting notes. The State of IR 2026 report (produced by Irwin) documents the profession's current AI adoption curve.</p>
+
+        <div class="card-section-label">Target Audience</div>
+        <p>Small-to-mid-cap public companies ($500M–$5B market cap) with dedicated but lean IR teams. Positioned as the accessible, affordable alternative to Q4 or Nasdaq IR Insight without sacrificing data quality through FactSet integration.</p>
+
+        <div class="card-section-label">Earnings-Relevant Features</div>
+        <ul class="feature-list">
+          <li>AI Summaries (auto-summarises investor meeting notes)</li>
+          <li>Shareholder CRM with relationship history</li>
+          <li>Investor targeting (AI-assisted fund matching)</li>
+          <li>Earnings transcripts & estimates (via FactSet data)</li>
+          <li>Roadshow itinerary builder & tear sheets</li>
+          <li>Board-ready shareholder reports</li>
+          <li>FactSet Mercury AI for data queries</li>
+        </ul>
+
+        <div class="card-section-label">What it lacks for corp IR prep</div>
+        <p>Strong on CRM and post-meeting intelligence; limited on competitive earnings transcript analysis, Q&A simulation, and sector intelligence for pre-call preparation. The FactSet integration is adding depth here.</p>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="pricing-label">Mid-market pricing</div>
+          <div class="pricing-note">Custom quotes; more accessible than Q4/Nasdaq</div>
+        </div>
+        <span class="audience-tag" style="background:var(--teal-pale);color:var(--teal)">Small-mid cap IR</span>
+      </div>
+    </div>
+
+    <!-- ChatFin -->
+    <div class="card reveal" data-segment="finance-ai">
+      <div class="card-header">
+        <div class="card-name-wrap">
+          <div class="card-name">ChatFin</div>
+          <div class="card-tagline">Finance AI platform with IR Q&A simulation &amp; script analysis</div>
+        </div>
+        <span class="card-badge" style="background:var(--violet-pale);color:var(--violet)">Finance AI</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-label">What it is</div>
+        <p>ChatFin is an AI-native finance platform originally built for CFO teams — connecting to ERPs, handling AP/AR, variance analysis, and FP&A automation. Its IR module extends this to earnings preparation, with a distinctive Q&A Simulator that mimics specific analyst questioning styles. The platform is AI-first and designed for finance teams that haven't historically had large IR budgets.</p>
+
+        <div class="card-section-label">Target Audience</div>
+        <p>CFO and finance teams at mid-market public companies. Also IR consultants and financial advisors who support multiple client companies. The IR module is most differentiated for companies that want simulation-grade preparation without enterprise IR platform cost.</p>
+
+        <div class="card-section-label">Earnings-Relevant Features</div>
+        <ul class="feature-list">
+          <li>Q&A Simulator (analyst-voice simulation)</li>
+          <li>Script analysis vs. peer transcripts ("synergy" over-use flagging)</li>
+          <li>Red Team mode (simulates named analyst questioning styles)</li>
+          <li>Real-time in-call data retrieval ("bionic CFO arm")</li>
+          <li>Language quality review (flags tentative phrasing)</li>
+          <li>ESG disclosure optimisation vs. rating agency criteria</li>
+          <li>Activist investor profile analysis</li>
+          <li>Competitor transcript comparison</li>
+        </ul>
+
+        <div class="card-section-label">Standout differentiator</div>
+        <p>The Red Team Simulation — ingesting 5 years of a specific analyst's questions and simulating their voice for preparation — is genuinely novel and not well-replicated elsewhere. The real-time in-call data retrieval concept positions it as a preparation + execution tool.</p>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="pricing-label">Subscription — custom</div>
+          <div class="pricing-note">Enterprise finance platform pricing</div>
+        </div>
+        <span class="audience-tag" style="background:var(--violet-pale);color:var(--violet)">CFO / Finance teams</span>
+      </div>
+    </div>
+
+    <!-- AlphaSense (Amenity Analytics via Symphony) -->
+    <div class="card reveal" data-segment="enterprise-intelligence">
+      <div class="card-header">
+        <div class="card-name-wrap">
+          <div class="card-name">Amenity Analytics</div>
+          <div class="card-tagline">NLP text analytics for earnings signals, now part of Symphony</div>
+        </div>
+        <span class="card-badge" style="background:var(--gold-pale);color:var(--gold)">Enterprise Intel</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-label">What it is</div>
+        <p>Founded 2015, Amenity Analytics was an AI-driven text analytics platform specialising in NLP-based signals from earnings calls, SEC filings, and unstructured financial text. It combined ML, sentiment analysis, and predictive analytics to build actionable trade signals. Acquired by Symphony (automation/workflow software) in November 2022.</p>
+
+        <div class="card-section-label">Target Audience</div>
+        <p>Originally hedge funds and institutional investors using earnings text for alpha generation. Post-acquisition, capabilities are being folded into Symphony's enterprise workflow automation products for financial services.</p>
+
+        <div class="card-section-label">Earnings-Relevant Features</div>
+        <ul class="feature-list">
+          <li>Sentiment analysis on earnings transcripts at scale</li>
+          <li>NLP signal extraction from Q&A sections</li>
+          <li>Predictive analytics from management language</li>
+          <li>Custom dataset construction from unstructured text</li>
+          <li>Trade signal generation from earnings text</li>
+        </ul>
+
+        <div class="card-section-label">Current status</div>
+        <p>As an acquired entity, Amenity's standalone product is no longer actively marketed. Its NLP capabilities are being absorbed into Symphony's broader financial workflow platform. Included here as a reference point for the NLP-signal-extraction approach.</p>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="pricing-label">Acquired — not standalone</div>
+          <div class="pricing-note">Now part of Symphony's enterprise suite</div>
+        </div>
+        <span class="audience-tag" style="background:var(--gold-pale);color:var(--gold)">Institutional investors</span>
+      </div>
+    </div>
+
+    <!-- Quartr -->
+    <div class="card reveal" data-segment="transcript">
+      <div class="card-header">
+        <div class="card-name-wrap">
+          <div class="card-name">Quartr</div>
+          <div class="card-tagline">AI infrastructure for qualitative public market research</div>
+        </div>
+        <span class="card-badge" style="background:var(--green-pale);color:var(--green)">Transcript & Research</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-label">What it is</div>
+        <p>Quartr describes itself as "AI infrastructure for company research" — providing real-time transcripts, live call audio, filings, slide decks, and AI chat across 13,000+ public companies in 27 markets. Free mobile app has made it popular with retail and professional investors; Quartr Pro is the institutional desktop tier; the API is used by 700+ financial institutions and AI companies globally.</p>
+
+        <div class="card-section-label">Target Audience</div>
+        <p>Retail investors (free mobile app), professional investors and equity research teams (Quartr Pro), IR departments (embeddable player for IR websites), and fintech / AI companies building on IR data (API). Broad reach across experience levels.</p>
+
+        <div class="card-section-label">Earnings-Relevant Features</div>
+        <ul class="feature-list">
+          <li>Live earnings call audio & transcription</li>
+          <li>AI chat across all IR material (cite-verified)</li>
+          <li>Full-text search across 13K+ company transcripts</li>
+          <li>Earnings call summaries & segments</li>
+          <li>Keyword search across all public companies simultaneously</li>
+          <li>Workspaces (drag-and-drop research with notes)</li>
+          <li>Analyst estimates & consensus data</li>
+          <li>API / webhooks for enterprise integration</li>
+        </ul>
+
+        <div class="card-section-label">What it lacks for corp IR prep</div>
+        <p>Quartr is a research consumption tool, not a preparation tool. No Q&A simulation, no company-internal document integration, no script drafting, no competitor positioning analysis from the company's perspective. Primarily serves the investor reading the call, not the company preparing for it.</p>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="pricing-label">Free app · Pro from ~$20/mo · API custom</div>
+          <div class="pricing-note">Most accessible pricing in this landscape</div>
+        </div>
+        <span class="audience-tag" style="background:var(--green-pale);color:var(--green)">Investors & IR teams</span>
+      </div>
+    </div>
+
+  </div><!-- /company-grid -->
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="table-section reveal" id="comparison">
+  <p class="section-label">Feature Comparison</p>
+  <h2>Capability matrix across the field</h2>
+  <p>Mapping 12 key capabilities against each platform, from the IR team's point of view — i.e. as a company preparing for an earnings call, not as an investor analyzing one.</p>
+  <div class="table-wrap">
+    <table>
       <thead>
         <tr>
-          <th>Company</th>
-          <th>Data Source</th>
-          <th>Core Question Answered</th>
-          <th>Primary Buyer</th>
-          <th>Best For</th>
+          <th>Capability</th>
+          <th>AlphaSense</th>
+          <th>Q4 Inc.</th>
+          <th>Nasdaq IR Insight</th>
+          <th>Notified</th>
+          <th>Irwin/FactSet</th>
+          <th>ChatFin</th>
+          <th>Quartr</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="company-col">Introhive</td>
-          <td>Email + Calendar metadata</td>
-          <td>"Who inside our firm knows this external contact — and how well?"</td>
-          <td>CMO / BD Leader</td>
-          <td>Large professional services firms (law, consulting, accounting)</td>
+          <td>Competitive earnings transcript analysis</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
         </tr>
         <tr>
-          <td class="company-col">Affinity</td>
-          <td>Email + Calendar + public co. data</td>
-          <td>"Who on our team has the best path to this deal or founder?"</td>
-          <td>Managing Partner / Deal Team</td>
-          <td>Smaller deal-intensive teams: VC, PE, IB, corp dev</td>
+          <td>Q&A simulation / analyst question prediction</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
         </tr>
         <tr>
-          <td class="company-col">Gong</td>
-          <td>Call recordings + email transcripts</td>
-          <td>"What are customers actually telling us, and which deals are at risk?"</td>
-          <td>VP Sales / RevOps</td>
-          <td>Enterprise B2B sales organizations</td>
+          <td>Specific analyst persona simulation</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
         </tr>
         <tr>
-          <td class="company-col">People.ai</td>
-          <td>Email + Calendar + CRM activity</td>
-          <td>"What activities are our reps actually doing, and are they correlated with wins?"</td>
-          <td>CRO / RevOps</td>
-          <td>Large Salesforce-centric revenue teams</td>
+          <td>Earnings script drafting</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
         </tr>
         <tr>
-          <td class="company-col">Glean</td>
-          <td>All enterprise apps (100+ connectors)</td>
-          <td>"Where is the answer to my question, anywhere in our entire organization?"</td>
-          <td>CIO / CHRO</td>
-          <td>Any large enterprise with fragmented knowledge tools</td>
+          <td>Historical promise / guidance tracking (own calls)</td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
         </tr>
         <tr>
-          <td class="company-col">TrustSphere / Viva</td>
-          <td>Email + Calendar metadata</td>
-          <td>"How does knowledge actually flow internally, and who are our hidden influencers?"</td>
-          <td>CHRO / People Analytics</td>
-          <td>HR-driven transformation and change management programs</td>
+          <td>Sector intelligence (how sector is moving)</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="partial">Partial</span></td>
+        </tr>
+        <tr>
+          <td>Internal document / private data integration</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td>MNPI-safe / enterprise security</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td>Investor targeting / shareholder CRM</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td>Post-earnings sentiment / market reaction analysis</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td>Live earnings call infrastructure</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Accessible for mid/small-cap companies</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
         </tr>
       </tbody>
     </table>
   </div>
+</section>
 
-  <div class="highlight-box" style="margin-top:32px;">
-    <h3>The Common Thread: The Data Was Always There</h3>
-    <p>Every company in this landscape is monetizing data that organizations already possess but couldn't use. None of them ask organizations to change what they do — they observe what already happens.</p>
-    <ul>
-      <li>Introhive doesn't ask partners to update a CRM. It reads their sent folder.</li>
-      <li>Gong doesn't ask reps to take better notes. It records the call.</li>
-      <li>Glean doesn't ask employees to build a knowledge base. It indexes what they already create.</li>
-      <li>People.ai doesn't ask reps to log activities. It captures them automatically.</li>
-    </ul>
-    <p style="margin-top:12px;">This "zero behavior change" architecture is the key design principle of the entire category. The value is unlocked by removing the human as the data entry point.</p>
-  </div>
-</div>
+<!-- GAP ANALYSIS -->
+<section class="gap-section reveal" id="gaps">
+  <p class="section-label">White Space Analysis</p>
+  <h2>What the market has not built yet</h2>
+  <p>These are the gaps that persist across every existing platform — the capabilities that don't exist today at any price point, or exist in fragmented form without being unified into a single preparation workflow.</p>
 
-<hr class="divider">
+  <div class="gap-grid">
+    <div class="gap-card gap-highlight">
+      <div class="gap-icon">🎯</div>
+      <h3>True Hypercontextualisation from the company's side</h3>
+      <p>No platform simultaneously combines (1) the company's own historical transcripts and internal reports, (2) real-time sector intelligence, (3) competitor earnings Q&A from the same quarter, and (4) what specific commitments management made in prior calls — all in a single preparation session. Q4 comes closest but is infrastructure-heavy and large-cap focused.</p>
+    </div>
 
-<!-- WHITE SPACE / OPPORTUNITIES -->
-<div class="section" id="opportunities">
-  <div class="section-eyebrow">White Space Analysis</div>
-  <h2>Where the Next Wave of Opportunity Lies</h2>
-  <p>The category is maturing in some areas (professional services relationship intelligence is well-served) but wide open in others. Here is where the frontier sits in 2026:</p>
+    <div class="gap-card gap-highlight">
+      <div class="gap-icon">🔁</div>
+      <h3>Historical Promise & Guidance Tracking</h3>
+      <p>"In Q3 2023 you said margins would recover by H1 2025 — they haven't. Why?" No existing platform surfaces this systematically for the company preparing to answer it. Investors track these inconsistencies; the company often does not have a tool that does the same job from the inside looking out.</p>
+    </div>
 
-  <div class="opp-grid">
-    <div class="opp-card">
-      <div class="opp-icon">🏭</div>
-      <div class="opp-title">Non-Professional Services Verticals</div>
-      <div class="opp-desc">Introhive owns law and accounting. But healthcare systems, government agencies, large manufacturing conglomerates, and universities all have the same "who knows whom" problem — and almost no one has built for them specifically.</div>
+    <div class="gap-card gap-highlight">
+      <div class="gap-icon">🏭</div>
+      <h3>Sector-level macro intelligence synthesised for call prep</h3>
+      <p>Sector context — regulatory shifts, commodity cycles, technology adoption, supply chain developments — is available in AlphaSense and FactSet but not synthesised automatically as call context. IR teams still manually research "how has the sector moved since last quarter?" before each call. An AI that auto-generates a sector briefing matched to a company's call calendar doesn't yet exist.</p>
     </div>
-    <div class="opp-card">
-      <div class="opp-icon">🔗</div>
-      <div class="opp-title">Cross-Organizational Relationship Graphs</div>
-      <div class="opp-desc">Today's platforms map relationships within a firm. The next frontier is mapping relationships across partner ecosystems — knowing that your firm's network overlaps with a channel partner's network in a specific region or vertical.</div>
-    </div>
-    <div class="opp-card">
-      <div class="opp-icon">🧠</div>
-      <div class="opp-title">Expertise Location at Scale</div>
-      <div class="opp-desc">"Who inside our 80,000-person firm has deep expertise in ESG regulation in Southeast Asia?" This question is currently unanswerable in most organizations. Expertise graphs — built from document authorship, meeting participation, and past project data — are an enormous unsolved space.</div>
-    </div>
-    <div class="opp-card">
-      <div class="opp-icon">🌐</div>
-      <div class="opp-title">Emerging Market Deployments</div>
-      <div class="opp-desc">All the major players are US/EU-headquartered with US-first go-to-market. Large conglomerates in India, the Middle East, and Southeast Asia have equally complex relationship networks and almost no purpose-built tools serving them.</div>
-    </div>
-    <div class="opp-card">
-      <div class="opp-icon">🤝</div>
-      <div class="opp-title">Alumni & Extended Network Intelligence</div>
-      <div class="opp-desc">Introhive has introduced alumni tracking, but the broader category of "people who used to work here" as a relationship asset is underdeveloped. Former employees often become clients, referral sources, or partners — and their connections are almost never systematically mapped.</div>
-    </div>
-    <div class="opp-card">
-      <div class="opp-icon">⚡</div>
-      <div class="opp-title">Agentic Intelligence — Proactive, not Reactive</div>
-      <div class="opp-desc">The current generation of tools are search interfaces — you have to know to look something up. The next wave is AI agents that proactively surface the insight you need, at the moment you need it, without being asked. "You have a meeting with Company X tomorrow — your colleague Sarah spoke to their CFO 3 weeks ago. Do you want me to book a 15-min brief?"</div>
-    </div>
-  </div>
 
-  <div class="market-map" style="margin-top:32px;">
-    <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px;">Market Size Context</div>
-    <p style="font-size:13px;color:#6B7280;margin-bottom:16px;">The macro market numbers behind the opportunity.</p>
-    <div class="map-grid">
-      <div class="map-cell highlight">
-        <div class="map-cell-label">Graph Analytics</div>
-        <div class="map-cell-title">$2.3B → $11.3B by 2030</div>
-        <p>30.4% CAGR. The underlying infrastructure that powers relationship and knowledge graphs is growing explosively as AI makes graph-based reasoning tractable.</p>
-      </div>
-      <div class="map-cell">
-        <div class="map-cell-label">Network Analytics</div>
-        <div class="map-cell-title">$1.1B in 2025</div>
-        <p>15.7% CAGR through 2033. Network analytics as a sub-category, covering both ONA and external relationship mapping tools.</p>
-      </div>
-      <div class="map-cell">
-        <div class="map-cell-label">Revenue Intelligence</div>
-        <div class="map-cell-title">$3.4B projected by 2024</div>
-        <p>The broader sales intelligence and revenue intelligence category, which Gong and People.ai sit within, has been one of the fastest-growing software categories of the past decade.</p>
-      </div>
-      <div class="map-cell">
-        <div class="map-cell-label">Enterprise Search / Knowledge</div>
-        <div class="map-cell-title">Glean at $7.2B valuation</div>
-        <p>The broader enterprise knowledge management market is massive — and AI has dramatically expanded what's possible, pulling significant investment into this previously stagnant category.</p>
-      </div>
+    <div class="gap-card">
+      <div class="gap-icon">🎙️</div>
+      <h3>Real-time in-call AI assistance at the CFO level</h3>
+      <p>ChatFin conceptualises "real-time data retrieval during the call" but this remains largely theoretical in practice. No platform has achieved production-grade, latency-acceptable AI assistance that surfaces the right data point when an analyst asks an unexpected question live on the call.</p>
+    </div>
+
+    <div class="gap-card">
+      <div class="gap-icon">💼</div>
+      <h3>Mid-market company access at realistic price points</h3>
+      <p>The best platforms (AlphaSense, Q4) are priced for large-cap companies with large IR budgets. A NASDAQ-listed ₹500cr to ₹5,000cr company, or a BSE mid-cap company, cannot access $50K/yr tools. The mid-market remains grossly underserved by AI earnings preparation tools.</p>
+    </div>
+
+    <div class="gap-card">
+      <div class="gap-icon">🌏</div>
+      <h3>Non-US / non-NYSE market coverage</h3>
+      <p>The entire market is US-centric. Indian listed companies (BSE/NSE), Southeast Asian, Middle Eastern, and African listed companies are almost completely absent from all these platforms' data coverage. A platform native to these markets — with SEBI regulations, Indian sector dynamics, NSE/BSE earnings call formats — does not exist.</p>
+    </div>
+
+    <div class="gap-card">
+      <div class="gap-icon">🤝</div>
+      <h3>Revenue team + IR collaboration in one tool</h3>
+      <p>The market treats IR preparation as an IR-department problem. In reality, the revenue team spends weeks gathering competitive intelligence and market context for the call. No platform serves both functions — the investor-facing narrative (IR) and the market intelligence input layer (revenue / strategy team) — in a single integrated workflow.</p>
+    </div>
+
+    <div class="gap-card">
+      <div class="gap-icon">📊</div>
+      <h3>Sector peer benchmarking on non-financial KPIs</h3>
+      <p>Analysts ask about operational metrics, ESG metrics, technology investment ratios, and sector-specific KPIs that vary by industry. No platform systematically benchmarks a company against peers on these non-standard metrics as part of earnings prep — only on standard financial ratios.</p>
     </div>
   </div>
-</div>
+</section>
 
-<hr class="divider">
-
-<!-- CLOSING -->
-<div class="section">
-  <div class="section-eyebrow">Synthesis</div>
-  <h2>What This All Means</h2>
-  <p>The companies in this study collectively represent a fundamental shift in how large organizations think about knowledge. For most of corporate history, institutional knowledge walked out the door when people left, sat dormant in inboxes, or simply never got captured at all. The insight these companies share is that the data to change that has always existed — it just needed to be observed, organized, and surfaced intelligently.</p>
-  <p>Introhive proved this in professional services. Gong proved it in sales. Glean is proving it in enterprise-wide knowledge access. The category is real, it's growing fast, and — most interestingly — it remains fragmented by vertical and use case. A platform that unifies relationship intelligence, conversation intelligence, expertise location, and organizational network analysis into a single, industry-specific product for a market that today's players haven't prioritized could be genuinely differentiated.</p>
-  <p>The "untapped knowledge" problem is not solved. It has barely been started.</p>
-</div>
-
-</div><!-- end body -->
-
-<!-- =====================================================
-     SOLUTION CLUSTERS — Part II of the report
-     ===================================================== -->
-
-<div id="solutions">
-
-  <!-- Solutions Cover -->
-  <div class="solutions-cover">
-    <div class="solutions-cover-inner">
-      <div class="solutions-cover-label">Part II · Product Brainstorm · 28 Ideas Across 7 Clusters</div>
-      <h2>Building in the<br><em>Untapped Knowledge</em> Space</h2>
-      <p class="solutions-cover-sub">Every idea below follows one non-negotiable constraint: zero additional friction for employees. No uploading, no tagging, no data entry. The intelligence is captured passively from systems that already exist.</p>
-      <div class="solutions-cluster-nav">
-        <a href="#sc-relationship" class="scn-pill">01 · Relationship Intelligence</a>
-        <a href="#sc-expertise" class="scn-pill">02 · Expertise Location</a>
-        <a href="#sc-ona" class="scn-pill">03 · Org Network Analysis</a>
-        <a href="#sc-conversation" class="scn-pill">04 · Conversation Intelligence</a>
-        <a href="#sc-crosssell" class="scn-pill">05 · Cross-Sell Intelligence</a>
-        <a href="#sc-data" class="scn-pill">06 · Data Quality & CRM</a>
-        <a href="#sc-vertical" class="scn-pill">07 · Vertical-Specific Plays</a>
-      </div>
-    </div>
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Earnings Intelligence · Market Research 2026</div>
+    <p class="footer-note">This research was compiled from vendor documentation, G2 reviews, Sacra revenue data, Gartner Magic Quadrant reports, Irwin State of IR 2026, and verified press coverage. All data is as of June 2026. Company valuations, ARR figures, and product features are subject to change.</p>
   </div>
-
-  <!-- ── CLUSTER 01: RELATIONSHIP INTELLIGENCE ── -->
-  <div class="cluster-page c-relationship" id="sc-relationship">
-    <div class="cluster-page-header">
-      <div class="cluster-page-number">01</div>
-      <div class="cluster-page-meta">
-        <div class="cluster-page-eyebrow">Solution Cluster 01 of 07</div>
-        <div class="cluster-page-title">Relationship Intelligence — Who knows whom, made visible</div>
-        <p class="cluster-page-desc">Mine email and calendar metadata to build a live relationship graph across the entire organization. The data already exists in email servers — it just needs to be observed, not created.</p>
-        <span class="cluster-friction-note friction-zero">● Zero employee friction · Data source: Email &amp; Calendar metadata</span>
-      </div>
-    </div>
-    <div class="cluster-ideas">
-      <div class="idea-block">
-        <div class="idea-block-num">01 / A</div>
-        <div class="idea-block-name">Warm Path Finder</div>
-        <div class="idea-block-hook">"Who in our 10,000-person firm already knows this prospect?"</div>
-        <div class="idea-block-detail">Connect to email and calendar metadata via Microsoft Graph or Google Workspace APIs. Build a continuously updated relationship strength graph for every external contact — scored by recency, frequency, and reciprocity. When a partner wants to reach a target, they type a name and instantly see the strongest warm path through colleagues. No CRM update required. No manual tagging. The sent folder does the work.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Microsoft Graph API</span>
-          <span class="idea-tag source-tag">Google Workspace API</span>
-          <span class="idea-tag">Graph database</span>
-          <span class="idea-tag">CRM overlay</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">01 / B</div>
-        <div class="idea-block-name">Relationship Health Dashboard</div>
-        <div class="idea-block-hook">"Which client relationships are going cold — right now, before it's too late?"</div>
-        <div class="idea-block-detail">Track the recency, frequency, and reciprocity of communications with every external contact continuously. Flag accounts where interaction has declined relative to baseline — surfacing churn risk weeks before it becomes visible in any CRM report. Entirely built from passive observation. No rep interaction needed. Integrated directly into account management workflows as a live health score per client.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email metadata</span>
-          <span class="idea-tag source-tag">Calendar metadata</span>
-          <span class="idea-tag">Proactive alerts</span>
-          <span class="idea-tag">Account health scoring</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">01 / C</div>
-        <div class="idea-block-name">Meeting Intelligence Layer</div>
-        <div class="idea-block-hook">"Which of our people attended an event with this contact — and when?"</div>
-        <div class="idea-block-detail">Beyond emails, index calendar invites to map physical and virtual meeting history across the firm. Captures what email logs miss: conference attendance, roundtable participation, client dinners. Particularly valuable for professional services where "someone met them at a sector conference" is significant relationship signal that currently evaporates. Calendar metadata only — no content read, no privacy concern.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Calendar metadata only</span>
-          <span class="idea-tag">Conference tracking</span>
-          <span class="idea-tag">BD intelligence</span>
-          <span class="idea-tag">Zero content access</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">01 / D</div>
-        <div class="idea-block-name">Alumni Network Tracker</div>
-        <div class="idea-block-hook">"Your ex-employees are now clients, partners, or your best referrers."</div>
-        <div class="idea-block-detail">When employees leave the organization, enrich their departure records using LinkedIn data APIs to track where they land over time. Build a live alumni intelligence layer: which former colleagues are now decision-makers at target accounts? Which have become ecosystem partners? Trigger warm outreach recommendations when an alumnus reaches a relevant seniority milestone. This network grows with every person who ever worked at the firm.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">LinkedIn enrichment</span>
-          <span class="idea-tag source-tag">HR offboarding data</span>
-          <span class="idea-tag">Job change signals</span>
-          <span class="idea-tag">Referral networks</span>
-        </div>
-      </div>
-    </div>
+  <div class="footer-right">
+    Prepared for internal use<br/>
+    sarvagyasinghs.com<br/>
+    June 2026
   </div>
+</footer>
 
-  <div class="cluster-strip"></div>
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07 });
+  reveals.forEach(el => observer.observe(el));
 
-  <!-- ── CLUSTER 02: EXPERTISE LOCATION ── -->
-  <div class="cluster-page c-expertise" id="sc-expertise">
-    <div class="cluster-page-header">
-      <div class="cluster-page-number">02</div>
-      <div class="cluster-page-meta">
-        <div class="cluster-page-eyebrow">Solution Cluster 02 of 07</div>
-        <div class="cluster-page-title">Expertise Location — Find who knows what, not just who knows whom</div>
-        <p class="cluster-page-desc">Email subjects, meeting titles, document authorship, and project participation signal expertise far more accurately than any self-reported skills profile. The organization already knows who its experts are — it just can't see it.</p>
-        <span class="cluster-friction-note friction-zero">● Zero employee friction · Data source: Email metadata, Documents, Calendar titles</span>
-      </div>
-    </div>
-    <div class="cluster-ideas">
-      <div class="idea-block">
-        <div class="idea-block-num">02 / A</div>
-        <div class="idea-block-name">Internal Expertise Graph</div>
-        <div class="idea-block-hook">"Who in our 50,000-person firm has deep expertise in Vietnamese tax law?"</div>
-        <div class="idea-block-detail">Analyze email subject lines, calendar meeting titles, document co-authorship via SharePoint and Google Drive APIs, and project tags from tools like Jira or Asana. Build a continuously updated expertise map without any employee needing to fill out a profile. Topic modeling (LDA, BERTopic) clusters signals into subject areas. The system surfaces hidden experts across the firm — people who are deeply knowledgeable but whose expertise is invisible to leadership and BD teams.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email subjects</span>
-          <span class="idea-tag source-tag">SharePoint / Drive metadata</span>
-          <span class="idea-tag">Topic modeling · NLP</span>
-          <span class="idea-tag">Zero profile setup</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">02 / B</div>
-        <div class="idea-block-name">Proposal & Pitch Reuse Engine</div>
-        <div class="idea-block-hook">"Stop writing proposals that already exist somewhere in the firm."</div>
-        <div class="idea-block-detail">Index documents stored in shared drives (SharePoint, Google Drive, network drives) by industry, topic, and client type using semantic vector embeddings. When a team starts building a new proposal, surface highly relevant past proposals authored by colleagues — with contact details for the author. No uploading required. No tagging required. The document library already exists; it just isn't searchable in any meaningful way today.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">SharePoint API</span>
-          <span class="idea-tag source-tag">Google Drive API</span>
-          <span class="idea-tag">Vector search · Embeddings</span>
-          <span class="idea-tag">Knowledge reuse</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">02 / C</div>
-        <div class="idea-block-name">Meeting Knowledge Extraction</div>
-        <div class="idea-block-hook">"Every team meeting generates institutional knowledge. Almost none gets captured."</div>
-        <div class="idea-block-detail">With team-level consent and a simple one-time opt-in per meeting series, transcribe recurring internal meetings — sector calls, practice group syncs, client debriefs. Extract structured knowledge: decisions made, client mentions, market insights, names of relevant experts. Store as searchable, attributed intelligence rather than raw recordings. New hires can search six months of sector team calls and get up to speed in hours instead of months.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Teams / Zoom transcripts</span>
-          <span class="idea-tag">One-time team opt-in</span>
-          <span class="idea-tag">Knowledge graph</span>
-          <span class="idea-tag">NLP extraction</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">02 / D</div>
-        <div class="idea-block-name">Dynamic Skill Directory</div>
-        <div class="idea-block-hook">"Replace the stale org chart bio with a live picture of what people actually work on."</div>
-        <div class="idea-block-detail">Infer skills, industries, and topic expertise continuously from emails sent, meetings attended, documents authored, and project assignments — without anyone filling in a profile field. As work patterns evolve, the directory updates automatically. Unlike traditional "yellow pages" directories that require annual manual updates and are immediately out of date, this one is always current because it's derived from actual work activity rather than self-reported data.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email + calendar + project tools</span>
-          <span class="idea-tag">Jira / Asana API</span>
-          <span class="idea-tag">Skills inference</span>
-          <span class="idea-tag">People search</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cluster-strip"></div>
-
-  <!-- ── CLUSTER 03: ONA ── -->
-  <div class="cluster-page c-ona" id="sc-ona">
-    <div class="cluster-page-header">
-      <div class="cluster-page-number">03</div>
-      <div class="cluster-page-meta">
-        <div class="cluster-page-eyebrow">Solution Cluster 03 of 07</div>
-        <div class="cluster-page-title">Organizational Network Analysis — The invisible organization, made visible</div>
-        <p class="cluster-page-desc">The org chart is a legal fiction. The actual organization is a communication network — and that network reveals silos, burnout risk, hidden influencers, and knowledge bottlenecks that no management dashboard can see.</p>
-        <span class="cluster-friction-note friction-zero">● Zero employee friction · Data source: Email &amp; Calendar metadata (no content read)</span>
-      </div>
-    </div>
-    <div class="cluster-ideas">
-      <div class="idea-block">
-        <div class="idea-block-num">03 / A</div>
-        <div class="idea-block-name">Collaboration Health Monitor</div>
-        <div class="idea-block-hook">"Which teams are completely siloed? Which are burning out from over-connection?"</div>
-        <div class="idea-block-detail">Map intra-organizational communication patterns from email and calendar metadata alone — no content access required. Identify teams that never communicate with adjacent departments (dangerous silos), teams whose meeting load has expanded beyond sustainable levels (burnout precursors), and individuals whose communication centrality is far above their grade level (flight risk or promotion candidate). Surface as a live collaboration health score for each department and cross-functional pair.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email metadata</span>
-          <span class="idea-tag source-tag">Calendar metadata</span>
-          <span class="idea-tag">Silo detection</span>
-          <span class="idea-tag">Burnout signals</span>
-          <span class="idea-tag">HR analytics</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">03 / B</div>
-        <div class="idea-block-name">Hidden Influencer Mapper</div>
-        <div class="idea-block-hook">"The most influential person in the organization is rarely the most senior one."</div>
-        <div class="idea-block-detail">Apply network centrality measures — betweenness centrality, eigenvector centrality, and bridge scores — to the email communication graph. Identify employees who are critical connectors between otherwise separate groups: the person in Legal who everyone in Sales calls before a deal closes, or the analyst in Finance who bridges the strategy team to operations. These "super-connectors" disproportionately affect retention, change adoption, and organizational agility. Losing them is catastrophic. Finding them first is the goal.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email metadata</span>
-          <span class="idea-tag">Network centrality · Graph math</span>
-          <span class="idea-tag">Change management</span>
-          <span class="idea-tag">Retention intelligence</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">03 / C</div>
-        <div class="idea-block-name">Onboarding Network Accelerator</div>
-        <div class="idea-block-hook">"A new hire's first-year performance correlates directly with how fast they build their internal network."</div>
-        <div class="idea-block-detail">Track the velocity at which new hires are building cross-functional connections in their first 30, 60, and 90 days. Compare against the network growth trajectory of high-performing cohorts from previous years. Identify new hires who are network-isolated at day 45 — before the isolation calcifies — and trigger automated nudges to managers with specific colleague introduction recommendations. The new hire does nothing differently; the system observes and alerts.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email + calendar metadata</span>
-          <span class="idea-tag">90-day cohort benchmarking</span>
-          <span class="idea-tag">Manager nudges</span>
-          <span class="idea-tag">Onboarding analytics</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">03 / D</div>
-        <div class="idea-block-name">M&A Integration Intelligence</div>
-        <div class="idea-block-hook">"Are the two organizations actually merging — or just sharing a logo and a building?"</div>
-        <div class="idea-block-detail">After an acquisition, the most important question is whether the organizations are truly integrating at the human level — and it almost never gets answered with data. By tracking cross-organization communication patterns over time (which requires only email metadata access from both entities), build a real-time integration health score. Are acquired-company employees emailing acquirer colleagues? Are joint meetings being scheduled? Or are the two organizations operating as parallel silos 18 months post-close? Give the integration management office a live dashboard instead of quarterly surveys.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email metadata (both orgs)</span>
-          <span class="idea-tag source-tag">Calendar metadata</span>
-          <span class="idea-tag">Integration health score</span>
-          <span class="idea-tag">M&amp;A leadership reporting</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cluster-strip"></div>
-
-  <!-- ── CLUSTER 04: CONVERSATION INTELLIGENCE ── -->
-  <div class="cluster-page c-conversation" id="sc-conversation">
-    <div class="cluster-page-header">
-      <div class="cluster-page-number">04</div>
-      <div class="cluster-page-meta">
-        <div class="cluster-page-eyebrow">Solution Cluster 04 of 07</div>
-        <div class="cluster-page-title">Conversation Intelligence — Capture what's said in client interactions</div>
-        <p class="cluster-page-desc">Client calls and meetings generate enormous intelligence. With consent-based capture, that intelligence becomes institutional and searchable — rather than evaporating the moment the call ends.</p>
-        <span class="cluster-friction-note friction-low">◐ Low friction · One-time consent required · Data source: Call recordings, email signals</span>
-      </div>
-    </div>
-    <div class="cluster-ideas">
-      <div class="idea-block">
-        <div class="idea-block-num">04 / A</div>
-        <div class="idea-block-name">Client Conversation Memory</div>
-        <div class="idea-block-hook">"What exactly did we discuss with this client across the last six months?"</div>
-        <div class="idea-block-detail">With explicit consent from both parties and a consent flow built into the meeting invitation, transcribe client calls and extract structured records: topics discussed, commitments made, concerns raised, next steps agreed. Store as searchable, attributed records linked to the client account — not as raw audio, not as verbatim transcripts. When a new team member is assigned to an account, they can read six months of client conversation summaries in 20 minutes rather than scheduling six separate briefing calls.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Recorded calls (consent-required)</span>
-          <span class="idea-tag">NLP extraction</span>
-          <span class="idea-tag">CRM integration</span>
-          <span class="idea-tag">Account memory</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">04 / B</div>
-        <div class="idea-block-name">Commitment Tracker</div>
-        <div class="idea-block-hook">"How many client commitments fall through the cracks every week because no one tracked them?"</div>
-        <div class="idea-block-detail">Extract "commitment language" automatically from call transcripts and email threads: "we'll send you X by Friday", "I'll follow up on the proposal by end of month", "let's schedule a follow-up call within two weeks." Convert these into tracked action items without anyone manually logging them. Approach deadline without a completion signal? Trigger an alert to the responsible party. This is especially high-value in professional services where commitments made in partner-level conversations often bypass standard project management workflows entirely.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email signals</span>
-          <span class="idea-tag source-tag">Call transcripts</span>
-          <span class="idea-tag">NLP · Commitment extraction</span>
-          <span class="idea-tag">Action item tracking</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">04 / C</div>
-        <div class="idea-block-name">Client Sentiment Tracker</div>
-        <div class="idea-block-hook">"Are your clients actually happy — or just not complaining yet?"</div>
-        <div class="idea-block-detail">Analyze patterns in email threads with key clients over time — response lag, message length, tone indicators, frequency of initiated contact. Detect early signals of relationship degradation: declining response rates, shorter replies, reduced inbound reach-outs. Surface these as client health signals weeks before a formal concern is raised. Critically, this can be built from email metadata and basic linguistic signals without reading full email content — keeping privacy intact while still generating meaningful sentiment trend data.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email metadata + basic signals</span>
-          <span class="idea-tag">Sentiment trend analysis</span>
-          <span class="idea-tag">Churn prediction</span>
-          <span class="idea-tag">Client health scoring</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">04 / D</div>
-        <div class="idea-block-name">Pre-Meeting Intelligence Brief</div>
-        <div class="idea-block-hook">"Walk into every client meeting fully prepared — automatically, without asking."</div>
-        <div class="idea-block-detail">15 minutes before any calendar event involving an external participant, auto-generate and push a briefing document to each attendee: last contact date across the firm, which colleagues know this person and how well, past commitments still open, recent news about the client's company, and any relevant context from past meetings. Delivered to their calendar or inbox without anyone requesting it. Zero friction — the calendar event already exists, the system simply enriches the moment before it happens.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Calendar metadata</span>
-          <span class="idea-tag source-tag">Email metadata</span>
-          <span class="idea-tag">News APIs</span>
-          <span class="idea-tag">Fully automated push</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cluster-strip"></div>
-
-  <!-- ── CLUSTER 05: CROSS-SELL INTELLIGENCE ── -->
-  <div class="cluster-page c-crosssell" id="sc-crosssell">
-    <div class="cluster-page-header">
-      <div class="cluster-page-number">05</div>
-      <div class="cluster-page-meta">
-        <div class="cluster-page-eyebrow">Solution Cluster 05 of 07</div>
-        <div class="cluster-page-title">Cross-Sell Intelligence — Find growth hiding inside existing client relationships</div>
-        <p class="cluster-page-desc">In large professional services firms, the largest untapped revenue opportunity is almost always cross-selling to existing clients — but no one knows what the rest of the firm is already doing with them.</p>
-        <span class="cluster-friction-note friction-zero">● Zero employee friction · Data source: Email metadata, CRM, service line data</span>
-      </div>
-    </div>
-    <div class="cluster-ideas">
-      <div class="idea-block">
-        <div class="idea-block-num">05 / A</div>
-        <div class="idea-block-name">Account White-Space Mapper</div>
-        <div class="idea-block-hook">"Which services are we not selling to our top 100 clients — and why not?"</div>
-        <div class="idea-block-detail">Combine service line billing data, email communication patterns between firm professionals and client contacts, and CRM data to build a comprehensive map of every client relationship across the whole firm. For each major account, render which practices are actively engaged, which have had recent contact but no billing relationship, and which have zero touchpoint history. The white-space — areas of clear relevance where the firm has no relationship at all — becomes a prioritized revenue opportunity list requiring no manual analysis.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email metadata</span>
-          <span class="idea-tag source-tag">Billing / CRM data</span>
-          <span class="idea-tag">White-space analysis</span>
-          <span class="idea-tag">Revenue growth</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">05 / B</div>
-        <div class="idea-block-name">Internal Referral Network</div>
-        <div class="idea-block-hook">"Partners are sitting on cross-sell opportunities they don't even know they have."</div>
-        <div class="idea-block-detail">When Partner A in Tax is regularly communicating with a client company, and that same company is also a prospect for Partner B's Strategy practice — neither partner necessarily knows the other's activity. Surface these overlaps automatically. Enable warm, verified internal introductions between practice areas using actual communication data rather than guesswork. Measure and report cross-practice referral activity as a firm-health metric, creating accountability and recognition for partners who actively facilitate introductions.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email metadata</span>
-          <span class="idea-tag source-tag">CRM + org data</span>
-          <span class="idea-tag">Cross-sell triggers</span>
-          <span class="idea-tag">Partner recognition</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">05 / C</div>
-        <div class="idea-block-name">Industry Relationship Capital Report</div>
-        <div class="idea-block-hook">"How deep is our firm's real network in the infrastructure sector — measured in actual relationships, not names on a list?"</div>
-        <div class="idea-block-detail">For any industry vertical, geography, or target segment, produce a comprehensive report showing the firm's aggregate relationship strength: total active contacts, seniority distribution, recency of last engagement, which offices are most connected, and relationship density vs. competitors (inferred from public data enrichment). Give business development leaders a data-driven picture of where they genuinely have relationship depth vs. where they need to invest — without anyone manually auditing their Rolodex.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email metadata</span>
-          <span class="idea-tag source-tag">Contact enrichment APIs</span>
-          <span class="idea-tag">BD strategy</span>
-          <span class="idea-tag">Market coverage mapping</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">05 / D</div>
-        <div class="idea-block-name">Deal Timing Signal Engine</div>
-        <div class="idea-block-hook">"When is the optimal moment to reach out to a lapsed client or new prospect?"</div>
-        <div class="idea-block-detail">Combine communication history analysis with real-time external signals — leadership changes at target companies, funding rounds, regulatory shifts, earnings announcements, M&amp;A news — to trigger outreach recommendations precisely when a client is most likely to be receptive. Example: "Your contact at Company X was just appointed CFO. Your colleague Sarah has a strong relationship with them. This is the highest-value outreach opportunity this month." Push to the relevant partner in the morning briefing. No searching required.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email metadata</span>
-          <span class="idea-tag source-tag">News &amp; LinkedIn APIs</span>
-          <span class="idea-tag">Timing signal engine</span>
-          <span class="idea-tag">Job change alerts</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cluster-strip"></div>
-
-  <!-- ── CLUSTER 06: DATA QUALITY & CRM ── -->
-  <div class="cluster-page c-data" id="sc-data">
-    <div class="cluster-page-header">
-      <div class="cluster-page-number">06</div>
-      <div class="cluster-page-meta">
-        <div class="cluster-page-eyebrow">Solution Cluster 06 of 07</div>
-        <div class="cluster-page-title">Data Quality & CRM — Make the system of record reflect reality, automatically</div>
-        <p class="cluster-page-desc">CRM data is almost universally degraded — stale contacts, missing interactions, misattributed deals. This is entirely solvable through passive observation, without asking a single rep to change their behavior.</p>
-        <span class="cluster-friction-note friction-zero">● Zero employee friction · Data source: Email metadata, Calendar, enrichment APIs</span>
-      </div>
-    </div>
-    <div class="cluster-ideas">
-      <div class="idea-block">
-        <div class="idea-block-num">06 / A</div>
-        <div class="idea-block-name">Passive CRM Enrichment Engine</div>
-        <div class="idea-block-hook">"Your CRM has 200,000 contacts. Half are wrong. None of it is your team's fault."</div>
-        <div class="idea-block-detail">Continuously cross-reference CRM contact records against actual email communication patterns to identify discrepancies: contacts who've changed email addresses (bounced), moved to new companies (stale), been promoted to new roles (under-flagged), or left the industry entirely. Enrich with current title, company, and contact data from LinkedIn enrichment APIs and news sources. Push verified updates automatically to Salesforce, HubSpot, or Dynamics via native API — no human review required for high-confidence updates, flagged for review otherwise.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email metadata</span>
-          <span class="idea-tag source-tag">Enrichment APIs</span>
-          <span class="idea-tag">Salesforce / HubSpot API</span>
-          <span class="idea-tag">CRM hygiene</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">06 / B</div>
-        <div class="idea-block-name">Auto Activity Logging</div>
-        <div class="idea-block-hook">"Reps spend 20% of their week on CRM data entry. Eliminate it entirely."</div>
-        <div class="idea-block-detail">Every email sent to an external contact, every call conducted, every meeting attended — automatically logged against the correct CRM opportunity or account with zero rep involvement. No "log a call" button. No activity entry screen. The communication data flows from email and calendar APIs directly into the CRM record in real time. For professional services firms where billable-time pressure makes admin especially costly, this is an immediate, measurable ROI: hours of weekly time returned to every client-facing professional in the firm.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email + calendar metadata</span>
-          <span class="idea-tag">Auto-attribution</span>
-          <span class="idea-tag">CRM integration</span>
-          <span class="idea-tag">Zero manual logging</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">06 / C</div>
-        <div class="idea-block-name">Relationship Attribution Engine</div>
-        <div class="idea-block-hook">"When a deal closes, who actually built that relationship — not just who's listed in the CRM?"</div>
-        <div class="idea-block-detail">Rather than crediting whoever happens to be listed as the account owner in the CRM, use actual communication data to attribute relationship value to the colleagues who genuinely drove it — measured by frequency, recency, seniority of contact, and depth of engagement over time. This has significant implications for partner compensation in law and consulting firms, where revenue attribution is a deeply contested issue. Replace subjective claims with objective network data. Fair attribution drives better BD behavior firm-wide.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email + calendar metadata</span>
-          <span class="idea-tag">Revenue attribution</span>
-          <span class="idea-tag">Partner compensation</span>
-          <span class="idea-tag">BD analytics</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">06 / D</div>
-        <div class="idea-block-name">Single-Thread Risk Detector</div>
-        <div class="idea-block-hook">"If your one contact at the client leaves tomorrow, is the entire relationship gone?"</div>
-        <div class="idea-block-detail">Automatically identify client accounts where the firm's entire relationship is concentrated in a single contact — a critical and extremely common vulnerability in professional services. Map relationship breadth: how many senior people at the client know how many senior people at your firm, and at what recency? Flag single-threaded accounts to account managers before the key contact changes jobs. Track relationship breadth as a portfolio risk metric reported quarterly to firm leadership. The data already exists in email logs — it just needs to be measured.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email metadata</span>
-          <span class="idea-tag">Key person risk</span>
-          <span class="idea-tag">Relationship breadth scoring</span>
-          <span class="idea-tag">Account health</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cluster-strip"></div>
-
-  <!-- ── CLUSTER 07: VERTICAL-SPECIFIC ── -->
-  <div class="cluster-page c-vertical" id="sc-vertical">
-    <div class="cluster-page-header">
-      <div class="cluster-page-number">07</div>
-      <div class="cluster-page-meta">
-        <div class="cluster-page-eyebrow">Solution Cluster 07 of 07</div>
-        <div class="cluster-page-title">Vertical-Specific Plays — The same intelligence, built for under-served sectors</div>
-        <p class="cluster-page-desc">Introhive owns Big Four accounting and law. Affinity owns venture capital. Every other large-organization vertical with equally complex relationship networks has no purpose-built solution — and many of the most attractive ones are in markets the major players have never focused on.</p>
-        <span class="cluster-friction-note friction-zero">● Zero employee friction · Data source: Varies by vertical (see each idea)</span>
-      </div>
-    </div>
-    <div class="cluster-ideas">
-      <div class="idea-block">
-        <div class="idea-block-num">07 / A</div>
-        <div class="idea-block-name">Healthcare System Relationship Intelligence</div>
-        <div class="idea-block-hook">"Hospital systems have thousands of referring physician relationships. Almost none are mapped."</div>
-        <div class="idea-block-detail">Build the Introhive equivalent for hospital systems, health networks, and pharmaceutical companies. Map referring physician relationships (which GPs refer to which specialists), pharmaceutical rep coverage and relationship strength with prescribers, and collaboration patterns between hospital departments. Integrate with EMR-adjacent communication data — physician communication systems, referral platforms — rather than standard email APIs. Navigate HIPAA-compliant data flows. Healthcare is one of the largest enterprise verticals globally and has essentially zero purpose-built relationship intelligence tooling.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email metadata</span>
-          <span class="idea-tag source-tag">EMR referral data (de-identified)</span>
-          <span class="idea-tag">HIPAA compliance</span>
-          <span class="idea-tag">Hospital systems · Pharma</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">07 / B</div>
-        <div class="idea-block-name">Government & Public Sector Knowledge Graph</div>
-        <div class="idea-block-hook">"Which of our agency's people have genuine working relationships with this ministry's decision-makers?"</div>
-        <div class="idea-block-detail">Government agencies manage enormously complex stakeholder networks — inter-agency relationships, external stakeholder connections, ministerial engagement, international counterparts — with almost no dedicated tooling. Build specifically for this context: on-premise or sovereign cloud deployment options, integration with government email infrastructure (Microsoft 365 GCC, Google Government), and purpose-built security and compliance standards. A product that helps a government agency understand its own relationship capital across ministries has no real competitor today.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Government email infrastructure</span>
-          <span class="idea-tag">Sovereign cloud / on-prem</span>
-          <span class="idea-tag">GovTech</span>
-          <span class="idea-tag">Stakeholder mapping</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">07 / C</div>
-        <div class="idea-block-name">University & Research Network Intelligence</div>
-        <div class="idea-block-hook">"Which of our faculty have existing working relationships with this company's R&D leadership?"</div>
-        <div class="idea-block-detail">Universities are deeply relationship-intensive institutions — industry partnerships, research collaborations, alumni donor networks, accreditation body relationships, policy engagement — and their relationship intelligence tooling is essentially nonexistent. Faculty profiles are static. Industry partnership tracking is manual. Build a passive relationship intelligence layer for research universities: mapping faculty-to-industry connections, surfacing co-authorship networks, identifying which alumni relationships are warm vs. dormant, and flagging cross-faculty collaboration opportunities that are visible in email patterns but invisible to any administrator.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">University email metadata</span>
-          <span class="idea-tag source-tag">Alumni data</span>
-          <span class="idea-tag source-tag">Grant databases (public)</span>
-          <span class="idea-tag">Research partnership intelligence</span>
-        </div>
-      </div>
-      <div class="idea-block">
-        <div class="idea-block-num">07 / D</div>
-        <div class="idea-block-name">Emerging Market Conglomerate Intelligence</div>
-        <div class="idea-block-hook">"Large Indian, Gulf, and Southeast Asian conglomerates have no purpose-built relationship tool — and they desperately need one."</div>
-        <div class="idea-block-detail">Every major player in this market — Introhive, Affinity, Gong, Glean — is US or EU-headquartered with an almost entirely Western go-to-market motion. Large conglomerates in India, the Gulf Cooperation Council, Indonesia, and Brazil have relationship networks of equal or greater complexity (multiple business lines, family ownership structures, government relationships, international JV partnerships) and are actively underserved. A product built for this context — local data residency, local language support, relationship norms that differ from Western B2B, and a local go-to-market motion — could own this segment with limited direct competition.</div>
-        <div class="idea-block-footer">
-          <span class="idea-tag source-tag">Email + calendar metadata</span>
-          <span class="idea-tag">India · GCC · Southeast Asia</span>
-          <span class="idea-tag">Local data residency</span>
-          <span class="idea-tag">Conglomerate structures</span>
-          <span class="idea-tag">Greenfield market</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Solutions closing strip -->
-  <div style="background:var(--ink);color:#6B7280;padding:40px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
-    <div>
-      <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--paper);margin-bottom:6px;">28 ideas. One constraint.</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6B7280;">Zero additional friction for employees. All intelligence captured passively.</div>
-    </div>
-    <div style="display:flex;gap:32px;flex-wrap:wrap;">
-      <div style="text-align:right;">
-        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:#60A5FA;">7</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B7280;text-transform:uppercase;letter-spacing:0.1em;">Solution Clusters</div>
-      </div>
-      <div style="text-align:right;">
-        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:#34D399;">3</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B7280;text-transform:uppercase;letter-spacing:0.1em;">Core Data Sources</div>
-      </div>
-      <div style="text-align:right;">
-        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:#A78BFA;">0</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B7280;text-transform:uppercase;letter-spacing:0.1em;">Behavior Changes Required</div>
-      </div>
-    </div>
-  </div>
-
-</div><!-- end #solutions -->
-
-<div style="background:var(--ink);color:#6B7280;padding:32px 60px;font-family:'JetBrains Mono',monospace;font-size:11px;text-align:center;">
-  Market Intelligence Report · Compiled June 2026 · Sources: Company filings, Crunchbase, TechCrunch, CNBC, Startupintros, Contrary Research, official company sites. sarvagyasinghs.com
-</div>
-
+  // Card filter
+  function filterCards(seg, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.card').forEach(card => {
+      if (seg === 'all' || card.dataset.segment === seg) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
 </body>
 </html>

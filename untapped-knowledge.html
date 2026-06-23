@@ -1036,7 +1036,7 @@ hr.divider { display: none; }
   <!-- Solutions Cover -->
   <div class="solutions-cover">
     <div class="solutions-cover-inner">
-      <div class="solutions-cover-label">Part II · Product Brainstorm · 28 Ideas Across 7 Clusters</div>
+      <span class="solutions-cover-label">Part II · Product Brainstorm · 28 Ideas Across 7 Clusters</span>
       <h2>Building in the<br><em>Untapped Knowledge</em> Space</h2>
       <p class="solutions-cover-sub">Every idea below follows one non-negotiable constraint: zero additional friction for employees. No uploading, no tagging, no data entry. The intelligence is captured passively from systems that already exist.</p>
       <div class="solutions-cluster-nav">
@@ -1507,32 +1507,42 @@ hr.divider { display: none; }
   </div>
 
   <!-- Solutions closing strip -->
-  <div style="background:var(--ink);color:#6B7280;padding:40px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+  <div class="solutions-closing">
     <div>
-      <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--paper);margin-bottom:6px;">28 ideas. One constraint.</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6B7280;">Zero additional friction for employees. All intelligence captured passively.</div>
+      <div class="solutions-closing-title">28 ideas. One constraint.</div>
+      <div class="solutions-closing-sub">Zero additional friction for employees. All intelligence captured passively.</div>
     </div>
-    <div style="display:flex;gap:32px;flex-wrap:wrap;">
-      <div style="text-align:right;">
-        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:#60A5FA;">7</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B7280;text-transform:uppercase;letter-spacing:0.1em;">Solution Clusters</div>
+    <div class="solutions-closing-stats">
+      <div class="solutions-closing-stat">
+        <div class="num" style="color:#60A5FA;">7</div>
+        <div class="label">Solution Clusters</div>
       </div>
-      <div style="text-align:right;">
-        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:#34D399;">3</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B7280;text-transform:uppercase;letter-spacing:0.1em;">Core Data Sources</div>
+      <div class="solutions-closing-stat">
+        <div class="num" style="color:#34D399;">3</div>
+        <div class="label">Core Data Sources</div>
       </div>
-      <div style="text-align:right;">
-        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:#A78BFA;">0</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B7280;text-transform:uppercase;letter-spacing:0.1em;">Behavior Changes Required</div>
+      <div class="solutions-closing-stat">
+        <div class="num" style="color:#A78BFA;">0</div>
+        <div class="label">Behavior Changes Required</div>
       </div>
     </div>
   </div>
 
 </div><!-- end #solutions -->
 
-<div style="background:var(--ink);color:#6B7280;padding:32px 60px;font-family:'JetBrains Mono',monospace;font-size:11px;text-align:center;">
+<div class="site-footer">
   Market Intelligence Report · Compiled June 2026 · Sources: Company filings, Crunchbase, TechCrunch, CNBC, Startupintros, Contrary Research, official company sites. sarvagyasinghs.com
 </div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
+  reveals.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>

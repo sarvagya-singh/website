@@ -1,0 +1,38 @@
+export const papers = [
+  {
+    id: 'flight-delay',
+    title: 'Flight Delay Prediction and Real-Time Monitoring Using PySpark, Machine Learning, and Kafka',
+    field: 'Big Data / Streaming',
+    pages: 3,
+    impact: 'Shows how streaming data and PySpark can turn noisy travel signals into early delay detection.',
+    pdf: '/papers/bda_report_final.pdf',
+    preview: '/papers/previews/bda_report_final.png',
+  },
+  {
+    id: 'therapy-chatbot',
+    title: 'Therapy Chatbot for Personalized Mental Health Assistance using Deep Learning',
+    field: 'Deep Learning / Mental Health',
+    pages: 6,
+    impact: 'Demonstrates how deep learning can make mental-health support more responsive and personalized.',
+    pdf: '/papers/dl_therapy_chatbot.pdf',
+    preview: '/papers/previews/dl_therapy_chatbot.png',
+  },
+  {
+    id: 'klt-tracking',
+    title: 'Multiple Object Tracking using the Kanade-Lucas-Tomasi (KLT) Algorithm',
+    field: 'Computer Vision / Tracking',
+    pages: 8,
+    impact: 'Validates a lightweight tracker that can follow multiple objects reliably with modest compute.',
+    pdf: '/papers/klt.pdf',
+    preview: '/papers/previews/klt.png',
+  },
+  {
+    id: 'cuda-image-processing',
+    title: 'CUDA-Based Image Processing using GPU Acceleration',
+    field: 'GPU Computing / Vision',
+    pages: 5,
+    impact: 'Shows how GPU acceleration can remove image-processing bottlenecks and speed up vision pipelines.',
+    pdf: '/papers/pcap_project.pdf',
+    preview: '/papers/previews/pcap_project.png',
+  },
+]

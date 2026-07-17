@@ -1,21 +1,13 @@
-export default function Footer({ note, dark }) {
-  if (dark) {
-    return (
-      <div className="footer-dark">
-        {note || 'sarvagyasinghs.com · 2026'}
-      </div>
-    )
-  }
+import { profile } from '../data/profile'
+
+export default function Footer() {
   return (
-    <footer>
-      <div className="site-footer">
-        <div>
-          <div className="footer-brand">sarvagyasinghs.com</div>
-          <p className="footer-note">{note || 'Research compiled from vendor documentation, G2 reviews, Sacra ARR data, Gartner reports, and verified press coverage. All data as of June 2026.'}</p>
-        </div>
-        <div className="footer-right">
-          sarvagyasinghs.com<br />June 2026
-        </div>
+    <footer className="site-footer">
+      <div className="footer-copyright">© 2026 Sarvagya Singh</div>
+      <div className="footer-links">
+        <a href={`mailto:${profile.email}`}>Email</a>
+        <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href={profile.githubUrl} target="_blank" rel="noreferrer">GitHub</a>
       </div>
     </footer>
   )

@@ -1,121 +1,100 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
+
+const LEFT_LINKS = [
+  { to: '/', label: 'Home', end: true },
+  { to: '/projects', label: 'Projects' },
+]
+const RIGHT_LINKS = [
+  { to: '/about', label: 'About' },
+  { to: '/contact', label: 'Contact' },
+]
+const ALL_LINKS = [...LEFT_LINKS, ...RIGHT_LINKS]
 
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [dropOpen, setDropOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
-  const dropRef = useRef(null)
 
-  const isMarketStudy = location.pathname.includes('earnings') || location.pathname.includes('untapped')
+  useEffect(() => setMobileOpen(false), [location.pathname])
 
   useEffect(() => {
-    function onOutsideClick(e) {
-      if (dropRef.current && !dropRef.current.contains(e.target)) setDropOpen(false)
-    }
-    document.addEventListener('mousedown', onOutsideClick)
-    return () => document.removeEventListener('mousedown', onOutsideClick)
+    const onScroll = () => setScrolled(window.scrollY > 80)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
-    setMobileOpen(false)
-    setDropOpen(false)
-  }, [location.pathname])
-
   return (
-    <nav className="site-nav">
-      <div className="nav-inner">
-        <NavLink to="/" className="nav-brand">sarvagyasinghs.com</NavLink>
-
-        {/* Desktop */}
-        <div className="nav-desktop">
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
-          >
-            Brainstorm
-          </NavLink>
-          <NavLink
-            to="/feature-landscape"
-            className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
-          >
-            Feature Landscape
-          </NavLink>
-
-          <div className="nav-drop-wrap" ref={dropRef}>
-            <button
-              className={`nav-link nav-drop-btn${isMarketStudy ? ' active' : ''}`}
-              onClick={() => setDropOpen(p => !p)}
+    <motion.div
+      className={`nav-wrap${scrolled ? ' nav-scrolled' : ''}`}
+      initial={{ opacity: 0, y: -36 }}
+      animate={{ opacity: 1, y: scrolled ? -13 : 0, scale: scrolled ? 0.97 : 1 }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <nav className="nav-cluster" aria-label="Main navigation">
+        <div className="nav-pill">
+          {LEFT_LINKS.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.end}
+              className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
             >
-              Market Study
-              <span className={`drop-arrow${dropOpen ? ' open' : ''}`}>▾</span>
-            </button>
-            <AnimatePresence>
-              {dropOpen && (
-                <motion.div
-                  className="drop-menu"
-                  initial={{ opacity: 0, y: -6, scale: 0.97 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -6, scale: 0.97 }}
-                  transition={{ duration: 0.14 }}
-                >
-                  <NavLink
-                    to="/earnings-intelligence"
-                    className={({ isActive }) => `drop-item${isActive ? ' active' : ''}`}
-                  >
-                    Earnings Intelligence
-                  </NavLink>
-                  <NavLink
-                    to="/untapped-knowledge"
-                    className={({ isActive }) => `drop-item${isActive ? ' active' : ''}`}
-                  >
-                    Untapped Knowledge
-                  </NavLink>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+              {link.label}
+            </NavLink>
+          ))}
         </div>
 
-        {/* Hamburger */}
+        <NavLink to="/" className="nav-crest" aria-label="Sarvagya Singh — home">
+          <img src="brand/logo-mark.png" alt="" className="nav-crest-mark" draggable={false} />
+        </NavLink>
+
+        <div className="nav-pill">
+          {RIGHT_LINKS.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+            >
+              {link.label}
+            </NavLink>
+          ))}
+        </div>
+
         <button
-          className={`hamburger${mobileOpen ? ' open' : ''}`}
-          onClick={() => setMobileOpen(p => !p)}
+          className="nav-hamburger"
+          onClick={() => setMobileOpen((p) => !p)}
           aria-label="Toggle navigation"
           aria-expanded={mobileOpen}
         >
           <span /><span /><span />
         </button>
-      </div>
+      </nav>
 
-      {/* Mobile panel */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="mobile-nav"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.22, ease: 'easeInOut' }}
+            className="nav-mobile-panel"
+            initial={{ opacity: 0, y: -8, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.97 }}
+            transition={{ duration: 0.16 }}
           >
-            <NavLink to="/" end className={({ isActive }) => `mobile-nav-link${isActive ? ' active' : ''}`}>
-              Brainstorm
-            </NavLink>
-            <NavLink to="/feature-landscape" className={({ isActive }) => `mobile-nav-link${isActive ? ' active' : ''}`}>
-              Feature Landscape
-            </NavLink>
-            <div className="mobile-nav-section">Market Study</div>
-            <NavLink to="/earnings-intelligence" className={({ isActive }) => `mobile-nav-link indent${isActive ? ' active' : ''}`}>
-              Earnings Intelligence
-            </NavLink>
-            <NavLink to="/untapped-knowledge" className={({ isActive }) => `mobile-nav-link indent${isActive ? ' active' : ''}`}>
-              Untapped Knowledge
-            </NavLink>
+            {ALL_LINKS.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.end}
+                className={({ isActive }) => `nav-mobile-link${isActive ? ' active' : ''}`}
+              >
+                {link.label}
+              </NavLink>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.div>
   )
 }

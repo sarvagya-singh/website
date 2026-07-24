@@ -1511,15 +1511,19 @@ em, i { font-family: 'Vescura', Georgia, serif; font-style: italic; font-weight:
     top: auto;
     grid-template-columns: 1fr;
     min-height: 0;
+    height: auto;
     width: 100%;
     padding: 18px;
+    overflow: visible;
     opacity: 1 !important;
     transform: none !important;
   }
   .journey-card.reverse { grid-template-columns: 1fr; }
   .journey-card.reverse .journey-copy,
   .journey-card.reverse .journey-visual { order: initial; }
-  .journey-visual { min-height: 200px; }
+  .journey-copy { min-height: auto; }
+  .journey-visual { height: 240px; min-height: 240px; }
+  .journey-media, .journey-specimen { height: 240px; max-height: 240px; }
   .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .case-overlay { align-items: flex-end; padding: 0; }
   .case-modal {

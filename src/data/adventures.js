@@ -9,7 +9,7 @@ export const adventures = [
     badgePos: 'right',
     kicker: 'Mountaineering',
     kickerColor: 'var(--rope)',
-    title: 'Inspired by altitide.',
+    title: 'Inspired by altitude.',
     titleColor: 'var(--rope)',
     body: "Graded 'A'-Alpha by the National Institute of Mountaineering and roped up to summit Kang Yatse II at 20,600ft in Ladakh — the thin air taught me patience under pressure.",
     bg: 'var(--tan)',

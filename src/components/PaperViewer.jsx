@@ -12,12 +12,11 @@ export default function PaperViewer({ paper, onClose }) {
       if (event.key === 'Escape') onClose()
     }
 
-    const originalOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', onKeyDown)
 
     return () => {
-      document.body.style.overflow = originalOverflow
+      document.body.style.overflow = ''
       window.removeEventListener('keydown', onKeyDown)
     }
   }, [paper, onClose])

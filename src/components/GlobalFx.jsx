@@ -17,7 +17,7 @@ export default function GlobalFx() {
       try { sessionStorage.setItem(loaderKey, '1') } catch { /* storage can be unavailable */ }
       setLoading(false)
       document.body.style.overflow = ''
-    }, reduceMotion ? 80 : 1180)
+    }, reduceMotion ? 80 : 720)
     return () => {
       window.clearTimeout(timer)
       document.body.style.overflow = ''
@@ -28,6 +28,8 @@ export default function GlobalFx() {
     if (window.matchMedia('(pointer: coarse)').matches || reduceMotion) return undefined
     const cursor = cursorRef.current
     if (!cursor) return undefined
+    // Only hide the system cursor while the custom one is actually running.
+    document.documentElement.classList.add('has-custom-cursor')
 
     let targetX = -100
     let targetY = -100
@@ -61,6 +63,7 @@ export default function GlobalFx() {
     window.addEventListener('pointerup', release)
     document.documentElement.addEventListener('mouseleave', hide)
     return () => {
+      document.documentElement.classList.remove('has-custom-cursor')
       window.cancelAnimationFrame(animationFrame)
       window.removeEventListener('pointermove', move)
       window.removeEventListener('pointerdown', press)
@@ -109,9 +112,9 @@ export default function GlobalFx() {
           >
             <motion.div initial={{ opacity: 0, scale: 0.82 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.45 }}>
               <span>sarvagyasinghs.com</span>
-              <small>engineering × endurance</small>
+              <small>engineer, boxer, mountaineer</small>
             </motion.div>
-            <motion.i initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }} />
+            <motion.i initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] }} />
           </motion.div>
         )}
       </AnimatePresence>

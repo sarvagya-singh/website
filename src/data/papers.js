@@ -6,7 +6,7 @@ export const papers = [
     pages: 3,
     impact: 'Shows how streaming data and PySpark can turn noisy travel signals into early delay detection.',
     pdf: '/papers/bda_report_final.pdf',
-    preview: '/papers/previews/bda_report_final.png',
+    preview: '/papers/previews/bda_report_final.webp',
   },
   {
     id: 'therapy-chatbot',
@@ -15,7 +15,7 @@ export const papers = [
     pages: 6,
     impact: 'Demonstrates how deep learning can make mental-health support more responsive and personalized.',
     pdf: '/papers/dl_therapy_chatbot.pdf',
-    preview: '/papers/previews/dl_therapy_chatbot.png',
+    preview: '/papers/previews/dl_therapy_chatbot.webp',
   },
   {
     id: 'klt-tracking',
@@ -24,7 +24,7 @@ export const papers = [
     pages: 8,
     impact: 'Validates a lightweight tracker that can follow multiple objects reliably with modest compute.',
     pdf: '/papers/klt.pdf',
-    preview: '/papers/previews/klt.png',
+    preview: '/papers/previews/klt.webp',
   },
   {
     id: 'cuda-image-processing',
@@ -33,6 +33,6 @@ export const papers = [
     pages: 5,
     impact: 'Shows how GPU acceleration can remove image-processing bottlenecks and speed up vision pipelines.',
     pdf: '/papers/pcap_project.pdf',
-    preview: '/papers/previews/pcap_project.png',
+    preview: '/papers/previews/pcap_project.webp',
   },
 ]

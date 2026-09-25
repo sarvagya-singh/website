@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
@@ -45,11 +45,11 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    <HashRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <GlobalFx />
       <Nav />
       <main><AnimatedRoutes /></main>
       <Footer />
-    </HashRouter>
+    </BrowserRouter>
   )
 }

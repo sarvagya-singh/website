@@ -36,24 +36,25 @@ export default function ProjectCaseStudy({ project, onClose }) {
             {images[0] && <button type="button" className="case-lead-media" onClick={() => setActiveImage(0)} data-cursor="zoom" data-reveal="scale"><img src={images[0].src} alt={images[0].alt || images[0].label} /></button>}
 
             <section className="case-story">
-              <div data-reveal="left"><span>the situation</span><p>{project.overview}</p></div>
-              <div data-reveal="right"><span>what changed</span><p>{project.desc}</p></div>
+              <div data-reveal="left"><span>the problem</span><p>{project.overview}</p></div>
+              <div data-reveal="right"><span>what I built</span><ul>{project.highlights.map((item) => <li key={item}>{item}</li>)}</ul></div>
             </section>
 
-            <section className="case-impact" aria-label="Project impact">
+            <section className="case-impact" aria-labelledby={`case-result-${project.id}`}>
+              <header data-reveal><span id={`case-result-${project.id}`}>what came of it</span><p>{project.result}</p></header>
               {project.impact.map((item, index) => <div key={item} data-reveal="scale" style={{ '--reveal-delay': `${index * 80}ms` }}><small>0{index + 1}</small><strong>{item}</strong></div>)}
             </section>
 
             <section className="case-gallery" aria-label={`${project.title} screenshots`}>
               {images.slice(1).map((item, index) => (
                 <button type="button" key={item.src} className={`case-gallery-item gallery-item-${index + 1}`} onClick={() => setActiveImage(index + 1)} data-cursor="zoom" data-reveal={index % 2 ? 'right' : 'left'}>
-                  <img src={item.src} alt={item.alt || item.label} /><span>{item.label}</span>
+                  <img src={item.src} alt={item.alt || item.label} loading="lazy" /><span>{item.label}</span>
                 </button>
               ))}
             </section>
 
             <section className="case-build-notes section-black">
-              <div data-reveal="left"><span>what I built</span><ul>{project.highlights.map((item) => <li key={item}>{item}</li>)}</ul></div>
+              <div data-reveal="left"><span>in one line</span><p>{project.desc}</p></div>
               <div data-reveal="right"><span>toolbox</span><p>{project.stack.join(' · ')}</p></div>
             </section>
 

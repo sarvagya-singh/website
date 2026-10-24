@@ -1,5 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { lockScroll } from '../lib/scroll'
+import { Lotus, Star } from './Art'
+
+const ease = [0.22, 1, 0.36, 1]
 
 export default function ProjectCaseStudy({ project, onClose }) {
   const reduceMotion = useReducedMotion()
@@ -14,61 +18,87 @@ export default function ProjectCaseStudy({ project, onClose }) {
       if (activeImage !== null && event.key === 'ArrowRight') setActiveImage((activeImage + 1) % images.length)
       if (activeImage !== null && event.key === 'ArrowLeft') setActiveImage((activeImage - 1 + images.length) % images.length)
     }
-    document.body.style.overflow = 'hidden'
+    lockScroll(true)
     window.addEventListener('keydown', onKey)
-    return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', onKey) }
+    return () => { lockScroll(false); window.removeEventListener('keydown', onKey) }
   }, [project, onClose, activeImage, images.length])
 
   return (
     <AnimatePresence>
       {project && (
-        <motion.div className="case-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduceMotion ? 0 : 0.25 }}>
-          <motion.article className="case-modal" role="dialog" aria-modal="true" aria-labelledby={`case-title-${project.id}`} initial={reduceMotion ? false : { y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={{ duration: reduceMotion ? 0 : 0.65, ease: [0.76, 0, 0.24, 1] }}>
-            <header className="case-modal-header"><span>project field note · {project.tag}</span><button type="button" onClick={onClose} aria-label="Close case study">×</button></header>
+        <motion.div className="overlay" data-lenis-prevent initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduceMotion ? 0 : 0.35 }} onMouseDown={onClose}>
+          <motion.article
+            className="case"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={`case-title-${project.id}`}
+            initial={reduceMotion ? false : { y: 60, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={reduceMotion ? undefined : { y: 40, opacity: 0 }}
+            transition={{ duration: reduceMotion ? 0 : 0.6, ease }}
+            onMouseDown={(event) => event.stopPropagation()}
+          >
+            <header className="case-bar">
+              <span className="eyebrow">{project.tag}</span>
+              <button type="button" className="close" onClick={onClose} aria-label="Close case study">×</button>
+            </header>
 
-            <section className="case-hero" data-reveal>
-              <div className="case-hero-shape" aria-hidden="true" />
-              <p>{project.kicker}</p>
+            <section className="case-hero">
+              <Lotus className="case-lotus" />
+              <p className="hand case-kicker">{project.kicker}</p>
               <h2 id={`case-title-${project.id}`}>{project.title}</h2>
-              <span className="case-role-pill">{project.role}</span>
+              <p className="case-role">{project.role}</p>
+              {project.url && <a className="button button-sindoor" href={project.url} target="_blank" rel="noreferrer">Visit {project.url.replace('https://', '')} ↗</a>}
             </section>
 
-            {images[0] && <button type="button" className="case-lead-media" onClick={() => setActiveImage(0)} data-cursor="zoom" data-reveal="scale"><img src={images[0].src} alt={images[0].alt || images[0].label} /></button>}
+            {images[0] && (
+              <button type="button" className="case-lead" onClick={() => setActiveImage(0)} aria-label={`Enlarge ${images[0].label}`}>
+                <img src={images[0].src} alt={images[0].alt || images[0].label} />
+              </button>
+            )}
 
             <section className="case-story">
-              <div data-reveal="left"><span>the problem</span><p>{project.overview}</p></div>
-              <div data-reveal="right"><span>what I built</span><ul>{project.highlights.map((item) => <li key={item}>{item}</li>)}</ul></div>
+              <div><p className="eyebrow">The problem</p><p className="case-lead-text">{project.overview}</p></div>
+              <div><p className="eyebrow">What I built</p><ul>{project.highlights.map((item) => <li key={item}><Star className="tiny-star" />{item}</li>)}</ul></div>
             </section>
 
-            <section className="case-impact" aria-labelledby={`case-result-${project.id}`}>
-              <header data-reveal><span id={`case-result-${project.id}`}>what came of it</span><p>{project.result}</p></header>
-              {project.impact.map((item, index) => <div key={item} data-reveal="scale" style={{ '--reveal-delay': `${index * 80}ms` }}><small>0{index + 1}</small><strong>{item}</strong></div>)}
+            <section className="case-result">
+              <p className="eyebrow">What came of it</p>
+              <p>{project.result}</p>
+              <ol>{project.impact.map((item, index) => <li key={item}><small>0{index + 1}</small>{item}</li>)}</ol>
             </section>
 
-            <section className="case-gallery" aria-label={`${project.title} screenshots`}>
-              {images.slice(1).map((item, index) => (
-                <button type="button" key={item.src} className={`case-gallery-item gallery-item-${index + 1}`} onClick={() => setActiveImage(index + 1)} data-cursor="zoom" data-reveal={index % 2 ? 'right' : 'left'}>
-                  <img src={item.src} alt={item.alt || item.label} loading="lazy" /><span>{item.label}</span>
-                </button>
-              ))}
+            {images.length > 1 && (
+              <section className="case-gallery" aria-label={`${project.title} screenshots`}>
+                {images.slice(1).map((item, index) => (
+                  <button type="button" key={item.src} onClick={() => setActiveImage(index + 1)}>
+                    <img src={item.src} alt={item.alt || item.label} loading="lazy" />
+                    <span><b>{item.label}</b>{item.note}</span>
+                  </button>
+                ))}
+              </section>
+            )}
+
+            <section className="case-stack">
+              <p className="eyebrow">Toolbox</p>
+              <p>{project.stack.join(' · ')}</p>
             </section>
 
-            <section className="case-build-notes section-black">
-              <div data-reveal="left"><span>in one line</span><p>{project.desc}</p></div>
-              <div data-reveal="right"><span>toolbox</span><p>{project.stack.join(' · ')}</p></div>
-            </section>
-
-            <button type="button" className="case-end-close" onClick={onClose}>Back to all work ↗</button>
+            <button type="button" className="text-link case-end" onClick={onClose}>Back to all work</button>
           </motion.article>
 
           <AnimatePresence>
             {activeImage !== null && images[activeImage] && (
-              <motion.div className="case-lightbox" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onMouseDown={() => setActiveImage(null)}>
-                <div className="case-lightbox-shell" onMouseDown={(event) => event.stopPropagation()}>
-                  <div className="case-lightbox-topbar"><span>{activeImage + 1} / {images.length} · {images[activeImage].label}</span><button type="button" onClick={() => setActiveImage(null)} aria-label="Close screenshot viewer">×</button></div>
-                  <div className="case-lightbox-media"><img src={images[activeImage].src} alt={images[activeImage].alt || images[activeImage].label} /></div>
-                  <div className="case-lightbox-nav"><button type="button" onClick={() => setActiveImage((activeImage - 1 + images.length) % images.length)}>← prev</button><button type="button" onClick={() => setActiveImage((activeImage + 1) % images.length)}>next →</button></div>
-                </div>
+              <motion.div className="lightbox" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onMouseDown={(event) => { event.stopPropagation(); setActiveImage(null) }}>
+                <figure onMouseDown={(event) => event.stopPropagation()}>
+                  <img src={images[activeImage].src} alt={images[activeImage].alt || images[activeImage].label} />
+                  <figcaption>
+                    <button type="button" onClick={() => setActiveImage((activeImage - 1 + images.length) % images.length)} aria-label="Previous screenshot">←</button>
+                    <span>{activeImage + 1} / {images.length} · {images[activeImage].label}</span>
+                    <button type="button" onClick={() => setActiveImage((activeImage + 1) % images.length)} aria-label="Next screenshot">→</button>
+                    <button type="button" className="close" onClick={() => setActiveImage(null)} aria-label="Close screenshot viewer">×</button>
+                  </figcaption>
+                </figure>
               </motion.div>
             )}
           </AnimatePresence>

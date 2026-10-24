@@ -10,7 +10,7 @@ Live site: [sarvagyasinghs.com](https://sarvagyasinghs.com)
 
 - A portfolio for product, AI systems, research, and interface work.
 - A personal archive of the things that shape how I build: altitude, boxing, endurance, machines, and college projects.
-- A visual experiment inspired by expressive agency sites, with custom cursor behavior, hand-drawn motion details, animated navigation, and photo-led storytelling.
+- A retro Indian design in Mysore Sandal Soap colours: matchbox labels, postage stamps, roses and swirls, draggable stickers, and a header of hanging price tags.
 
 ## Built with
 
@@ -18,6 +18,7 @@ Live site: [sarvagyasinghs.com](https://sarvagyasinghs.com)
 - Vite
 - React Router
 - Framer Motion
+- Lenis (smooth scrolling)
 - CSS animations and responsive layouts
 
 ## Running locally
@@ -55,12 +56,12 @@ docs/           Production build output
 
 ## Design direction
 
-The current version leans into a premium, highly personal visual system:
+Mysore Sandal Soap meets 80s Bollywood posters: emerald, vermilion, marigold, rose and cream.
 
-- full-bleed hero photography instead of generic interface screenshots
-- handwritten-style annotations that appear on scroll
-- compact project tiles with richer context
-- a custom cursor on pointer devices
-- photo collages and carousel sections that make the content feel lived-in
+- type: Rozha One (display), Bricolage Grotesque (UI and body), Yellowtail (notes), Yatra One (Devanagari), IBM Plex Mono (labels)
+- a matchbox hero whose drawer slides out, and a match you can strike
+- nav links as hanging price tags that roll over to Hindi, a seal that turns with the scroll, and a burning fuse for scroll progress
+- die-cut stickers that drift with the scroll and can be dragged around
+- a once-per-visit intro curtain; all motion respects reduced-motion settings
 
 The goal is simple: answer "Who is Sarvagya Singh?" through the work, the stories, and the things that happen outside the screen.

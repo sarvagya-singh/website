@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 
 const site = 'https://sarvagyasinghs.com'
 const pages = {
-  projects: ['Work', 'Five projects Sarvagya Singh has built, from KPMG’s bid intelligence platform to a hackathon-winning well-being app, plus his research papers.'],
+  projects: ['Work', 'Six projects Sarvagya Singh has built, from Nazara and KPMG’s bid intelligence platform to a hackathon-winning well-being app, plus his research papers.'],
   about: ['About', 'Sarvagya Singh: AI and product engineer, boxer, mountaineer, and owner of a pink Maruti 800.'],
   contact: ['Contact', 'How to reach Sarvagya Singh.'],
 }

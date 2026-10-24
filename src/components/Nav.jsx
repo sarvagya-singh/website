@@ -1,107 +1,97 @@
-import { useEffect, useRef, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
-import { allProjects } from '../data/allProjects'
+import { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion'
+import { Motif } from './Art'
+import { scrollToTop } from '../lib/scroll'
 
-const drawerProjects = allProjects.slice(0, 3)
-const accents = ['orange', 'wine', 'pink']
-const supportsHover = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches
+const links = [
+  ['/projects', 'Work', 'काम'],
+  ['/about', 'About', 'परिचय'],
+  ['https://nazara.club', 'Nazara', 'नज़ारा'],
+  ['/contact', 'Say namaste', 'नमस्ते'],
+]
+const stickers = ['lotus', 'elephant', 'eye', 'diya', 'train', 'gloves', 'peaks']
+
+// Each link rolls over to its Hindi twin on hover.
+function Roll({ label, hi }) {
+  return (
+    <span className="roll">
+      <span>{label}</span>
+      <span lang="hi" aria-hidden="true">{hi}</span>
+    </span>
+  )
+}
+
+// A soap-box seal whose lettering turns as the page scrolls.
+function Seal() {
+  const reduceMotion = useReducedMotion()
+  const { scrollY } = useScroll()
+  const rotate = useSpring(useTransform(scrollY, (y) => (reduceMotion ? 0 : y / 5)), { stiffness: 60, damping: 18 })
+  return (
+    <span className="seal" aria-hidden="true">
+      <motion.svg viewBox="0 0 100 100" style={{ rotate }}>
+        <defs><path id="seal-ring" d="M50 50m-37 0a37 37 0 1 1 74 0a37 37 0 1 1-74 0" /></defs>
+        <circle cx="50" cy="50" r="49" fill="#007A3D" />
+        <circle cx="50" cy="50" r="45" fill="none" stroke="#FFB800" strokeWidth="1.5" />
+        <text fontFamily="IBM Plex Mono, monospace" fontSize="10" fontWeight="500" fill="#FFF8E6">
+          <textPath href="#seal-ring" textLength="228" lengthAdjust="spacing">SARVAGYA SINGH ✦ BANGALORE ✦ </textPath>
+        </text>
+      </motion.svg>
+      <b lang="hi">स</b>
+    </span>
+  )
+}
 
 export default function Nav() {
-  const [open, setOpen] = useState(false)
-  const [darkSurface, setDarkSurface] = useState(true)
-  const closeTimer = useRef(null)
-  const location = useLocation()
+  const { scrollY, scrollYProgress } = useScroll()
+  const [hidden, setHidden] = useState(false)
+  const [sticker, setSticker] = useState(0)
+  const fuse = useSpring(scrollYProgress, { stiffness: 120, damping: 24 })
+  const spark = useTransform(fuse, (v) => `${v * 100}%`)
 
-  const cancelClose = () => window.clearTimeout(closeTimer.current)
-  const queueClose = () => {
-    cancelClose()
-    closeTimer.current = window.setTimeout(() => setOpen(false), 190)
-  }
-
-  useEffect(() => setOpen(false), [location.pathname, location.search])
-  useEffect(() => {
-    let frame
-    const updateSurface = () => {
-      frame = null
-      const candidate = document.elementsFromPoint(70, 46).find((element) => !element.closest('.floating-nav'))
-      let element = candidate
-      let color = 'rgb(5, 5, 5)'
-      while (element) {
-        const background = window.getComputedStyle(element).backgroundColor
-        if (background && background !== 'rgba(0, 0, 0, 0)' && background !== 'transparent') { color = background; break }
-        element = element.parentElement
-      }
-      const channels = color.match(/[\d.]+/g)?.slice(0, 3).map(Number) || [5, 5, 5]
-      setDarkSurface((channels[0] * 299 + channels[1] * 587 + channels[2] * 114) / 1000 < 145)
-    }
-    const onScroll = () => { if (!frame) frame = window.requestAnimationFrame(updateSurface) }
-    updateSurface()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
-    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); if (frame) window.cancelAnimationFrame(frame) }
-  }, [location.pathname])
-  useEffect(() => {
-    const onKey = (event) => event.key === 'Escape' && setOpen(false)
-    window.addEventListener('keydown', onKey)
-    if (open && window.innerWidth <= 720) document.body.style.overflow = 'hidden'
-    return () => {
-      window.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-      cancelClose()
-    }
-  }, [open])
+  useMotionValueEvent(scrollY, 'change', (y) => {
+    setHidden(y > (scrollY.getPrevious() ?? 0) && y > 260)
+    setSticker(Math.floor(y / 420) % stickers.length)
+  })
 
   return (
-    <header className={`floating-nav ${darkSurface ? 'on-dark' : 'on-light'}`}>
-      <div
-        className="nav-work-shell"
-        onMouseEnter={() => { if (supportsHover()) { cancelClose(); setOpen(true) } }}
-        onMouseLeave={() => { if (supportsHover()) queueClose() }}
-      >
-        <button
-          type="button"
-          className="nav-work-trigger"
-          aria-expanded={open}
-          aria-controls="work-drawer"
-          onClick={() => setOpen((value) => (supportsHover() ? true : !value))}
-          data-cursor="open"
-        >
-          <i aria-hidden="true" />
-          <span>work</span>
-        </button>
-
-        <AnimatePresence>
-          {open && (
-            <motion.aside
-              id="work-drawer"
-              className="work-drawer"
-              initial={{ opacity: 0, clipPath: 'inset(0 0 92% 0 round 18px)', y: -5 }}
-              animate={{ opacity: 1, clipPath: 'inset(0 0 0% 0 round 18px)', y: 0 }}
-              exit={{ opacity: 0, clipPath: 'inset(0 0 92% 0 round 18px)', y: -5 }}
-              transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div className="drawer-title"><button type="button" onClick={() => setOpen(false)} aria-label="Close work menu">×</button></div>
-              <div className="drawer-projects">
-                {drawerProjects.map((project, index) => (
-                  <Link key={project.id} to={`/projects?project=${project.id}`} className="drawer-project" data-cursor="view">
-                    <img src={project.thumbnail} alt="" />
-                    <span><b className={`pill-${accents[index]}`}>{project.tag.split('·')[0].trim()}</b><strong>{project.title}</strong></span>
-                  </Link>
-                ))}
-              </div>
-              <Link to="/projects" className="drawer-all">All my work <span>↗</span></Link>
-              <div className="drawer-secondary"><Link to="/about">My story</Link><Link to="/contact">Say hello</Link></div>
-            </motion.aside>
-          )}
-        </AnimatePresence>
-      </div>
-
-      <Link to="/" className="nav-signature" aria-label="sarvagyasinghs.com — home" data-cursor="home">sarvagyasinghs.com</Link>
-
-      <Link to="/contact" className="nav-contact" aria-label="Contact Sarvagya" data-cursor="hello">
-        <span>say hello</span><b>↗</b>
+    <motion.header className="nav" animate={{ y: hidden ? '-120%' : '0%' }} transition={{ duration: 0.55, ease: [0.16, 0.84, 0.24, 1] }}>
+      <Link to="/" className="nav-mark" aria-label="Sarvagya Singh, home">
+        <Seal />
+        <span className="nav-name">Sarvagya<br />Singh</span>
       </Link>
-    </header>
+
+      <nav aria-label="Main">
+        {links.map(([to, label, hi], index) => {
+          const inner = <><small>0{index + 1}</small><Roll label={label} hi={hi} /></>
+          return to.startsWith('http')
+            ? <a key={to} href={to} target="_blank" rel="noreferrer" className="nav-link nav-ext">{inner}<i aria-hidden="true">↗</i></a>
+            : (
+              <NavLink key={to} to={to} className="nav-link">{inner}</NavLink>
+            )
+        })}
+      </nav>
+
+      <button type="button" className="nav-sticker" onClick={scrollToTop} aria-label="Back to top">
+        <AnimatePresence mode="popLayout" initial={false}>
+          <motion.span
+            key={stickers[sticker]}
+            initial={{ scale: 0, rotate: -40 }}
+            animate={{ scale: 1, rotate: 0 }}
+            exit={{ scale: 0, rotate: 40 }}
+            transition={{ type: 'spring', stiffness: 420, damping: 18 }}
+          >
+            <Motif name={stickers[sticker]} />
+          </motion.span>
+        </AnimatePresence>
+      </button>
+
+      <div className="fuse" aria-hidden="true">
+        <motion.span className="fuse-burnt" style={{ scaleX: fuse }} />
+        <motion.span className="fuse-spark" style={{ left: spark }}>
+          <svg viewBox="0 0 20 28"><circle className="glow" cx="10" cy="16" r="10" fill="#FFD24A" opacity="0.6" /><path className="flame" d="M10 2C15 9 16 15 10 21C4 15 5 9 10 2Z" fill="#FFB800" /><path className="flame flame-in" d="M10 9C12.5 12 13 15 10 18C7 15 7.5 12 10 9Z" fill="#D71920" /></svg>
+        </motion.span>
+      </div>
+    </motion.header>
   )
 }

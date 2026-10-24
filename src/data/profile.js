@@ -8,12 +8,3 @@ export const profile = {
   github: 'github.com/sarvagya-singh',
   githubUrl: 'https://github.com/sarvagya-singh',
 }
-
-export const achievements = [
-  'building at kpmg',
-  'cs & ai/ml at mit manipal',
-  'mountaineering and boxing',
-  'rag, retrieval, and product experiments',
-  'learning from long routes and long projects',
-  'trying to keep the work honest',
-]

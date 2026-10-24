@@ -1,5 +1,31 @@
 export const allProjects = [
   {
+    id: 'nazara',
+    tag: 'Latest · Live at nazara.club',
+    title: 'Nazara: A People’s Atlas',
+    kicker: 'The city, as its people see it.',
+    desc: 'A social atlas for cities. People leave field notes, photographs, walks and lists on the places they love, and others find the city through their eyes.',
+    result: 'Live at nazara.club, with Mumbai and Bangalore seeded, a web app and a Flutter mobile app on one Supabase backend.',
+    overview: 'Maps know where a place is. Review sites know what it scored. Neither tells you why an ordinary-looking corner matters, or what someone noticed there on a rainy evening. I wanted a place where that kind of local knowledge could be written down, anchored to the map, and passed on.',
+    role: 'Solo founder · Product, design and engineering',
+    impact: ['Live at nazara.club', 'Web and mobile on one backend', 'Row-Level Security throughout'],
+    highlights: [
+      'A feed of field notes, walks, lists and stories, with an Atlas mode that pins every one of them to the map.',
+      'Supabase with Postgres and PostGIS for nearby search, and Row-Level Security instead of app-code permissions.',
+      'A rule-based search parser that understands requests like “quiet places in the rain” or “South Indian in Matunga”.',
+      'A Flutter mobile app on the same backend, with a composer for moments, lists, walks and stories.',
+    ],
+    stack: ['Next.js', 'TypeScript', 'Supabase', 'PostGIS', 'MapLibre', 'Flutter'],
+    url: 'https://nazara.club',
+    thumbnail: '/projects/nazara/feed.webp',
+    gallery: [
+      { type: 'image', src: '/projects/nazara/feed.webp', label: 'The feed', note: 'What people in the city are noticing today', alt: 'Nazara web feed for Bangalore with a field note and stories' },
+      { type: 'image', src: '/projects/nazara/atlas.webp', label: 'The Atlas', note: 'Every note and photo pinned where it happened', alt: 'Nazara mobile Atlas map of Mumbai with photo pins' },
+      { type: 'image', src: '/projects/nazara/right-now.webp', label: 'Right now', note: 'Weather-aware suggestions for the city', alt: 'Nazara mobile search and right-now suggestions for Mumbai' },
+      { type: 'image', src: '/projects/nazara/composer.webp', label: 'The composer', note: 'Moments, lists, walks and stories from one sheet', alt: 'Nazara mobile composer with photos attached' },
+    ],
+  },
+  {
     id: 'sachetana',
     tag: 'Hackathon winner · Nov 2024',
     title: 'Sachetana: Mental Well-being Partner',

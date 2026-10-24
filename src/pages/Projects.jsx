@@ -4,8 +4,7 @@ import { allProjects } from '../data/allProjects'
 import { papers } from '../data/papers'
 import ProjectCaseStudy from '../components/ProjectCaseStudy'
 import PaperViewer from '../components/PaperViewer'
-
-const ribbonWords = ['PROBLEM', 'BUILD', 'RESULT', 'REPEAT']
+import { Label, Print, Star } from '../components/Art'
 
 export default function Projects() {
   const location = useLocation()
@@ -23,39 +22,41 @@ export default function Projects() {
 
   return (
     <>
-      <section className="work-page-hero section-black">
-        <div className="work-ribbons" aria-hidden="true">
-          {[0, 1, 2].map((row) => <div key={row} className={`work-ribbon ribbon-${row + 1}`}><span>{ribbonWords.map((word) => <b key={word}>{word}<i>✦</i><em>{word.toLowerCase()}</em><i>⌁</i></b>)}</span></div>)}
-        </div>
-        <div className="work-hero-copy" data-reveal><span>project archive · 2024—2026</span><h1>Five projects,<br />and <em>how they were built.</em></h1><p>Three built inside organisations, one on my own, and one hackathon prototype. Each one covers the problem, what I built, and what came of it.</p></div>
+      <section className="page-head">
+        <p className="eyebrow" data-reveal>The archive · 2024–2026</p>
+        <h1 data-reveal>Six projects, and <em>how they were built.</em></h1>
+        <p data-reveal>One I’m building now, three built inside organisations, one on my own, and one hackathon prototype. Each covers the problem, what I built, and what came of it.</p>
       </section>
 
-      <section className="project-wall section-black">
-        <div className="project-wall-grid">
-          {allProjects.map((project, index) => {
-            const hoverImage = project.gallery?.find((item) => item.type === 'image' && item.src !== project.thumbnail)?.src
-            return (
-              <button key={project.id} type="button" className={`wall-card wall-card-${index + 1}`} onClick={() => openProject(project)} data-cursor="open" data-reveal="scale" style={{ '--reveal-delay': `${(index % 3) * 80}ms` }}>
-                <div className="wall-card-media"><img src={project.thumbnail} alt="" loading="lazy" /><img className="wall-card-hover" src={hoverImage || project.thumbnail} alt="" loading="lazy" /></div>
-                <div className="wall-card-copy">
-                  <div className="wall-card-meta"><span>{project.tag.split('·')[0].trim()}</span><b>{project.role}</b></div>
-                  <h2>{project.title}</h2>
-                  <p>{project.desc}</p>
-                  <div className="wall-card-footer"><strong>{project.impact[0]}</strong><span>View project ↗</span></div>
-                </div>
-              </button>
-            )
-          })}
-        </div>
+      <section className="archive">
+        {allProjects.map((project, index) => (
+          <button key={project.id} type="button" className="archive-row" onClick={() => openProject(project)} data-reveal>
+            <span className="archive-no">No. {String(index + 1).padStart(2, '0')}</span>
+            <Print src={project.thumbnail} alt="" className="archive-print print-ui" />
+            <div className="archive-copy">
+              <p className="eyebrow">{project.tag}</p>
+              <h2>{project.title}</h2>
+              <p>{project.desc}</p>
+              <ul className="archive-impact">{project.impact.map((item) => <li key={item}><Star className="tiny-star" />{item}</li>)}</ul>
+              <span className="text-link">Read the case study</span>
+            </div>
+          </button>
+        ))}
       </section>
 
-      <section className="research-rack">
-        <header data-reveal><span>research shelf</span><h2>Research<br /><em>papers.</em></h2><p>Coursework and research from MIT Manipal. Open one to read it in full.</p></header>
-        <div className="paper-cards">
+      <section className="papers">
+        <header className="section-head" data-reveal>
+          <p className="eyebrow">Research shelf</p>
+          <h2>Four papers from MIT Manipal.</h2>
+          <p>Coursework and research. Open one to read it in full.</p>
+        </header>
+        <div className="papers-grid">
           {papers.map((paper, index) => (
-            <button key={paper.id} type="button" className={`paper-card paper-card-${index + 1}`} onClick={() => setSelectedPaper(paper)} data-cursor="read" data-reveal={index % 2 ? 'right' : 'left'} style={{ '--reveal-delay': `${(index % 2) * 80}ms` }}>
-              <img src={paper.preview} alt="" loading="lazy" />
-              <span>{paper.field}</span><h3>{paper.title}</h3><b>{paper.pages} pages ↗</b>
+            <button key={paper.id} type="button" className="paper" onClick={() => setSelectedPaper(paper)} data-reveal style={{ '--reveal-delay': `${index * 70}ms` }}>
+              <Label top={<span>{paper.field}</span>} bottom={<span>{paper.pages} pages</span>}>
+                <img src={paper.preview} alt="" loading="lazy" />
+                <h3>{paper.title}</h3>
+              </Label>
             </button>
           ))}
         </div>

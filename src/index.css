@@ -3,8 +3,8 @@
    rose and cream, printed glossy on a warm paper stock. */
 :root {
   --paper: #ffffff;
-  --paper-deep: #f6dfa4;
-  --paper-light: #fff8e6;
+  --paper-deep: #ffffff;
+  --paper-light: #ffffff;
   --ink: #2a0f0f;
   --ink-soft: #7a2e1e;
   --ink-faint: rgba(42, 15, 15, 0.16);
